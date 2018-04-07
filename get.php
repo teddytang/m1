@@ -1,6 +1,6 @@
 <?php
 /**
-abcd
+abcdddd
  * Magento
  *
  * NOTICE OF LICENSE
