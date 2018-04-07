@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Imgupload
+ */
+-->
+<layout>
+	
+    <vendors_catalog_product_edit>
+    	<reference name="head">
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/functions.js</name><params/></action>
+  			<action method="addItem"><type>js</type><name>ves_vendors/imageproduct/upload.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/jquery.min.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/vendor/jquery.ui.widget.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/jquery.iframe-transport.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/jquery.fileupload.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/bootstrap.min.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/jquery.noconflict.js</name><params/></action>
+            
+            <action method="addItem"><type>js_css</type><name>ves_vendors/imageproduct/upload.css</name><params/></action>
+
+            <action method="addCss"><name>ves_vendors/imageproduct/jquery.fileupload.css</name></action>
+            <action method="addCss"><name>ves_vendors/imageproduct/images.css</name></action>
+        </reference>
+       	<!-- 
+         <reference name="vendor_product_tabs">
+            <action method="addTabAfter"><name>product_images</name><block>vendorsproductimage/catalog_product_helper_form_gallery_content</block><after>inventory</after></action>
+        </reference>
+         -->
+        
+    </vendors_catalog_product_edit>
+    
+    <vendors_catalog_product_new>
+    	<reference name="head">
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/functions.js</name><params/></action>
+  			<action method="addItem"><type>js</type><name>ves_vendors/imageproduct/upload.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/jquery.min.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/vendor/jquery.ui.widget.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/jquery.iframe-transport.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/jquery.fileupload.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/bootstrap.min.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/jquery.noconflict.js</name><params/></action>
+            
+            <action method="addItem"><type>js_css</type><name>ves_vendors/imageproduct/upload.css</name><params/></action>
+
+            <action method="addCss"><name>ves_vendors/imageproduct/jquery.fileupload.css</name></action>
+            <action method="addCss"><name>ves_vendors/imageproduct/images.css</name></action>
+        </reference>
+        <!-- 
+         <reference name="vendor_product_tabs">
+            <action method="addTabAfter"><name>product_images</name><block>vendorsproductimage/catalog_product_helper_form_gallery_content</block><after>inventory</after></action>
+        </reference>
+            -->
+    </vendors_catalog_product_new>
+    
+    
+     <adminhtml_catalog_product_edit>
+    	<reference name="head">
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/functions.js</name><params/></action>
+  			<action method="addItem"><type>js</type><name>ves_vendors/imageproduct/upload.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/jquery.min.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/vendor/jquery.ui.widget.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/jquery.iframe-transport.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/jquery.fileupload.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/bootstrap.min.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/jquery.noconflict.js</name><params/></action>
+            
+            <action method="addItem"><type>js_css</type><name>ves_vendors/imageproduct/upload.css</name><params/></action>
+
+            <action method="addCss"><name>ves_vendors/imageproduct/jquery.fileupload.css</name></action>
+            <action method="addCss"><name>ves_vendors/imageproduct/images.css</name></action>
+        </reference>
+         <!-- 
+         <reference name="product_tabs">
+            <action method="addTabAfter"><name>product_images</name><block>vendorsproductimage/catalog_product_helper_form_gallery_content</block><after>inventory</after></action>
+        </reference>
+         -->
+    </adminhtml_catalog_product_edit>
+    
+    <adminhtml_catalog_product_new>
+    	<reference name="head">
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/functions.js</name><params/></action>
+  			<action method="addItem"><type>js</type><name>ves_vendors/imageproduct/upload.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/jquery.min.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/vendor/jquery.ui.widget.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/jquery.iframe-transport.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/jquery.fileupload.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/bootstrap.min.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>ves_vendors/imageproduct/jquery.noconflict.js</name><params/></action>
+            
+            <action method="addItem"><type>js_css</type><name>ves_vendors/imageproduct/upload.css</name><params/></action>
+
+            <action method="addCss"><name>ves_vendors/imageproduct/jquery.fileupload.css</name></action>
+            <action method="addCss"><name>ves_vendors/imageproduct/images.css</name></action>
+        </reference>
+            <!-- 
+         <reference name="product_tabs">
+            <action method="addTabAfter"><name>product_images</name><block>vendorsproductimage/catalog_product_helper_form_gallery_content</block><after>inventory</after></action>
+        </reference>
+            -->
+    </adminhtml_catalog_product_new>
+    
+    
+</layout>

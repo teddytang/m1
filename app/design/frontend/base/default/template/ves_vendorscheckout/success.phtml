@@ -1,0 +1,46 @@
+<div class="page-title">
+    <h1><?php echo $this->__('Your orders have been received.') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<h2 class="sub-title"><?php echo $this->__('Thank you for your purchase!') ?></h2>
+
+<?php if ($this->getOrders()):?>
+	<?php if ($this->getCanViewOrder()) :?>
+		<?php 
+			$orders = array();
+			foreach($this->getOrders() as $order){
+				$orders[]= sprintf('<a href="%s" target="_blank">%s</a>', $this->escapeHtml($this->getViewOrderUrl($order)), $this->escapeHtml($order->getIncrementId()));
+			}
+		?>
+		<?php if(sizeof($orders)>1):?>
+	    	<p><?php echo $this->__('Your orders # are: %s.', implode(", ",$orders)) ?></p>
+	    <?php else:?>
+	    	<p><?php echo $this->__('Your order # is: %s.', implode(", ",$orders)) ?></p>
+	    <?php endif;?>
+	<?php  else :?>
+		<?php if(sizeof($this->getOrderIds())>1):?>
+	    	<p><?php echo $this->__('Your order # are: %s.', $this->escapeHtml(implode(", ",$this->getOrderIds()))) ?></p>
+	    <?php else:?>
+	    	<p><?php echo $this->__('Your order # is: %s.', $this->escapeHtml(implode(", ",$this->getOrderIds()))) ?></p>
+	    <?php endif;?>
+	<?php endif;?>
+	<p><?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress.') ?></p>
+<?php endif;?>
+
+<?php if ($this->getAgreementRefId()): ?>
+    <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+<?php endif;?>
+
+<?php if ($profiles = $this->getRecurringProfiles()):?>
+<p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+<ul class="disc">
+<?php foreach($profiles as $profile):?>
+<?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+    <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
+<?php endforeach;?>
+</ul>
+<?php endif;?>
+
+<div class="buttons-set">
+    <button type="button" class="button" title="<?php echo $this->__('Continue Shopping') ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+</div>

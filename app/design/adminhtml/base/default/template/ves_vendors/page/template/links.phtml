@@ -1,0 +1,39 @@
+<?php
+/** @var $this VES_Vendors_Block_Page_Toplinks */
+?>
+<?php $_links = $this->getLinks(); ?>
+<?php if(count($_links)>0): ?>
+<div class="navbar navbar-inverse" id="user-nav">
+  <ul class="nav">
+  	<?php echo $this->getChildHtml() ?>
+  	<?php foreach($_links as $_link): ?>
+	  	<?php if ($_link instanceof Mage_Core_Block_Abstract):?>
+	    	<?php echo $_link->toHtml() ?>
+	    <?php else: ?>
+	    	<li <?php echo $_link->getLiParams() ?>>
+	    		<?php echo $_link->getBeforeText();?>
+	    		<a href="<?php echo $_link->getUrl() ?>"  title="<?php echo $_link->getTitle() ?>" <?php echo $_link->getAParams() ?>>
+	    			<?php echo $_link->getABeforeText();?>
+	    			<span class="text"><?php echo $_link->getLabel() ?></span>
+	    			<?php echo $_link->getAAfterText();?>
+	    		</a>
+	    		<?php echo $_link->getAfterText();?>
+	    	</li>
+	    <?php endif;?>
+    <?php endforeach;?>
+    <?php /*
+    <li id="menu-messages" class="dropdown"><a class="dropdown-toggle" data-target="#menu-messages" data-toggle="dropdown" href="#"><i class="icon icon-envelope"></i> <span class="text">Messages</span> <span class="label label-important">5</span> <b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li><a href="#" title="" class="sAdd">new message</a></li>
+        <li><a href="#" title="" class="sInbox">inbox</a></li>
+        <li><a href="#" title="" class="sOutbox">outbox</a></li>
+        <li><a href="#" title="" class="sTrash">trash</a></li>
+      </ul>
+    </li>
+    
+    <li class="setting"><a href="#" title=""><span class="text">Settings</span></a></li>
+    <li class="logout"><a href="login.html" title=""><span class="text">Logout</span></a></li>
+    */?>
+  </ul>
+</div>
+<?php endif;?>

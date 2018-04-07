@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <VES_VendorsImage>
+            <active>true</active>
+            <codePool>local</codePool>
+			<depends>
+                <VES_Vendors />
+            </depends>
+        </VES_VendorsImage>
+    </modules>
+</config>

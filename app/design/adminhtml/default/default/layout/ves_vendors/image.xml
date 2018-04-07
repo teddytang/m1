@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<layout version="0.1.0"> 
+  <vendors_cms_wysiwyg_images_index>
+        <remove name="footer" />
+        <remove name="head" />
+        <reference name="left">
+            <block name="wysiwyg_images.js" type="vendorsimage/cms_wysiwyg_images_content" template="cms/browser/js.phtml" />
+            <block name="wysiwyg_images.tree" type="vendorsimage/cms_wysiwyg_images_tree" template="cms/browser/tree.phtml" />
+        </reference>
+        <reference name="content">
+            <block name="wysiwyg_images.content"  type="vendorsimage/cms_wysiwyg_images_content" template="cms/browser/content.phtml">
+                <block name="wysiwyg_images.uploader" type="vendorsimage/cms_wysiwyg_images_content_uploader" template="cms/browser/content/uploader.phtml" />
+                <block name="wysiwyg_images.newfolder" type="vendorsimage/cms_wysiwyg_images_content_newfolder" template="cms/browser/content/newfolder.phtml" />
+            </block>
+        </reference>
+    </vendors_cms_wysiwyg_images_index>
+
+    <vendors_cms_wysiwyg_images_contents>
+        <block name="wysiwyg_images.files" type="vendorsimage/cms_wysiwyg_images_content_files" template="cms/browser/content/files.phtml" output="toHtml" />
+    </vendors_cms_wysiwyg_images_contents>
+</layout>

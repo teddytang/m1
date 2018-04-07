@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<config>
+    <frontend>
+    	<routers>
+            <vendors>
+				<args>
+					<modules>
+						<vendorsimport before="VES_Vendors">VES_VendorsImportProduct</vendorsimport>
+					</modules>
+				</args>
+			</vendors>
+		</routers>
+		<translate>
+            <modules>
+                <VES_VendorsImportProduct>
+                    <files>
+                        <default>ves_vendors/importproduct.csv</default>
+                    </files>
+                </VES_VendorsImportProduct>
+            </modules>
+        </translate>
+    </frontend>
+    <admin>
+    	<import_product>
+	    	<ignore_fields>
+	    		<approval />
+	    		<vendor_id />
+	    		<sku />
+	    		<store />
+	    		<websites />
+	    		<vendor_related_product />
+	    		<vendor_child_product />
+	    		<vendor_relation_key />
+	    		<ves_vendor_period />
+	    		<ves_vendor_related_group />
+	    	</ignore_fields>
+    	</import_product>
+       	<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<vendorsimport before="Mage_Adminhtml">VES_VendorsImportProduct_Adminhtml</vendorsimport>
+					</modules>
+				</args>
+			</adminhtml>
+       	</routers>
+   	</admin>
+    <adminhtml>
+		<layout>
+			<updates>
+				<vendorsimport>
+					<file>ves_vendors/importproduct.xml</file>
+				</vendorsimport>
+			</updates>
+		</layout>
+		<translate>
+            <modules>
+                <VES_VendorsImportProduct>
+                    <files>
+                        <default>ves_vendors/importproduct.csv</default>
+                    </files>
+                </VES_VendorsImportProduct>
+            </modules>
+        </translate>
+    </adminhtml>   
+    <vendors>
+    	<menu>
+    		<importeproduct module="vendorsimport">
+    			<title>Import/Export</title>
+    			<frontend_class>import-export</frontend_class>
+    			<sort_order>1000</sort_order>
+    			<children>
+    				<manage_images>
+    					<title>Manage Images</title>
+		    			<sort_order>10</sort_order>
+		    			<action>vendors/import_images/</action>
+    				</manage_images>
+    				<import>
+    					<title>Import</title>
+		    			<sort_order>20</sort_order>
+		    			<action>vendors/import_index/</action>
+    				</import>
+    				<export>
+    					<title>Export</title>
+		    			<sort_order>30</sort_order>
+		    			<action>vendors/export_index/</action>
+    				</export>
+    			</children>
+    		</importeproduct>
+		</menu>
+		<group_options>
+			<importproduct module="vendorsimport">
+				<title>Import Products</title>
+				<sort_order>100</sort_order>
+				<fields>
+					<enabled>
+						<label>Enable Import Products Feature</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>10</sort_order>
+					</enabled>
+				</fields>
+			</importproduct>
+		</group_options>
+    </vendors>
+    <global>
+    	<events>
+            <!-- Check if vendor has permission to see category menu. -->
+            <ves_vendor_menu_check_acl>
+            	<observers>
+                    <vendorsimport>
+                        <class>vendorsimport/observer</class>
+                        <method>ves_vendor_menu_check_acl</method>
+                    </vendorsimport>
+                </observers>
+            </ves_vendor_menu_check_acl>
+            <!-- Vendor Category -->
+			<ves_vendorsimport_module_enable>
+				<observers>
+					<vendorsimport>
+	                    <class>vendorsimport/observer</class>
+	                    <method>ves_vendorsimport_module_enable</method>
+	                </vendorsimport>
+                 </observers>
+			</ves_vendorsimport_module_enable>
+			<!-- Vendor Product Save Before -->
+			<controller_action_predispatch_vendors_subaccount_account_new>
+				<observers>
+					<vendorsimport>
+	                    <class>vendorsimport/observer</class>
+	                    <method>controller_action_predispatch_vendors_subaccount_account_new</method>
+	                </vendorsimport>
+                 </observers>
+			</controller_action_predispatch_vendors_subaccount_account_new>
+    	</events>
+        <models>
+            <vendorsimport>
+                <class>VES_VendorsImportProduct_Model</class>
+                <resourceModel>vendorsimport_mysql4</resourceModel>
+            </vendorsimport>
+            <vendorsimport_mysql4>
+                <class>VES_VendorsImportProduct_Model_Mysql4</class>
+            </vendorsimport_mysql4>
+        </models>
+        <resources>
+            <vendorsimport_setup>
+                <setup>
+                    <module>VES_VendorsImportProduct</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </vendorsimport_setup>
+            <vendorsimport_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </vendorsimport_write>
+            <vendorsimport_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </vendorsimport_read>
+        </resources>
+        <blocks>
+            <vendorsimport>
+                <class>VES_VendorsImportProduct_Block</class>
+            </vendorsimport>
+            <adminhtml>
+            	<rewrite>
+            		<system_convert_gui_grid>VES_VendorsImportProduct_Block_Adminhtml_System_Convert_Gui_Grid</system_convert_gui_grid>
+            	</rewrite>
+            </adminhtml>
+        </blocks>
+        <helpers>
+            <vendorsimport>
+                <class>VES_VendorsImportProduct_Helper</class>
+            </vendorsimport>
+        </helpers>
+    </global>
+    <default>
+    	<vendors>
+    		<vendorsimport>
+    			<thumbnail_size>40</thumbnail_size>
+    		</vendorsimport>
+    	</vendors>
+    </default>
+</config>

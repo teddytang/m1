@@ -1,0 +1,38 @@
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php $_message = $this->getMessage(); ?>
+<div class="page-title">
+    <h1><?php echo $_message->getSubject() ?></h1>
+</div>
+<?php if($_message->getParentMessageId()):?>
+	<?php 
+		$messages = array($_message->getParentMessage());
+		$msgbox = Mage::registry('message_box');
+		$collection = Mage::getModel('vendorsmessage/message')->getCollection()
+				->addFieldToFilter('parent_message_id',$_message->getParentMessageId())
+				->addFieldToFilter('msgbox_id',$msgbox->getId())
+				->addOrder('created_at','ASC');
+		foreach($collection as $msg){
+			$messages[] = $msg;
+		}
+	?>
+	<?php foreach($messages as $msg):?>
+	<?php $backgroundColor = $msg->getData('from_msgbox_id')==$msgbox->getId()?'fffeed':'CDE0F7';?>
+	<div class="ves_message_container" style="background: #<?php echo $backgroundColor;?>">
+		<div style="float: left;font-size: 14px;"><span style="font-weight: bold;"><?php echo ($msg->getFromMsgbox()->getType()==VES_VendorsMessage_Model_Message::TYPE_ADMIN?'[ADMIN] ':'').$msg->getFromMsgbox()->getName();?></span> &lt;<?php echo $msg->getFrom()?>&gt;</div>
+		<div style="float: right;font-style: italic;"><?php echo $this->formatDate($msg->getCreatedAt()) ?></div>
+		<div style="clear: both;border-top: 1px dashed #D3D3D3;margin-bottom: 10px;"></div>
+		<?php echo $msg->getContent();?>
+	</div>
+	<?php endforeach;?>
+<?php else:?>
+	<div class="ves_message_container">
+		<h3 style="float: left;"><?php echo $_message->getFrom()?></h3>
+		<div style="float: right;font-style: italic;"><?php echo $this->formatDate($_message->getCreatedAt()) ?></div>
+		<div style="clear: both;border-top: 1px dashed #D3D3D3;margin-bottom: 10px;"></div>
+		<?php echo $_message->getContent();?>
+	</div>
+<?php endif;?>
+<?php echo $this->getChildHtml('message-form-reply') ?>
+<div class="buttons-set">
+    <p class="back-link"><a href="<?php echo $this->getBackUrl();?>"><small>&laquo; </small><?php echo $this->__('Back')?></a></p>
+</div>

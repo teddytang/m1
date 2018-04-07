@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <VES_VendorsCommissionCalculation>
+            <version>1.0.0.0</version>
+        </VES_VendorsCommissionCalculation>
+    </modules>
+    <admin>
+    	<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<vendorscommission before="Mage_Adminhtml">VES_VendorsCommissionCalculation_Adminhtml</vendorscommission>
+					</modules>
+				</args>
+			</adminhtml>
+       	</routers>
+   	</admin>
+	<adminhtml>
+		<translate>
+            <modules>
+                <VES_VendorsCommissionCalculation>
+                    <files>
+                        <default>ves_vendors/commission_calculation.csv</default>
+                    </files>
+                </VES_VendorsCommissionCalculation>
+            </modules>
+        </translate>
+		<menu>
+			<vendors>           
+				<children>
+					<commission module="vendorscommission" translate="title">
+						<title>Commission Configuration</title>
+						<sort_order>39</sort_order>
+						<action>adminhtml/vendors_commission</action>
+					</commission>
+				</children>
+			</vendors>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<vendors>
+							<children>
+								<commission module="vendorscommission" translate="title">
+									<title>Commission Configuration</title>
+									<sort_order>39</sort_order>
+								</commission>
+							</children>
+						</vendors>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<vendorscommission>
+					<file>ves_vendors/commission.xml</file>
+				</vendorscommission>
+			</updates>
+		</layout>
+	</adminhtml>
+    <global>
+    	<credit>
+    		<types>
+    			<item_commission>
+					<action>subtract</action>
+    				<class>vendorscommission/credit_type_itemcommission</class>
+				</item_commission>
+    		</types>
+    	</credit>
+    	<events>
+			 <ves_vendorscredit_calculate_commission>
+                <observers>
+                    <vendorscommission>
+                        <type>singleton</type>
+                        <class>vendorscommission/observer</class>
+                        <method>ves_vendorscredit_calculate_commission</method>
+                    </vendorscommission>
+                </observers>
+	         </ves_vendorscredit_calculate_commission>
+    	</events>
+
+        <models>
+             <vendorscommission>
+                <class>VES_VendorsCommissionCalculation_Model</class>
+                <resourceModel>vendorscommission_resource</resourceModel>
+            </vendorscommission>
+            <vendorscommission_resource>
+                <class>VES_VendorsCommissionCalculation_Model_Resource</class>
+                <entities>
+                    <rule>
+                    	<table>ves_vendor_credit_commission_rule</table>
+                    </rule>
+                </entities>
+           	</vendorscommission_resource>
+        </models>
+
+        <resources>
+	        <vendorscommission_setup>
+	            <setup>
+	                <module>VES_VendorsCommissionCalculation</module>
+	                <class>VES_VendorsCommissionCalculation_Model_Resource_Setup</class>
+	            </setup>
+	        </vendorscommission_setup>
+	    </resources>
+
+        <blocks>
+            <vendorscommission>
+                <class>VES_VendorsCommissionCalculation_Block</class>
+            </vendorscommission>
+        </blocks>
+        <helpers>
+            <vendorscommission>
+                <class>VES_VendorsCommissionCalculation_Helper</class>
+            </vendorscommission>
+        </helpers>
+    </global>
+</config>

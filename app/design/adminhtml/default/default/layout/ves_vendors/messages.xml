@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	
+	<default>
+		<reference name="notifications">
+			<block type="vendorsmessage/adminhtml_notification" template="ves_vendorsmessage/admin/notification.phtml" name="vendorsmessage.global.notification"></block>
+		</reference>
+	</default>
+	
+	<adminhtml_vendors_message_inbox>
+		<remove name="vendorsmessage.global.notification" />
+		<update handle="vendors_message_inbox" />
+	</adminhtml_vendors_message_inbox>
+	
+	<adminhtml_vendors_message_outbox>
+		<remove name="vendorsmessage.global.notification" />
+		<update handle="vendors_message_outbox" />
+	</adminhtml_vendors_message_outbox>
+	
+	<adminhtml_vendors_message_trash>
+		<remove name="vendorsmessage.global.notification" />
+		<update handle="vendors_message_trash" />
+	</adminhtml_vendors_message_trash>
+	
+	<adminhtml_vendors_message_view>
+		<update handle="vendors_message_view" />
+	</adminhtml_vendors_message_view>
+	
+	<vendors_logged_out>
+        
+    </vendors_logged_out>
+    
+    <vendors_logged_in>
+    	<reference name="before_body_end">
+    		<block type="vendorsmessage/notification" name="vendors.message.notification" template="ves_vendorsmessage/notification.phtml" />
+    	</reference>
+    </vendors_logged_in>
+    
+    <vendors_logged_in>
+       	<reference name="head">
+       		<action method="addCss"><stylesheet>ves_vendors/css/message.css</stylesheet></action>
+       	</reference>
+       	<reference name="toplinks">
+       		<block type="vendorsmessage/links" name="vendors.message.toplink" />
+       	</reference>
+    </vendors_logged_in>
+    <vendors_message_inbox>
+    	<reference name="content">
+            <block type="vendorsmessage/message" name="message.list" />
+        </reference>
+    </vendors_message_inbox>
+    
+    <vendors_message_outbox>
+    	<update handle="vendors_message_inbox" />
+    </vendors_message_outbox>
+    
+    <vendors_message_trash>
+    	<update handle="vendors_message_inbox" />
+    </vendors_message_trash>
+    
+    <vendors_message_view>
+    	<reference name="head">
+    		<action method="addJs"><js>ves_vendors/message/tinymce.js</js></action>
+    	</reference>
+    	<reference name="content">
+            <block type="vendorsmessage/message_edit" name="message.view" />
+        </reference>
+    </vendors_message_view>
+</layout>

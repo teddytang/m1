@@ -1,0 +1,76 @@
+.ves_message_container{border: 1px solid #d3d3d3; padding: 20px;margin: 10px 0;border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;background: #fffeed;}
+.ves_unread_message td{font-weight: bold;}
+.message-action{margin:20px 5px}
+.message-action .action{float:left}
+.message-action .mask{float:right}
+.clear{clear:both;}
+.message-action a{
+ color: #696969;
+ font-size: 14px;
+ margin-right: 15px;
+}
+
+.message-action .active {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.my-message {
+    background: none repeat scroll 0 0 #FFFFFF;
+    min-height: 600px;
+    padding: 5px;
+}
+.customer-message-title {
+    margin: 0 0 5px !important;
+    padding: 10px 0;
+}
+
+.customer-message-title h1 {
+    color: #696969;
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 200px;
+}
+.customer-message-title .create-message {
+    float: right;
+    margin: 0;
+}
+
+
+.box-customer-message .data-table thead th {
+    background: none repeat scroll 0 0 #C7D9E7;
+    border-bottom: 1px solid #FFFFFF !important;
+    border-right: 1px solid #FFFFFF;
+    color: #696969;
+    padding: 5px;
+    text-transform: uppercase;
+}
+.button-set .form-button{margin-top:10px}
+.my-ticket-table tr {
+    cursor: pointer;
+}
+.box-customer-message .data-table tbody th, .box-customer-message .data-table tbody td {
+    border-bottom: 1px solid #FFFFFF;
+    border-right: 1px solid #FFFFFF;
+    color: #696969;
+    padding: 5px;
+}
+.box-customer-message .data-table .odd {
+    background: none repeat scroll 0 0 #F3F3F3;
+}
+
+.box-customer-message .data-table .even {
+    background: none repeat scroll 0 0 #EFF5FF;
+}
+.reply-message .reply-message-button{width:145px;margin-left:40%;}
+.form-new-message{position: fixed; width: 500px; bottom: 0; right: 0;margin: 0;z-index: 9999;}
+.message-subject,.message-content{margin-top: 10px;}
+.message-subject .left, .message-content .validation-advice{text-align: left;}
+.form-new-message .content-form div label{float:left;width:100px}
+.form-new-message .content-form span.required{color:red;}
+.form-new-message .content-form div .input-text{width:380px}
+.form-new-message .close-btn{position:absolute;right: 10px;top: 5px;}
+
+.message-link a{text-decoration: none;}
+.message-sending{position: fixed; top: 20px; right: 0;padding: 15px 40px; background: #ff6464;z-index: 9999;color: #FFF;}

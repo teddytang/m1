@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<vendors_logged_in>
+		<reference name="toplinks">
+			<action method="addLink" translate="label title" module="vendorsconfig"><label>Configuration</label><url helper="vendorsconfig/getConfigUrl"/><title>Configuration</title><prepare/><urlParams/><position>20</position><liParams>class="setting"</liParams></action>
+		</reference>
+ 	</vendors_logged_in>
+    <vendors_config_index>
+    	<reference name="content">
+    		<block type="vendorsconfig/config_edit" name="vendorscredit.config" />
+    	</reference>
+    	<reference name="left">
+    		<block type="vendorsconfig/config_edit_tabs" name="vendorscredit.config.tabs" />
+    	</reference>
+    </vendors_config_index>
+</layout>

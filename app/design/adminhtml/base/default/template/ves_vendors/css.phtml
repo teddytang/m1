@@ -1,0 +1,38 @@
+/*Header*/
+<?php $helper = Mage::helper('vendors/design');?>
+.vendor_cp .header-top{background-color: #<?php echo $helper->getConfig('header_bgcolor');?>;<?php if($headerBgImage = $helper->getConfig('header_bgimage')):?>background-image: url(<?php echo Mage::getBaseUrl('media').'ves_vendors/'.$headerBgImage;?>);<?php endif;?>}
+<?php $toplinkBorderLighterColor = $helper->getLighterColor($helper->getConfig('toplinks_border_color'));?>
+.vendor_cp #user-nav{border-left-color: #<?php echo $toplinkBorderLighterColor;?>}
+.vendor_cp #user-nav > ul > li{border-left-color: #<?php echo $helper->getConfig('toplinks_border_color');?>;border-right-color: #<?php echo $toplinkBorderLighterColor;?>;}
+.vendor_cp #user-nav > ul > li > a{color: #<?php echo $helper->getConfig('toplinks_linkcolor');?>}
+.vendor_cp #user-nav > ul > li > a:hover,.vendor_cp #user-nav > ul > li:hover > a{color: #<?php echo $helper->getConfig('toplinks_linkcolor_hover');?>}
+.vendor_cp #user-nav > ul > li:hover{background-color: #<?php echo $helper->getConfig('toplinks_hover_bgcolor');?>}
+
+/*Menu*/
+.vendor_cp .nav-bar{<?php if($navBgImage = $helper->getConfig('menu_bgimage')):?>background-image: url(<?php echo Mage::getBaseUrl('media').'ves_vendors/'.$navBgImage;?>);<?php endif;?>}
+.vendor_cp #nav a{color: #<?php echo $helper->getConfig('menu_item_text_color');?>;}
+.vendor_cp #nav > li.active,.vendor_cp #nav > li:hover{background-color: #<?php echo $helper->getConfig('menu_item_level0_hover_bg');?>;}
+.vendor_cp #nav ul{background-color: #<?php echo $helper->getConfig('menu_submenu_bg');?>;}
+.vendor_cp #nav ul li a:hover{background-color: #<?php echo $helper->getConfig('menu_submenu_hover_bg');?>;}
+
+/*Buttons*/
+.vendor_cp button, .vendor_cp .form-button,.btn-warning{background-color:#<?php echo $helper->getConfig('button_general');?>;}
+.vendor_cp button:hover, .vendor_cp .form-button:hover,.btn-warning:hover{background-color:#<?php echo $helper->getConfig('button_general_hover');?>;}
+
+.vendor_cp button.save,.btn-success{background-color:#<?php echo $helper->getConfig('button_save');?>;}
+.vendor_cp button.save:hover,.btn-success:hover{background-color:#<?php echo $helper->getConfig('button_save_hover');?>;}
+
+.vendor_cp button.add,.btn-info{background-color:#<?php echo $helper->getConfig('button_add');?>;}
+.vendor_cp button.add:hover,.btn-info:hover{background-color:#<?php echo $helper->getConfig('button_add_hover');?>;}
+
+.vendor_cp button.cancel, .vendor_cp button.delete{background-color:#<?php echo $helper->getConfig('button_delete');?>;}
+.vendor_cp button.cancel:hover, .vendor_cp button.delete:hover{background-color:#<?php echo $helper->getConfig('button_delete_hover');?>;}
+
+.vendor_cp button.back,.btn-inverse{background-color:#<?php echo $helper->getConfig('button_back');?>;}
+.vendor_cp button.back:hover,.btn-inverse:hover{background-color:#<?php echo $helper->getConfig('button_back_hover');?>;}
+
+
+/*Footer*/
+.vendor_cp .footer{background-color: #<?php echo $helper->getConfig('footer_bgcolor');?>;<?php if($footerBgImage = $helper->getConfig('footer_bgimage')):?>background-image: url(<?php echo Mage::getBaseUrl('media').'ves_vendors/'.$footerBgImage;?>);<?php endif;?>color: #<?php echo $helper->getConfig('footer_text_color');?>;}
+.vendor_cp .footer a{color: #<?php echo $helper->getConfig('footer_link_color');?>;}
+.vendor_cp .footer a:hover{color: #<?php echo $helper->getConfig('footer_link_color_hover');?>;}

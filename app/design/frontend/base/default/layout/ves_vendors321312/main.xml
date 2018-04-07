@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+	    <reference name="top.links">
+	         <block type="vendors/links" name="vendors_top_links">
+	             <action method="addVendorLink"></action>
+	         </block>
+	     </reference>
+	</default>
+</layout> 

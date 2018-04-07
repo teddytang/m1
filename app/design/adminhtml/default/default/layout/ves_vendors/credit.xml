@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<adminhtml_vendors_payment_index>
+		<reference name="content">
+			<block type="vendorscredit/adminhtml_payment" name="vendorscredit.payment" />
+		</reference>
+	</adminhtml_vendors_payment_index>
+	
+	<adminhtml_vendors_payment_edit>
+		<reference name="content">
+			<block type="vendorscredit/adminhtml_payment_edit" name="vendorscredit.payment.edit" />
+		</reference>
+		<reference name="left">
+			<block type="vendorscredit/adminhtml_payment_edit_tabs" name="vendorscredit.payment.edit.tabs" />
+		</reference>
+	</adminhtml_vendors_payment_edit>
+	
+	<adminhtml_vendors_index>
+		<block type="vendorscredit/adminhtml_vendor_grid" name="vendor.credit" />
+	</adminhtml_vendors_index>
+	
+	<adminhtml_vendors_transaction_index>
+		<reference name="content">
+			<block type="vendorscredit/adminhtml_vendor_transaction" name="vendorscredit.transaction" />
+		</reference>
+	</adminhtml_vendors_transaction_index>
+	
+	<adminhtml_vendors_transaction_new>
+		<reference name="left">
+			<block type="vendorscredit/adminhtml_vendor_transaction_edit_tabs" name="vendorscredit.transaction.new.tabs" />
+		</reference>
+		<reference name="content">
+			<block type="vendorscredit/adminhtml_vendor_transaction_edit" name="vendorscredit.transaction.new" />
+		</reference>
+	</adminhtml_vendors_transaction_new>
+	
+	<adminhtml_vendors_transaction_escrow_index>
+		<reference name="content">
+			<block type="vendorscredit/adminhtml_vendor_transaction_escrow" name="vendorscredit.transaction.escrow" />
+		</reference>
+	</adminhtml_vendors_transaction_escrow_index>
+	
+	<adminhtml_vendors_transaction_escrow_view>
+		<reference name="content">
+			<block type="vendorscredit/adminhtml_vendor_transaction_escrow_edit" name="vendorscredit.transaction.escrow.view" />
+		</reference>
+		<reference name="left">
+			<block type="vendorscredit/adminhtml_vendor_transaction_escrow_edit_tabs" name="vendorscredit.transaction.escrow.view.tabs" />
+		</reference>
+	</adminhtml_vendors_transaction_escrow_view>
+	
+	<adminhtml_vendors_withdrawal_index>
+		<reference name="content">
+			<block type="vendorscredit/adminhtml_vendor_withdrawal" name="vendorscredit.withdrawal" />
+		</reference>
+	</adminhtml_vendors_withdrawal_index>
+	
+	<adminhtml_vendors_withdrawal_view>
+		<reference name="left">
+			<block type="vendorscredit/adminhtml_vendor_withdrawal_edit_tabs" name="vendorscredit.withdrawal.tabs" />
+		</reference>
+		<reference name="content">
+			<block type="vendorscredit/adminhtml_vendor_withdrawal_edit" name="vendorscredit.withdrawal.view" />
+		</reference>
+	</adminhtml_vendors_withdrawal_view>
+	
+	<!-- Vendors -->
+	<vendors_logged_out>
+        
+    </vendors_logged_out>
+    
+    <vendors_logged_in>
+    </vendors_logged_in>
+    
+    <vendors_dashboard_index>
+    	<reference name="before.sales">
+            <block type="vendorscredit/dashboard" name="vendorscredit.amount" template="ves_vendorscredit/dashboard.phtml" />
+        </reference>
+        <reference name="after.sales">
+            
+        </reference>
+    </vendors_dashboard_index>
+    
+    <vendors_credit_transaction_index>
+    	<reference name="content">
+    		<block type="vendorscredit/transaction" name="vendorscredit.transactioin" />
+    	</reference>
+    </vendors_credit_transaction_index>
+    
+    <vendors_credit_withdraw_history>
+    	<reference name="content">
+    		<block type="vendorscredit/withdraw" name="vendorscredit.transactioin" />
+    	</reference>
+    </vendors_credit_withdraw_history>
+    
+    <vendors_credit_withdraw_index>
+    	<reference name="content">
+    		<block type="vendorscredit/withdraw_edit" name="vendorscredit.withdraw" />
+    	</reference>
+    	<reference name="left">
+    		<block type="vendorscredit/withdraw_edit_tabs" name="vendorscredit.withdraw.tabs" />
+    	</reference>
+    </vendors_credit_withdraw_index>
+    <vendors_credit_withdraw_view>
+    	<reference name="content">
+    		<block type="vendorscredit/withdraw_view" name="vendorscredit.withdraw.view" />
+    	</reference>
+    	<reference name="left">
+    		<block type="vendorscredit/withdraw_view_tabs" name="vendorscredit.withdraw.view.tabs" />
+    	</reference>
+    </vendors_credit_withdraw_view>
+    <vendors_credit_withdraw_form>
+    	<reference name="content">
+    		<block type="vendorscredit/withdraw_form_edit" name="vendorscredit.withdraw" />
+    	</reference>
+    	<reference name="left">
+    		<block type="vendorscredit/withdraw_form_edit_tabs" name="vendorscredit.withdraw.tabs" />
+    	</reference>
+    </vendors_credit_withdraw_form>
+    
+    <vendors_credit_withdraw_review>
+    	<reference name="content">
+    		<block type="vendorscredit/withdraw_review_edit" name="vendorscredit.withdraw" />
+    	</reference>
+    	<reference name="left">
+    		<block type="vendorscredit/withdraw_review_edit_tabs" name="vendorscredit.withdraw.tabs" />
+    	</reference>
+    </vendors_credit_withdraw_review>
+</layout>

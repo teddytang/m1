@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+		<reference name="top.links">
+			<block type="vendorsmessage/customer_links" name="message.toplink">
+				<action method="addMessageLink"></action>
+			</block>
+		</reference>
+		<reference name="head">
+			<action method="addCss"><css>ves_vendors/message/styles.css</css></action>
+		</reference>
+	</default>
+	
+	<vendor_page>
+		<reference name="before_body_end">
+			<block type="core/template" name="new-message-form" template="ves_vendorsmessage/message/form-new.phtml" />
+		</reference>
+	</vendor_page>
+	
+	<customer_account>
+	 	<reference name="customer_account_navigation">
+	 		 <action method="addLink" translate="label" module="vendorsmessage"><name>message</name><path>customer/message/</path><label>Message</label></action>
+	 	</reference>
+	</customer_account>
+	 
+	<customer_message_inbox>
+		<update handle="customer_account"/>
+		<reference name="my.account.wrapper">
+			<block type="vendorsmessage/customer_message" name="message-list" template="ves_vendorsmessage/messages.phtml">
+				<!-- <block type="core/template" name="new-message-form" template="ves_vendorsmessage/message/form-new.phtml" /> -->
+			</block>
+		</reference>
+	</customer_message_inbox>
+	
+	<customer_message_outbox>
+		<update handle="customer_account"/>
+		<reference name="my.account.wrapper">
+			<block type="vendorsmessage/customer_message" name="message-list" template="ves_vendorsmessage/messages.phtml">
+			<block type="core/template" name="new-message-form" template="ves_vendorsmessage/message/form-new.phtml" />
+			</block>
+		</reference>
+	</customer_message_outbox>
+	
+	<customer_message_trash>
+		<update handle="customer_account"/>
+		<reference name="my.account.wrapper">
+			<block type="vendorsmessage/customer_message" name="message-list" template="ves_vendorsmessage/messages.phtml">
+			<block type="core/template" name="new-message-form" template="ves_vendorsmessage/message/form-new.phtml" />
+			</block>
+		</reference>
+	</customer_message_trash>
+	
+	<customer_message_view>
+		<update handle="customer_account"/>
+		<reference name="my.account.wrapper">
+			<block type="vendorsmessage/customer_message_view" name="message-view" template="ves_vendorsmessage/message/view.phtml">
+				<block type="vendorsmessage/customer_message_reply" name="message-form-reply" template="ves_vendorsmessage/message/form-reply.phtml" />
+			</block>
+		</reference>
+	</customer_message_view>
+	
+</layout>

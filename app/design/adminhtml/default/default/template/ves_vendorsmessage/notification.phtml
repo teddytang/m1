@@ -1,0 +1,17 @@
+<?php $unreadMessage = $this->getUnreadMessageCount();?>
+<?php if($this->canShow()):?>
+<div id="message-notification" class="message-notification-container" style="display: none;">
+	<a href="javascript: void(0);" class="close">close</a>
+	<img src="<?php echo $this->getSkinUrl('ves_vendors/images/message-big.png')?>" width="32" height="32" align="left" />
+	<span class="title"><?php echo $this->__('Important Unread messages')?></span><br />
+	<?php echo $this->__('You have %s unread messages.',$unreadMessage);?>
+</div>
+<script type="text/javascript">
+	Event.observe(window,'load',function(){
+		$('message-notification').appear({duration: 0.5});
+		$$('#message-notification .close').first().observe('click',function(){
+			$('message-notification').fade({duration: 1});
+		});
+	});
+</script>
+<?php endif;?>

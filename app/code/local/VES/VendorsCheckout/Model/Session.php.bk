@@ -1,0 +1,101 @@
+<?php
+
+class VES_VendorsCheckout_Model_Session extends Mage_Core_Model_Session_Abstract
+{    
+    protected $_tmpQuote;
+    /**
+     * Get Checkout session
+     */
+    protected function _getCheckoutSession(){
+    	return Mage::getSingleton('checkout/session');
+    }
+    
+    /**
+     * Class constructor. Initialize checkout session namespace
+     */
+    public function __construct()
+    {
+        $this->init('vendorscheckout');
+    }
+	
+    public function getMainQuote(){
+    	$quote = $this->_getCheckoutSession()->getQuote();
+    	if($quoteId = $quote->getParentQuote()){
+    		$quote = Mage::getModel('sales/quote')->load($quoteId);
+    	}
+    	return $quote;
+    }
+    
+	/**
+     * Get checkout quote instance by vendor id
+     *
+     * @return Mage_Sales_Model_Quote
+     */
+    public function getTmpQuote($vendorId)
+    {
+    	$tmpQuote = Mage::getSingleton('checkout/session')->getData('ves_temp_quote');
+		
+    	if(isset($tmpQuote) && ($tmpQuote == $vendorId)){
+    		return Mage::getModel('sales/quote')->load($tmpQuote);
+    	}
+    	$tmpQuote = Mage::getModel('sales/quote')->load($tmpQuote);
+    	if(isset($tmpQuote)){
+    		$tmpQuote->delete();
+    		Mage::getSingleton('checkout/session')->unsetData('ves_temp_quote');
+    	}
+    	
+    	$quote = Mage::getModel('sales/quote')->setStoreId(Mage::app()->getStore()->getId());
+		$quote->setIsCheckoutCart(true)->setStore(Mage::app()->getStore())
+				->setParentQuote($this->getMainQuote()->getId())
+				->setVendorId($vendorId);
+		$tmpQuote = $quote;
+		
+    	if ($remoteAddr = Mage::helper('core/http')->getRemoteAddr()) {
+            $tmpQuote->setRemoteIp($remoteAddr);
+            $xForwardIp = Mage::app()->getRequest()->getServer('HTTP_X_FORWARDED_FOR');
+            $tmpQuote->setXForwardedFor($xForwardIp);
+        }
+        
+        $customerSession = Mage::getSingleton('customer/session');
+    	if ($customerSession->isLoggedIn() || $this->_customer) {
+        	$customer = ($this->_customer) ? $this->_customer : $customerSession->getCustomer();
+        	$tmpQuote->setCustomer($customer);
+        }
+        /*Save Tmp Quote*/
+        $tmpQuote->save();
+        /*Copy data from main quote to tmp quote*/
+        $this->copyQuote($this->getMainQuote(), $tmpQuote);
+        
+        $tmpQuote->getBillingAddress();
+        $tmpQuote->getShippingAddress()->setCollectShippingRates(true);
+    	$tmpQuote->setTotalsCollectedFlag(false)->collectTotals()->save();
+    	
+        Mage::getSingleton('checkout/session')->setData('ves_temp_quote',$tmpQuote->getId());
+        return $tmpQuote;
+    }
+    
+    /**
+     * Copy all item of main quote to tmp quote by vendor id
+     * @param unknown_type $mainQuote
+     * @param unknown_type $tmpQuote
+     */
+    public function copyQuote($mainQuote, $tmpQuote){
+    	$vendorId = $tmpQuote->getVendorId();
+    	/*Copy Items*/
+    	foreach($mainQuote->getAllItems() as $item){
+    		if($item->getVendorId() == $vendorId){
+    			$parentId = $item->getId();
+    			$options = $item->getOptions();
+    			$item->unsetData('item_id')->setData('parent_item',$parentId)->setQuote($tmpQuote);
+    			$item->save();
+    			foreach($options as $option){
+    				$option->unsetData('option_id')->setData('item_id',$item->getId())->save();
+    			}
+    		}
+    	}
+    	
+    	/*Copy coupon code*/
+    	$tmpQuote->setCouponCode($mainQuote->getCouponCode());
+    	
+    }
+}

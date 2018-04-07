@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+		<block name="vendorscheckout.default" type="vendorscheckout/default" />
+		<reference name="head">
+			<action method="addCss"><css>ves_vendors/checkout/styles.css</css></action>
+		</reference>
+	</default>
+	<vendorscheckout_advanced_mode>
+		<reference name="checkout.cart">
+			<action method="setCartTemplate"><value>ves_vendorscheckout/empty.phtml</value></action>
+            <action method="setEmptyTemplate"><value>ves_vendorscheckout/empty.phtml</value></action>
+            <action method="chooseTemplate"/>
+		</reference>
+		<reference name="content">
+			<block type="vendorscheckout/cart" name="vendors.checkout.cart" template="ves_vendorscheckout/cart.phtml">
+				<action method="setCartTemplate"><value>ves_vendorscheckout/cart.phtml</value></action>
+	            <action method="setEmptyTemplate"><value>checkout/cart/noItems.phtml</value></action>
+	            <action method="chooseTemplate"/>
+	            
+	            <action method="addBlockRender"><block_name>subcart</block_name><block_type>vendorscheckout/cart_subcart</block_type><template>ves_vendorscheckout/cart/subcart.phtml</template></action>
+	            <action method="addBlockRender"><block_name>cart_coupon</block_name><block_type>vendorscheckout/cart_coupon</block_type><template>ves_vendorscheckout/cart/coupon.phtml</template></action>
+	            <action method="addBlockRender"><block_name>cart_totals</block_name><block_type>vendorscheckout/cart_totals</block_type><template>checkout/cart/totals.phtml</template></action>
+	            <action method="addBlockRender"><block_name>cart_shipping</block_name><block_type>vendorscheckout/cart_shipping</block_type><template>ves_vendorscheckout/cart/shipping.phtml</template></action>
+			</block>
+		</reference>
+	</vendorscheckout_advanced_mode>
+	
+	<checkout_cart_index>
+		<!-- <block type="vendorscheckout/onepage_link" name="vendorscheckout.cart.methods.onepage" /> -->
+	</checkout_cart_index>
+	
+	<checkout_onepage_success>
+		<reference name="content">
+			<block type="vendorscheckout/onepage_success" name="vendor.checkout.success" template="ves_vendorscheckout/success.phtml"/>
+		</reference>
+	</checkout_onepage_success>
+</layout>

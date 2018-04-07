@@ -1,0 +1,9 @@
+<style>
+.ves-msg-number{display: inline-block; width: 15px; height: 15px; background: #f96151;border-radius: 7px;text-align: center; color: #FFF; line-height: 15px;}
+</style>
+<div class="notification-global" style="background-color: #FFECE2;">
+    <strong class="label"><?php echo $this->__('Latest Message')?>:</strong> <?php echo $this->getLastUnreadMessage()->getSubject()?>
+    <span class="f-right">
+        <?php echo $this->__('You have <strong class="ves-msg-number">%s</strong> unread message(s) from customer.',$this->getUnreadMessageCount())?> <a href="<?php echo $this->getVendorMessageUrl()?>"><?php echo $this->__('Go to messages inbox')?></a>
+    </span>
+</div>

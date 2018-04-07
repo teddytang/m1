@@ -1,0 +1,14 @@
+#user-nav li.message a{background-image: url("../images/message.png");background-position: 5px 17px;background-repeat: no-repeat;margin-top: 2px;padding-left: 23px;vertical-align: top;}
+#user-nav .message-menu li > a {clear: both;color: #333333;display: block;font-weight: normal;line-height: 20px;padding: 3px 20px;white-space: nowrap;font-size: 12px;background-image: none;}
+#user-nav > ul > li.open > a{background-color: #111;}
+#user-nav > ul > li.message .message-menu:after {border-bottom: 6px solid #FFFFFF;border-left: 6px solid transparent;border-right: 6px solid transparent;content: "";display: inline-block;left: 10px;position: absolute;top: -6px;}
+.open > .message-menu {display: block;}
+.message-menu {background-clip: padding-box;background-color: #FFFFFF;border: 1px solid rgba(0, 0, 0, 0.2);border-radius: 6px 6px 6px 6px;box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);display: none;float: left;left: 0;list-style: none outside none;margin: 2px 0 0;min-width: 160px;padding: 5px 0;position: absolute;top: 100%;z-index: 1000;text-align: left;}
+.message-menu li a:hover, .message-menu .active a, .message-menu .active a:hover {background: none repeat scroll 0 0 #F77825;color: #EEEEEE;}
+.message-count {border-radius: 15px;-moz-border-radius: 15px; -webkit-border-radius: 15px;background-color: #F96151;color: #FFFFFF;display: inline-block;font-size: 11.844px;font-weight: bold;line-height: 14px;padding: 3px 5px 2px;margin-left: 5px;text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);vertical-align: baseline;white-space: nowrap;}
+.message-arrow{border-left: 4px solid transparent;border-right: 4px solid transparent;border-top: 4px solid #999999;content: "";display: inline-block;height: 0;vertical-align: top;width: 0;margin-left: 5px;margin-top: 8px;}
+.open .message-arrow,.message:hover .message-arrow{border-top-color: #FFF;}
+.message-notification-container{width: 250px;display: block; position: fixed; right: 15px; top: 50px;background-color: #EFEFEF;padding: 13px 10px; border: 2px solid #000;box-shadow: 0 0 10px 0 #000000; -moz-box-shadow: 0 0 10px 0 #000000; -webkit-box-shadow: 0 0 10px 0 #000000;z-index: 999999;}
+.message-notification-container img{margin-right: 15px;}
+.message-notification-container .title{font-weight: bold;}
+.message-notification-container .close{display: block; background: url("../images/message-notification-close.png") no-repeat; width: 29px; height: 29px; text-indent: -9999px;margin-right: -13px;margin-top: -13px;position: absolute;right: 0; top: 0;}

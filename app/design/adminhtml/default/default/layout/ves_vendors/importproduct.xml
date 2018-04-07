@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<layout>
+	<vendors_logged_in>
+    	<reference name="head">
+    		<action method="addCss"><css>ves_vendors/importproduct/styles.css</css></action>
+    	</reference>
+    </vendors_logged_in>
+    
+    <vendors_import_images_index>
+    	<reference name="head">
+    		<action method="addItem"><type>skin_js</type><name>ves_vendors/importproduct/jquery.min.js</name></action>
+    		<action method="addItem"><type>skin_js</type><name>ves_vendors/importproduct/jquery.uploadify.min.js</name></action>
+    		<action method="addItem"><type>skin_js</type><name>ves_vendors/importproduct/jquery.noconflict.js</name></action>
+    		<action method="addItem"><type>skin_js</type><name>ves_vendors/importproduct/js.js</name></action>
+    		<action method="addCss"><css>ves_vendors/importproduct/uploadify.css</css></action>
+    	</reference>
+    	<reference name="content">
+    		<block type="vendorsimport/vendor_images" name="vendor.images" template="ves_vendorsimportproduct/images.phtml" />
+    	</reference>
+    </vendors_import_images_index>
+    
+    <vendors_import_index_index>
+    	<reference name="head">
+    		<action method="addItem"><type>skin_js</type><name>ves_vendors/importproduct/jquery.min.js</name></action>
+    		<action method="addItem"><type>skin_js</type><name>ves_vendors/importproduct/jquery.uploadify.min.js</name></action>
+    		<action method="addItem"><type>skin_js</type><name>ves_vendors/importproduct/jquery.noconflict.js</name></action>
+    		<action method="addItem"><type>skin_js</type><name>ves_vendors/importproduct/js.js</name></action>
+    		<action method="addCss"><css>ves_vendors/importproduct/uploadify.css</css></action>
+    	</reference>
+    	<reference name="content">
+    		<block type="vendorsimport/vendor_import" name="vendor.import" template="ves_vendorsimportproduct/csv.phtml" />
+    	</reference>
+    </vendors_import_index_index>
+    
+    
+    <vendors_import_index_run>
+		<update handle="adminhtml_system_convert_gui_run" />
+	</vendors_import_index_run>
+	
+	
+	<vendors_export_index_index>
+    	<reference name="content">
+    		<block type="vendorsimport/vendor_export" name="vendor.export" />
+    	</reference>
+    </vendors_export_index_index>
+    
+    <vendors_export_index_export>
+    	<reference name="content">
+    		<block type="vendorsimport/vendor_export_edit" name="vendor.export" />
+    	</reference>
+    </vendors_export_index_export>
+    
+    <vendors_export_index_run>
+		<update handle="adminhtml_system_convert_gui_run" />
+	</vendors_export_index_run>
+</layout>

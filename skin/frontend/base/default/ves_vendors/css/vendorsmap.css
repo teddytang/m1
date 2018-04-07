@@ -1,0 +1,34 @@
+
+.box-collateral h2 {
+    border-bottom: 1px solid #E5DCC3;
+    color: #E26703;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0 !important;
+    padding: 0 0 1px;
+}
+.box-collateral .map-list-box h2{
+	color: #555555;
+	border:none;
+	text-transform: uppercase;
+    font-size: 13px;
+}
+#address_list{margin-bottom:10px;background:#F8F7F5;}
+#address_list ul li{border-bottom:1px solid #CDCDCD;padding:10px;cursor:pointer;}
+#address_list ul li:hover{ background: #fdfee5}
+#address_list ul li.last{border:none}
+#address_list ul li.active{background:#fdfee5}
+
+.box-map .map-box-containt{margin-bottom:15px;float:right;width:100%;}
+.box-map .map-box-containt .map-list-box{margin-bottom:15px;float:left;width:300px;margin-right:10px;  position: absolute; z-index: 99999; height: 30px;}
+.box-map .map-box-containt .map-search-box{float:right;  height: 27px;
+    padding: 12px 0 0 20px;}
+.box-map .clear{clear:both}
+.box-map .map-box-containt .map-list-box .title-list{background:url("../images/map/left.png") no-repeat scroll left center;cursor:pointer;
+    height: 25px;
+    padding: 12px 0 0 20px;
+} 
+
+.box-map .map-box-containt .map-list-box .active{
+	background:url("../images/map/down.png") no-repeat scroll left center;
+}

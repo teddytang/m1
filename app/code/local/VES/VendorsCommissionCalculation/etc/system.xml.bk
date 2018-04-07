@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <vendors>
+            <groups>
+            	<config>
+            		<fields>
+            			<calculation_algorithm>
+            				<frontend_type>label</frontend_type>
+            				<comment><![CDATA[<span style="color:#FF0000;font-weight: bold;">THIS OPTION IS NO LONGER USED.</span>]]></comment>
+            			</calculation_algorithm>
+            		</fields>
+            	</config>
+            </groups>
+        </vendors>
+    </sections>
+</config>

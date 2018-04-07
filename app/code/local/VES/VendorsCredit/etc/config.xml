@@ -1,0 +1,359 @@
+<?xml version="1.0"?>
+<config>
+    <frontend>
+        <routers>
+            <vendors>
+				<args>
+					<modules>
+						<vendorscredit before="VES_Vendors">VES_VendorsCredit</vendorscredit>
+					</modules>
+				</args>
+			</vendors>
+        </routers>
+        <layout>
+            <updates>
+                <vendorscredit>
+                    <file>ves_vendors/credit.xml</file>
+                </vendorscredit>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <VES_VendorsCredit>
+                    <files>
+                        <default>ves_vendors/credit.csv</default>
+                    </files>
+                </VES_VendorsCredit>
+            </modules>
+        </translate>
+    </frontend>
+    <admin>
+    	<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<vendorscredit before="Mage_Adminhtml">VES_VendorsCredit_Adminhtml</vendorscredit>
+					</modules>
+				</args>
+			</adminhtml>
+       	</routers>
+   	</admin>
+	<adminhtml>
+		<translate>
+            <modules>
+                <VES_VendorsCredit>
+                    <files>
+                        <default>ves_vendors/credit.csv</default>
+                    </files>
+                </VES_VendorsCredit>
+            </modules>
+        </translate>
+		<menu>
+			<vendors>           
+				<children>
+				<!-- 
+					<commission module="vendorscredit" translate="title">
+						<title>Commission Configuration</title>
+						<sort_order>39</sort_order>
+						<action>adminhtml/vendors_commission</action>
+					</commission>
+				-->
+					<transaction module="vendorscredit" translate="title">
+						<title>Manage Transactions</title>
+						<sort_order>40</sort_order>
+						<children>
+							<escrow module="vendorscredit" translate="title">
+								<title>Escrow Transactions</title>
+								<sort_order>10</sort_order>
+								<action>adminhtml/vendors_transaction_escrow</action>
+							</escrow>
+							<credit module="vendorscredit" translate="title">
+								<title>Credit Transactions</title>
+								<sort_order>20</sort_order>
+								<action>adminhtml/vendors_transaction</action>
+							</credit>
+						</children>
+					</transaction>
+					<withdrawal module="vendorscredit" translate="title">
+						<title>Withdrawal</title>
+						<sort_order>45</sort_order>
+						<children>
+							<payment module="vendorscredit" translate="title">
+								<title>Manage Payment Methods</title>
+								<sort_order>10</sort_order>
+								<action>adminhtml/vendors_payment</action>
+							</payment>
+							<pending_withdrawal module="vendorscredit" translate="title">
+								<title>Pending Withdrawals</title>
+								<sort_order>20</sort_order>
+								<action>adminhtml/vendors_withdrawal/index/status/pending</action>
+							</pending_withdrawal>
+							<all_withdrawal module="vendorscredit" translate="title">
+								<title>All Withdrawals</title>
+								<sort_order>30</sort_order>
+								<action>adminhtml/vendors_withdrawal/index/</action>
+							</all_withdrawal>
+						</children>
+					</withdrawal>
+				</children>
+			</vendors>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<vendors>
+							<children>
+								<commission module="vendorscredit" translate="title">
+									<title>Commission Configuration</title>
+									<sort_order>39</sort_order>
+								</commission>
+								<transaction module="vendorscredit" translate="title">
+									<title>Manage Transactions</title>
+									<sort_order>40</sort_order>
+									<children>
+										<escrow module="vendorscredit" translate="title">
+											<title>Escrow Transactions</title>
+											<sort_order>10</sort_order>
+										</escrow>
+										<credit module="vendorscredit" translate="title">
+											<title>Credit Transactions</title>
+											<sort_order>20</sort_order>
+										</credit>
+									</children>
+								</transaction>
+								<withdrawal module="vendorscredit">
+									<title>Withdrawal</title>
+									<sort_order>45</sort_order>
+									<children>
+										<payment module="vendorscredit">
+											<title>Manage Payment Methods</title>
+											<sort_order>10</sort_order>
+										</payment>
+										<withdrawal_requests module="vendorscredit">
+											<title>Withdrawal Requests</title>
+											<sort_order>20</sort_order>
+										</withdrawal_requests>
+									</children>
+								</withdrawal>
+							</children>
+						</vendors>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<vendorscredit>
+					<file>ves_vendors/credit.xml</file>
+				</vendorscredit>
+			</updates>
+		</layout>
+	</adminhtml>
+	<vendors>
+    	<menu>
+    		<credit module="vendorscredit" translate="title" >
+    			<title>Credit</title>
+    			<frontend_class>credit</frontend_class>
+    			<sort_order>40</sort_order>
+    			<children>
+    				<withdraw module="vendorscredit" translate="title">
+	    				<title>Withdraw Funds</title>
+		    			<sort_order>10</sort_order>
+		    			<action>vendors/credit_withdraw/</action>
+	    			</withdraw>
+	    			<withdrawal_history module="vendorscredit" translate="title">
+	    				<title>Withdrawal History</title>
+		    			<sort_order>20</sort_order>
+		    			<action>vendors/credit_withdraw/history</action>
+	    			</withdrawal_history>
+    			</children>
+    		</credit>
+    		<sales module="vendorssales">
+    			<children>
+    				<transaction module="vendorssales" translate="title">
+	    				<title>Transactions</title>
+		    			<sort_order>50</sort_order>
+		    			<action>vendors/credit_transaction/</action>
+	    			</transaction>
+    			</children>
+    		</sales>
+		</menu>
+    </vendors> 
+    <global>
+    	<template>
+            <email>
+                <vendors_credit_escrow_release_template translate="label" module="vendorscredit">
+                    <label>Vendor - Escrow is released</label>
+                    <file>ves_vendors/escrow_release.html</file>
+                    <type>html</type>
+                </vendors_credit_escrow_release_template>
+                <vendors_credit_escrow_cancel_template translate="label" module="vendorscredit">
+                    <label>Vendor - Escrow is Canceled</label>
+                    <file>ves_vendors/escrow_cancel.html</file>
+                    <type>html</type>
+                </vendors_credit_escrow_cancel_template>
+            	<vendors_credit_escrow_template translate="label" module="vendorscredit">
+            		<label>Vendor - New escrow is created</label>
+                    <file>ves_vendors/escrow_created.html</file>
+                    <type>html</type>
+            	</vendors_credit_escrow_template>
+                <vendors_credit_balance_change_template translate="label" module="vendorscredit">
+                    <label>Vendor - Credit balance change</label>
+                    <file>ves_vendors/credit_balance_change.html</file>
+                    <type>html</type>
+                </vendors_credit_balance_change_template>
+                <vendors_credit_new_withdrawal_template translate="label" module="vendorscredit">
+                    <label>Vendor - New Withdrawal</label>
+                    <file>ves_vendors/new_withdrawal.html</file>
+                    <type>html</type>
+                </vendors_credit_new_withdrawal_template>
+                <vendors_credit_withdrawal_success_template translate="label" module="vendorscredit">
+                    <label>Vendor - Withdrawal Success</label>
+                    <file>ves_vendors/withdrawal_success.html</file>
+                    <type>html</type>
+                </vendors_credit_withdrawal_success_template>
+                <vendors_credit_withdrawal_rejected_template translate="label" module="vendorscredit">
+                    <label>Vendor - Withdrawal Rejected</label>
+                    <file>ves_vendors/withdrawal_rejected.html</file>
+                    <type>html</type>
+                </vendors_credit_withdrawal_rejected_template>
+            </email>
+        </template>
+    	<credit>
+    		<types>
+    			<add_credit>
+					<action>add</action>
+    				<class>vendorscredit/type_admin</class>
+				</add_credit>
+    			<deduct_credit>
+    				<action>subtract</action>
+    				<class>vendorscredit/type_admin</class>
+    			</deduct_credit>
+    			<order_payment>
+    				<action>add</action>
+    				<class>vendorscredit/type_orderpayment</class>
+    			</order_payment>
+    			<item_payment>
+    				<action>add</action>
+    				<class>vendorscredit/type_itempayment</class>
+    			</item_payment>
+    			<withdrawal>
+    				<action>subtract</action>
+    				<class>vendorscredit/type_withdrawal</class>
+    			</withdrawal>
+    		</types>
+    	</credit>
+    	<events>
+			 <sales_order_invoice_save_after>
+                <observers>
+                    <vendors>
+                        <type>singleton</type>
+                        <class>vendorscredit/observer</class>
+                        <method>sales_order_invoice_save_after</method>
+                    </vendors>
+                </observers>
+	         </sales_order_invoice_save_after>
+	         
+	         <vendor_dashboard_grids_preparelayout>
+	         	<observers>
+                    <vendors>
+                        <type>singleton</type>
+                        <class>vendorscredit/observer</class>
+                        <method>vendor_dashboard_grids_preparelayout</method>
+                    </vendors>
+                </observers>
+	         </vendor_dashboard_grids_preparelayout>
+	         
+	         <ves_vendors_account_edit_tab_main_before>
+	         	<observers>
+                    <vendors>
+                        <type>singleton</type>
+                        <class>vendorscredit/observer</class>
+                        <method>ves_vendors_account_edit_tab_main_before</method>
+                    </vendors>
+                </observers>
+	         </ves_vendors_account_edit_tab_main_before>
+    	</events>
+
+        <models>
+             <vendorscredit>
+                <class>VES_VendorsCredit_Model</class>
+                <resourceModel>vendorcredit_resource</resourceModel>
+            </vendorscredit>
+            <vendorcredit_resource>
+                <class>VES_VendorsCredit_Model_Resource</class>
+                <entities>
+                    <transaction>
+                        <table>ves_vendor_credit_transaction</table>
+                    </transaction>
+                    <payment>
+                    	<table>ves_vendor_credit_paymentmethod</table>
+                    </payment>
+                    <withdrawal>
+                    	<table>ves_vendor_credit_withdrawal</table>
+                    </withdrawal>
+                    <commission_rule>
+                    	<table>ves_vendor_credit_commission_rule</table>
+                    </commission_rule>
+                    <escrow>
+                    	<table>ves_vendor_escrow</table>
+                    </escrow>
+                </entities>
+           	</vendorcredit_resource>
+        </models>
+
+        <resources>
+	        <vendorcredit_setup>
+	            <setup>
+	                <module>VES_VendorsCredit</module>
+	                <class>VES_VendorsCredit_Model_Resource_Setup</class>
+	            </setup>
+	        </vendorcredit_setup>
+	    </resources>
+
+        <blocks>
+            <vendorscredit>
+                <class>VES_VendorsCredit_Block</class>
+            </vendorscredit>
+        </blocks>
+        <helpers>
+            <vendorscredit>
+                <class>VES_VendorsCredit_Helper</class>
+            </vendorscredit>
+        </helpers>
+    </global>
+    <default>
+    	<vendors>
+    		<credit>
+    			<enable_escrow>0</enable_escrow>
+    			<escrow_hold_time>30</escrow_hold_time>
+    			<escrow_template>vendors_credit_escrow_template</escrow_template>
+                <escrow_release_template>vendors_credit_escrow_release_template</escrow_release_template>
+                <escrow_cancel_template>vendors_credit_escrow_cancel_template</escrow_cancel_template>
+    			<calculation_algorithm>subtotal_after_discount</calculation_algorithm>
+    			<balance_change_template>vendors_credit_balance_change_template</balance_change_template>
+    			<new_withdrawal_template>vendors_credit_new_withdrawal_template</new_withdrawal_template>
+    			<withdrawal_success_template>vendors_credit_withdrawal_success_template</withdrawal_success_template>
+    			<withdrawal_rejected_template>vendors_credit_withdrawal_rejected_template</withdrawal_rejected_template>
+    			<email_identity>general</email_identity>
+    		</credit>
+    	</vendors>
+    </default>
+
+    <crontab>
+        <jobs>
+            <escrow_cron>
+                <schedule>
+                    <cron_expr>0 */1 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>vendorscredit/observer::releaseEscrow</model>
+                </run>
+            </escrow_cron>
+        </jobs>
+    </crontab>
+</config>

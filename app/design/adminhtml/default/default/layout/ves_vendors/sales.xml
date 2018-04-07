@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<adminhtml_system_config_edit>
+		<reference name="head">
+			<action method="addJs"><js>ves_vendors/sales/config.js</js></action>
+		</reference>
+	</adminhtml_system_config_edit>
+
+
+	<vendors_logged_out>
+        
+    </vendors_logged_out>
+    
+    <vendors_logged_in>
+       	<reference name="head">
+       		<!-- <action method="addCss"><stylesheet>ves_vendors/css/message.css</stylesheet></action> -->
+       	</reference>
+    </vendors_logged_in>
+    
+    <vendors_sales_order_index>
+    	<reference name="content">
+            <block type="vendorssales/vendor_sales_order" name="vendor.order.list" />
+        </reference>
+    </vendors_sales_order_index>
+    
+    <vendors_sales_order_grid>
+    	<block type="core/text_list" name="root" output="toHtml">
+            <block type="vendorssales/vendor_sales_order_grid" name="vendors.sales.order.grid" />
+        </block>
+    </vendors_sales_order_grid>
+    
+    <vendors_sales_invoice_index>
+    	<reference name="content">
+            <block type="vendorssales/vendor_sales_invoice" name="vendor.invoice.list" />
+        </reference>
+    </vendors_sales_invoice_index>
+    <vendors_sales_invoice_grid>
+    	<block type="core/text_list" name="root" output="toHtml">
+            <block type="vendorssales/vendor_sales_invoice_grid" name="vendors.sales.invoice.grid" />
+        </block>
+    </vendors_sales_invoice_grid>
+    
+    <vendors_sales_shipment_index>
+    	<reference name="content">
+            <block type="vendorssales/vendor_sales_shipment" name="vendor.shipment.list" />
+        </reference>
+    </vendors_sales_shipment_index>
+    
+    <vendors_sales_shipment_grid>
+    	<block type="core/text_list" name="root" output="toHtml">
+            <block type="vendorssales/vendor_sales_shipment_grid" name="vendors.sales.shipment.grid" />
+        </block>
+    </vendors_sales_shipment_grid>
+    <vendors_sales_order_creditmemo_view>
+        <update handle="adminhtml_sales_order_creditmemo_view" />
+        <reference name="form">
+    		<action method="setTemplate"><template>ves_vendorssales/order/creditmemo/view/form.phtml</template></action>
+		</reference>
+		<reference name="creditmemo_totals">
+    		<action method="setTemplate"><template>ves_vendorssales/order/totals.phtml</template></action>
+    	</reference>
+    </vendors_sales_order_creditmemo_view>
+    <vendors_sales_creditmemo_index>
+    	<reference name="content">
+            <block type="vendorssales/vendor_sales_creditmemo" name="vendor.creditmemo.list" />
+        </reference>
+    </vendors_sales_creditmemo_index>
+    
+    <vendors_sales_creditmemo_grid>
+    	<block type="core/text_list" name="root" output="toHtml">
+            <block type="vendorssales/vendor_sales_creditmemo_grid" name="vendors.sales.creditmemo.grid" />
+        </block>
+    </vendors_sales_creditmemo_grid>
+    	
+    <vendors_sales_order_view>
+    	<update handle="adminhtml_sales_order_view" />
+    	<remove name="order_history" />
+    	<reference name="order_tab_info">
+    		<action method="setTemplate"><template>ves_vendorssales/order/view/tab/info.phtml</template></action>
+    		<block type="vendorssales/vendor_sales_order_view_history" name="vendor.order_history" as="order_history" template="ves_vendorssales/order/view/history.phtml"></block>
+    	</reference>
+    	<reference name="order_info">
+    		<action method="setTemplate"><template>ves_vendorssales/order/view/info.phtml</template></action>
+    	</reference>
+		<reference name="order_totals">
+    		<action method="setTemplate"><template>ves_vendorssales/order/totals.phtml</template></action>
+    	</reference>
+    	<block type="vendorssales/vendor_sales_order_view" name="vendor.order_view" />
+    </vendors_sales_order_view>
+    
+    <vendors_sales_order_addcomment>
+    	<block type="vendorssales/vendor_sales_order_view_history" name="root" output="toHtml" template="sales/order/view/history.phtml"></block>
+    </vendors_sales_order_addcomment>
+    
+    <vendors_sales_shipment_new>
+    	<update handle="adminhtml_sales_order_shipment_new" />
+    	<reference name="form">
+    		<action method="setTemplate"><template>ves_vendorssales/order/shipment/create/form.phtml</template></action>
+    	</reference>
+    </vendors_sales_shipment_new>
+    
+    <vendors_sales_order_invoice_new>
+        <update handle="adminhtml_sales_order_invoice_new" />
+        <reference name="order_items">
+    		<action method="setTemplate"><template>ves_vendorssales/order/invoice/create/items.phtml</template></action>
+    	</reference>
+		<reference name="invoice_totals">
+    		<action method="setTemplate"><template>ves_vendorssales/order/totals.phtml</template></action>
+    	</reference>
+    </vendors_sales_order_invoice_new>
+    	
+    <vendors_sales_order_invoice_view>
+        <update handle="adminhtml_sales_order_invoice_view" />
+        <reference name="form">
+    		<action method="setTemplate"><template>ves_vendorssales/order/invoice/view/form.phtml</template></action>
+    	</reference>
+		<reference name="invoice_totals">
+    		<action method="setTemplate"><template>ves_vendorssales/order/totals.phtml</template></action>
+    	</reference>
+    	<block type="vendorssales/vendor_sales_invoice_view" name="vendor.order_view" />
+    </vendors_sales_order_invoice_view>
+    
+    <vendors_sales_order_invoice_addcomment>
+         <update handle="adminhtml_sales_order_invoice_addcomment" />
+    </vendors_sales_order_invoice_addcomment>
+    
+    <vendors_sales_order_invoice_updateqty>
+    	<update handle="adminhtml_sales_order_invoice_updateqty" />
+		<reference name="invoice_totals">
+    		<action method="setTemplate"><template>ves_vendorssales/order/totals.phtml</template></action>
+    	</reference>
+    </vendors_sales_order_invoice_updateqty>
+	
+    <vendors_sales_order_creditmemo_updateqty>
+        <update handle="adminhtml_sales_order_creditmemo_updateqty" />
+		 <reference name="creditmemo_totals">
+    		<action method="setTemplate"><template>ves_vendorssales/order/totals.phtml</template></action>
+    	</reference>
+    </vendors_sales_order_creditmemo_updateqty>
+	
+    <vendors_sales_order_creditmemo_addcomment>
+         <update handle="adminhtml_sales_order_creditmemo_addcomment" />
+    </vendors_sales_order_creditmemo_addcomment>
+    
+     <vendors_sales_order_creditmemo_new>
+        <update handle="adminhtml_sales_order_creditmemo_new" />
+		 <reference name="creditmemo_totals">
+    		<action method="setTemplate"><template>ves_vendorssales/order/totals.phtml</template></action>
+    	</reference>
+    </vendors_sales_order_creditmemo_new>
+    
+    <vendors_sales_shipment_view>
+    	<update handle="adminhtml_sales_order_shipment_view" />
+    	<block type="vendorssales/vendor_sales_shipment_view" name="vendor.order_shipment_view" />
+    	<reference name="form">
+    		<action method="setTemplate"><template>ves_vendorssales/order/shipment/view/form.phtml</template></action>
+    	</reference>
+    	<reference name="order_info">
+    		<action method="setTemplate"><template>ves_vendorssales/order/view/info.phtml</template></action>
+    	</reference>
+    </vendors_sales_shipment_view>
+    
+    <vendors_sales_shipment_addtrack>
+        <update handle="adminhtml_sales_order_shipment_addtrack" />
+    </vendors_sales_shipment_addtrack>
+    
+    <vendors_sales_shipment_removetrack>
+    	<update handle="adminhtml_sales_order_shipment_removetrack" />
+    </vendors_sales_shipment_removetrack>
+    
+    <vendors_sales_shipment_addcomment>
+    	<update handle="adminhtml_sales_order_shipment_addcomment" />
+    </vendors_sales_shipment_addcomment>
+		
+	<vendors_sales_order_address>
+        <reference name="content">
+            <block type="adminhtml/sales_order_address" name="sales_order_address.form.container"></block>
+        </reference>
+    </vendors_sales_order_address>
+</layout>

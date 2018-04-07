@@ -1,0 +1,16 @@
+<?php 
+/**
+ * block VES_VendorsMessage_Block_Vendor_Profile
+ */
+?>
+<ul>
+	<li>
+		<div class="message-link">
+			<?php if(Mage::getSingleton('customer/session')->isLoggedIn()):?>
+			<a href="javascript: void(0);" onclick="$('ves_messages_to_span').update('<?php echo $this->getVendorId()?>');$('ves_messages_to').value = '<?php echo $this->getVendorId()?>';$('ves_messages_box_id').value='<?php echo $this->getMessageBoxId()?>';$('ves_vendorsmessage-new-message-form').appear({duration: 0.5});"><img src="<?php echo $this->getSkinUrl('ves_vendors/images/message.gif')?>" /> <?php echo $this->getVendorId()?></a>
+			<?php else:?>
+			<a href="javascript: void(0);" onclick="alert('<?php echo $this->__('You need to login to use this function !')?>')"><img src="<?php echo $this->getSkinUrl('ves_vendors/images/message.gif')?>" /> <?php echo $this->getVendorId()?></a>
+			<?php endif;?>
+		</div>
+	</li>
+</ul>

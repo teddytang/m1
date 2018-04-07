@@ -1,0 +1,16 @@
+.col-main{position: relative;}
+.vendor_product_selling_tool{margin-top: 5px;position: absolute;right: 5px;}
+/*
+.vendor_product_selling_tool button.selling-button{font-weight: bold;background-color: #49AFCD;background-image: none;border: medium none;color: #FFFFFF;cursor: pointer;display: inline-block;font-size: 14px;line-height: 20px;margin-bottom: 3px;padding: 3px 12px;text-align: center;text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);vertical-align: middle;}
+.vendor_product_selling_tool button.selling-button:hover{background-color: #2F96B4;color: #FFFFFF;}
+*/
+.vendor_product_mask{width: 100%; height: 100%; display: block; position: fixed; top: 0; left: 0;background: #222;z-index: 998;opacity: 0.6;filter:alpha(opacity=60);}
+.vendor_product_container{display: block;position: fixed; padding: 20px;width: 500px; min-height: 200px;background: #FFF;z-index: 999;left: 50%; margin-left: -250px;box-shadow: 0 0 7px 6px #111111;-moz-box-shadow: 0 0 7px 6px #111111;-webkit-box-shadow: 0 0 7px 6px #111111;top: 50%; margin-top: -100px;}
+.vendor_product_container h3{font-weight: bold;font-size: 15px;border-bottom: 2px solid #d3d3d3;margin-bottom: 15px;}
+.vendor-save-product-btn{float: right;margin-top: -45px;}
+.vendor_product_container li{display: block; clear: both;line-height: 23px;height: 23px; margin-bottom: 20px;}
+.vendor_product_container li label{display: block; float: left; width: 100px;}
+.vendor_product_container li label .required{color: #FF0000;}
+.vendor_product_container li input,.vendor_product_container li select{display: block;float: left; width: 391px;padding: 3px;}
+.vendor_product_container li select{width: 399px;}
+.vendor_product_container li .validation-advice{margin-left:100px;}

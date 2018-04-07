@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <VES_VendorsDashboard>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <VES_Vendors />
+                <VES_VendorsSales />
+                <VES_VendorsProduct />
+                <Mage_Reports />
+            </depends>
+        </VES_VendorsDashboard>
+    </modules>
+</config>

@@ -1,0 +1,347 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <VES_VendorsCheckout>
+            <version>1.0.0.1</version>
+        </VES_VendorsCheckout>
+    </modules>
+   	<frontend>
+   		<secure_url>
+            <sales>/vendors-checkout/onepage/</sales>
+        </secure_url>
+        <routers>
+            <vendorscheckout>
+                <use>standard</use>
+                <args>
+                    <module>VES_VendorsCheckout</module>
+                    <frontName>vendors-checkout</frontName>
+                </args>
+            </vendorscheckout>
+        </routers>
+        <layout>
+            <updates>
+                <vendorscheckout>
+                    <file>ves_vendors/checkout.xml</file>
+                </vendorscheckout>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <VES_VendorsCheckout>
+                    <files>
+                        <default>ves_vendors/checkout.csv</default>
+                    </files>
+                </VES_VendorsCheckout>
+            </modules>
+        </translate>
+        <events>
+            <customer_login>
+                <observers>
+                    <loadCustomerQuote>
+                        <class>vendorscheckout/observer</class>
+                        <method>loadCustomerQuote</method>
+                    </loadCustomerQuote>
+                </observers>
+            </customer_login>
+        </events>
+    </frontend>
+    <adminhtml>
+		<layout>
+			<updates>
+				<vendorscheckout>
+					<file>ves_vendors/checkout.xml</file>
+				</vendorscheckout>
+			</updates>
+		</layout>
+		<translate>
+            <modules>
+                <VES_VendorsCheckout>
+                    <files>
+                        <default>ves_vendors/checkout.csv</default>
+                    </files>
+                </VES_VendorsCheckout>
+            </modules>
+        </translate>
+    </adminhtml>
+    <global>
+    	<events>
+    		<!-- After the product is added to quote, check the vendor id and assign the product to corresponding quote based on vendor id -->
+    		<sales_quote_product_add_after>
+    			<observers>
+                    <vendorscheckout>
+                        <type>singleton</type>
+                        <class>vendorscheckout/observer</class>
+                        <method>sales_quote_product_add_after</method>
+                    </vendorscheckout>
+                </observers>
+    		</sales_quote_product_add_after>
+    		<checkout_cart_save_after>
+    			<observers>
+                    <vendorscheckout>
+                        <type>singleton</type>
+                        <class>vendorscheckout/observer</class>
+                        <method>checkout_cart_save_after</method>
+                    </vendorscheckout>
+                </observers>
+    		</checkout_cart_save_after>
+    		<!-- Remove current shopping cart if the extension mode is advanced mode. -->
+    		<controller_action_layout_load_before>
+    			<observers>
+                    <vendorscheckout>
+                        <type>singleton</type>
+                        <class>vendorscheckout/observer</class>
+                        <method>controller_action_layout_load_before</method>
+                    </vendorscheckout>
+                </observers>
+    		</controller_action_layout_load_before>
+    		
+    		<!-- Checkout Cart Index -->
+    		<!-- Init vendor quotes -->
+    		<controller_action_predispatch_checkout_cart_index>
+    			<observers>
+                    <vendorscheckout>
+                        <type>singleton</type>
+                        <class>vendorscheckout/observer</class>
+                        <method>checkout_cart_index</method>
+                    </vendorscheckout>
+                </observers>
+    		</controller_action_predispatch_checkout_cart_index>
+			
+    		<controller_action_predispatch>
+    			<observers>
+                    <vendorscheckout>
+                        <type>singleton</type>
+                        <class>vendorscheckout/observer</class>
+                        <method>controller_action_predispatch</method>
+                    </vendorscheckout>
+                </observers>
+    		</controller_action_predispatch>
+    		
+    		<!-- Checkout Cart Index -->
+    		<!-- Init vendor quotes -->
+    		<controller_action_predispatch_customer_account_loginPost>
+    			<observers>
+                    <vendorscheckout>
+                        <type>singleton</type>
+                        <class>vendorscheckout/observer</class>
+                        <method>customer_account_loginPost</method>
+                    </vendorscheckout>
+                </observers>
+    		</controller_action_predispatch_customer_account_loginPost>
+    		
+    		<!-- Edit cart item from vendor quote -->
+    		<controller_action_predispatch_checkout_cart_configure>
+    			<observers>
+                    <vendorscheckout>
+                        <type>singleton</type>
+                        <class>vendorscheckout/observer</class>
+                        <method>checkout_cart_configure</method>
+                    </vendorscheckout>
+                </observers>
+    		</controller_action_predispatch_checkout_cart_configure>
+    		
+    		<!-- Update cart item from vendor quote -->
+    		<controller_action_predispatch_checkout_cart_updateItemOptions>
+    			<observers>
+                    <vendorscheckout>
+                        <type>singleton</type>
+                        <class>vendorscheckout/observer</class>
+                        <method>checkout_cart_updateItemOptions</method>
+                    </vendorscheckout>
+                </observers>
+    		</controller_action_predispatch_checkout_cart_updateItemOptions>
+    		
+    		<!-- Remove quote item -->
+    		<controller_action_predispatch_checkout_cart_delete>
+    			<observers>
+                    <vendorscheckout>
+                        <type>singleton</type>
+                        <class>vendorscheckout/observer</class>
+                        <method>checkout_cart_delete</method>
+                    </vendorscheckout>
+                </observers>
+    		</controller_action_predispatch_checkout_cart_delete>
+    		
+    		<!-- Update vendor shopping cart -->
+    		<controller_action_predispatch_checkout_cart_updatePost>
+    			<observers>
+                    <vendorscheckout>
+                        <type>singleton</type>
+                        <class>vendorscheckout/observer</class>
+                        <method>checkout_cart_updatePost</method>
+                    </vendorscheckout>
+                </observers>
+    		</controller_action_predispatch_checkout_cart_updatePost>
+    		
+    		<!-- Add coupon code to vendor quote -->
+    		<controller_action_predispatch_checkout_cart_couponPost>
+    			<observers>
+                    <vendorscheckout>
+                        <type>singleton</type>
+                        <class>vendorscheckout/observer</class>
+                        <method>checkout_cart_couponPost</method>
+                    </vendorscheckout>
+                </observers>
+    		</controller_action_predispatch_checkout_cart_couponPost>
+    		
+    		<!-- Shipping estimate -->
+    		<controller_action_predispatch_checkout_cart_estimatePost>
+    			<observers>
+                    <vendorscheckout>
+                        <type>singleton</type>
+                        <class>vendorscheckout/observer</class>
+                        <method>checkout_cart_estimatePost</method>
+                    </vendorscheckout>
+                </observers>
+    		</controller_action_predispatch_checkout_cart_estimatePost>
+    		<!-- Shipping estimate update post-->
+    		<controller_action_predispatch_checkout_cart_estimateUpdatePost>
+    			<observers>
+                    <vendorscheckout>
+                        <type>singleton</type>
+                        <class>vendorscheckout/observer</class>
+                        <method>checkout_cart_estimateUpdatePost</method>
+                    </vendorscheckout>
+                </observers>
+    		</controller_action_predispatch_checkout_cart_estimateUpdatePost>
+    		
+    		<!-- Move quote item to wishlist -->
+    		<controller_action_predispatch_wishlist_index_fromcart>
+    			<observers>
+                    <vendorscheckout>
+                        <type>singleton</type>
+                        <class>vendorscheckout/observer</class>
+                        <method>wishlist_index_fromcart</method>
+                    </vendorscheckout>
+                </observers>
+    		</controller_action_predispatch_wishlist_index_fromcart>
+    		
+    		<!-- Replare the default quote by vendor quote -->
+    		<controller_action_predispatch_checkout_onepage_index>
+    			<observers>
+                    <vendorscheckout>
+                        <type>singleton</type>
+                        <class>vendorscheckout/observer</class>
+                        <method>checkout_onepage_index</method>
+                    </vendorscheckout>
+                </observers>
+    		</controller_action_predispatch_checkout_onepage_index>
+
+			<!-- Unset the vendor quote id (Advanced Mode)-->
+			
+			<controller_action_postdispatch_checkout_onepage_index>
+    			<observers>
+                    <vendorscheckout>
+                        <type>singleton</type>
+                        <class>vendorscheckout/observer</class>
+                        <method>postdispatch_checkout_onepage_index</method>
+                    </vendorscheckout>
+                </observers>
+    		</controller_action_postdispatch_checkout_onepage_index>
+			
+			
+			<!-- Return new success page on (Advanced X mode) -->
+    		<controller_action_predispatch_checkout_onepage_success>
+    			<observers>
+                    <vendorscheckout>
+                        <type>singleton</type>
+                        <class>vendorscheckout/observer</class>
+                        <method>checkout_onepage_success_predispatch</method>
+                    </vendorscheckout>
+                </observers>
+    		</controller_action_predispatch_checkout_onepage_success>
+    		
+    		<!-- Set Vendor Id for Quote Item if it's not exist -->
+    		<sales_quote_item_save_before>
+    			<observers>
+                    <vendorscheckout>
+                        <type>singleton</type>
+                        <class>vendorscheckout/observer</class>
+                        <method>sales_quote_item_save_before</method>
+                    </vendorscheckout>
+                </observers>
+    		</sales_quote_item_save_before>
+    		
+    		<!-- Set Vendor Id for Quote Item if it's not exist -->
+    		<sales_order_item_save_before>
+    			<observers>
+                    <vendorscheckout>
+                        <type>singleton</type>
+                        <class>vendorscheckout/observer</class>
+                        <method>sales_order_item_save_before</method>
+                    </vendorscheckout>
+                </observers>
+    		</sales_order_item_save_before>
+			
+			<controller_action_predispatch_checkout_cart_ajaxUpdate>
+    			<observers>
+                    <vendorscheckout>
+                        <type>singleton</type>
+                        <class>vendorscheckout/observer</class>
+                        <method>controller_action_predispatch_checkout_cart_ajaxUpdate</method>
+                    </vendorscheckout>
+                </observers>
+    		</controller_action_predispatch_checkout_cart_ajaxUpdate>
+			
+			<controller_action_predispatch_checkout_cart_ajaxDelete>
+    			<observers>
+                    <vendorscheckout>
+                        <type>singleton</type>
+                        <class>vendorscheckout/observer</class>
+                        <method>controller_action_predispatch_checkout_cart_ajaxDelete</method>
+                    </vendorscheckout>
+                </observers>
+    		</controller_action_predispatch_checkout_cart_ajaxDelete>
+
+    	</events>
+        <models>
+            <vendorscheckout>
+                <class>VES_VendorsCheckout_Model</class>
+                <resourceModel>vendorcheckout_resource</resourceModel>
+            </vendorscheckout>
+            <vendorcheckout_resource>
+                <class>VES_VendorsCheckout_Model_Resource</class>
+           	</vendorcheckout_resource>
+
+            <checkout>
+            	<rewrite>
+            		<type_onepage>VES_VendorsCheckout_Model_Checkout_Type_Onepage</type_onepage>
+            		<session>VES_VendorsCheckout_Model_Checkout_Session</session>
+            	</rewrite>
+            </checkout>
+ 
+        </models>
+        <resources>
+	        <vendorcheckout_setup>
+	            <setup>
+	                <module>VES_VendorsCheckout</module>
+	                <class>VES_VendorsCheckout_Model_Resource_Setup</class>
+	            </setup>
+	        </vendorcheckout_setup>
+	    </resources>
+        <blocks>
+            <vendorscheckout>
+                <class>VES_VendorsCheckout_Block</class>
+            </vendorscheckout>
+            <checkout>
+            	<rewrite>
+            		<cart_sidebar>VES_VendorsCheckout_Block_Cart_Sidebar</cart_sidebar>
+            	</rewrite>
+            </checkout>
+        </blocks>
+        <helpers>
+            <vendorscheckout>
+                <class>VES_VendorsCheckout_Helper</class>
+            </vendorscheckout>
+        </helpers>
+    </global>
+    <default>
+    	<vendors>
+    		<checkout>
+    			<onetime_checkout>0</onetime_checkout>
+    			<group_item_by_vendor>1</group_item_by_vendor>
+    			<by_vendor>1</by_vendor>
+    		</checkout>
+    	</vendors>
+    </default>
+</config>

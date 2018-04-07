@@ -1,0 +1,331 @@
+<?xml version="1.0"?>
+<config>
+    <frontend>
+    	<secure_url>
+            <vendors>/vendors/</vendors>
+        </secure_url>
+        <routers>
+            <vendors>
+                <use>standard</use>
+                <args>
+                    <module>VES_Vendors</module>
+                    <frontName>vendors</frontName>
+                </args>
+            </vendors>
+        </routers>
+        <layout>
+            <updates>
+                <vendors>
+                    <file>ves_vendors/main.xml</file>
+                </vendors>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <VES_Vendors>
+                    <files>
+                        <default>ves_vendors/main.csv</default>
+                    </files>
+                </VES_Vendors>
+            </modules>
+        </translate>
+    </frontend>
+    
+    <admin>
+       <routers>
+		<adminhtml>
+			<args>
+				<modules>
+					<vendors before="Mage_Adminhtml">VES_Vendors_Adminhtml</vendors>
+				</modules>
+			</args>
+		</adminhtml>
+       </routers>
+   	</admin>
+    <adminhtml>
+		<translate>
+            <modules>
+                <VES_Vendors>
+                    <files>
+                        <default>ves_vendors/main.csv</default>
+                    </files>
+                </VES_Vendors>
+            </modules>
+        </translate>
+		<menu>
+			<vendors module="vendors" translate="title">
+				<title>Vendors</title>
+				<sort_order>71</sort_order>
+				<children>
+					<group module="vendors" translate="title">
+						<title>Manage Groups</title>
+						<sort_order>0</sort_order>
+						<action>adminhtml/vendors_group</action>
+					</group>
+					<vendors module="vendors" translate="title">
+						<title>Manage Vendors</title>
+						<sort_order>10</sort_order>
+						<action>adminhtml/vendors</action>
+					</vendors>
+					<attributes module="vendors" translate="title">
+						<title>Manage Vendor Attributes</title>
+						<sort_order>100</sort_order>
+						<action>adminhtml/vendors_attribute</action>
+					</attributes>
+					<config module="vendors" translate="title">
+						<title>Configuration</title>
+						<sort_order>1000</sort_order>
+						<action>adminhtml/system_config/edit/section/vendors</action>
+					</config>
+				</children>
+			</vendors>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<vendors>
+							<title>Vendors</title>
+							<sort_order>10</sort_order>
+							<children>
+								<group module="vendors" translate="title">
+									<title>Manage Groups</title>
+									<sort_order>0</sort_order>
+								</group>
+								<vendors module="vendors" translate="title">
+									<title>Manage Vendors</title>
+									<sort_order>10</sort_order>
+								</vendors>
+								<attributes module="vendors" translate="title">
+									<title>Manage Vendor Attributes</title>
+									<sort_order>100</sort_order>
+								</attributes>
+								<!-- 
+								<config module="vendors" translate="title">
+									<title>Configuration</title>
+									<sort_order>1000</sort_order>
+								</config>
+								 -->
+							</children>
+						</vendors>
+						<system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <vendors translate="title" module="vendors">
+                                            <title>Vendors</title>
+                                        </vendors>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<vendors>
+					<file>ves_vendors/main.xml</file>
+				</vendors>
+			</updates>
+		</layout>
+		
+		<events>
+            <controller_action_predispatch>
+                <observers>
+                    <vendor_news_notification>
+                        <class>vendors/observer</class>
+                        <method>controller_action_predispatch</method>
+                    </vendor_news_notification>
+                </observers>
+            </controller_action_predispatch>
+			
+			<adminhtml_vendor_save_after>
+				<observers>
+                    <vendors>
+                        <class>vendors/observer</class>
+                        <method>adminhtml_vendor_save_after</method>
+                    </vendors>
+                </observers>
+			</adminhtml_vendor_save_after>
+			
+        </events>
+    </adminhtml>
+    <global>
+    	<template>
+            <email>
+                <vendors_create_account_email_template translate="label" module="vendors">
+                    <label>Vendor New account</label>
+                    <file>ves_vendors/account_new.html</file>
+                    <type>html</type>
+                </vendors_create_account_email_template>
+                <vendors_create_account_email_confirmation_template translate="label" module="vendors">
+                    <label>Vendor New account confirmation key</label>
+                    <file>ves_vendors/account_new_confirmation.html</file>
+                    <type>html</type>
+                </vendors_create_account_email_confirmation_template>
+                <vendors_create_account_email_confirmed_template translate="label" module="vendors">
+                    <label>Vendor New account confirmed</label>
+                    <file>ves_vendors/account_new_confirmed.html</file>
+                    <type>html</type>
+                </vendors_create_account_email_confirmed_template>
+                <vendors_password_forgot_email_template translate="label" module="vendors">
+                    <label>Vendor Forgot Password</label>
+                    <file>ves_vendors/account_password_reset_confirmation.html</file>
+                    <type>html</type>
+                </vendors_password_forgot_email_template>
+                <vendors_password_remind_email_template translate="label" module="vendors">
+                    <label>Vendor Remind Password</label>
+                    <file>ves_vendors/password_new.html</file>
+                    <type>html</type>
+                </vendors_password_remind_email_template>
+				
+				<vendors_create_account_email_template_approved translate="label" module="vendors">
+                    <label>Vendor Approved account</label>
+                    <file>ves_vendors/account_approved.html</file>
+                    <type>html</type>
+                </vendors_create_account_email_template_approved>
+				
+            </email>
+        </template>
+    	<events>
+			<controller_action_layout_load_before>
+                <observers>
+                    <vendors>
+                        <class>vendors/observer</class>
+                        <method>controller_action_layout_load_before</method>
+                    </vendors>
+                </observers>
+            </controller_action_layout_load_before>
+    	</events>
+    	
+        <models>
+             <vendors>
+                <class>VES_Vendors_Model</class>
+                <resourceModel>vendor_resource</resourceModel>
+            </vendors>
+            <vendor_resource>
+                <class>VES_Vendors_Model_Resource</class>
+                <entities>
+                    <vendor>
+                        <table>ves_vendor</table>
+                    </vendor>
+                    <group>
+                        <table>ves_vendor_group</table>
+                    </group>
+                </entities>
+           	</vendor_resource>
+        </models>
+        <resources>
+	        <vendor_setup>
+	            <setup>
+	                <module>VES_Vendors</module>
+	                <class>VES_Vendors_Model_Resource_Setup</class>
+	            </setup>
+	        </vendor_setup>
+	    </resources>
+        <blocks>
+            <vendors>
+                <class>VES_Vendors_Block</class>
+            </vendors>
+            <catalog>
+            	<rewrite>
+            	<!-- 
+            		<navigation>VES_Vendors_Block_Catalog_Navigation</navigation>
+            		<product_list>VES_Vendors_Block_Catalog_Product_List</product_list>
+            		<product_view>VES_Vendors_Block_Catalog_Product_View</product_view>
+            	 -->
+            	</rewrite>
+            </catalog>
+        </blocks>
+        <helpers>
+            <vendors>
+                <class>VES_Vendors_Helper</class>
+            </vendors>
+            <catalog>
+            	<rewrite>
+            		<category>VES_Vendors_Helper_Catalog_Category</category>
+            	</rewrite>
+            </catalog>
+        </helpers>
+    </global>
+    <default>
+    	<vendors>
+    		<config>
+    			<active>1</active>
+    			<mode>advanced</mode>
+    			<calculation_algorithm>grandtotal</calculation_algorithm>
+    			
+    			<!-- Design -->
+    			
+    			<!-- Head -->
+    			<head_default_title>Vendor Cpanel</head_default_title>
+    			<!-- End Head -->
+    			
+    			<!-- Header -->
+    			<header_bgcolor>2B2927</header_bgcolor>
+    			<toplinks_linkcolor>999999</toplinks_linkcolor>
+    			<toplinks_border_color>1e1c1a</toplinks_border_color>
+    			<toplinks_linkcolor_hover>ffffff</toplinks_linkcolor_hover>
+    			<toplinks_hover_bgcolor>000000</toplinks_hover_bgcolor>
+    			<!-- End Header -->
+    			
+    			<!-- Menu -->
+    			<menu_item_text_color>FFFFFF</menu_item_text_color>
+    			<menu_item_level0_hover_bg>2B2B2B</menu_item_level0_hover_bg>
+    			<menu_submenu_bg>2B2B2B</menu_submenu_bg>
+    			<menu_submenu_hover_bg>606060</menu_submenu_hover_bg>
+    			<!-- End Menu -->
+    			
+    			<!-- Buttons -->
+    			<button_general>FFAA33</button_general>
+    			<button_general_hover>F69101</button_general_hover>
+    			<button_save>59B759</button_save>
+    			<button_save_hover>4FA24F</button_save_hover>
+    			<button_add>49AFCD</button_add>
+    			<button_add_hover>2F96B4</button_add_hover>
+    			<button_delete>DA4F49</button_delete>
+    			<button_delete_hover>BD362F</button_delete_hover>
+    			<button_back>363636</button_back>
+    			<button_back_hover>222222</button_back_hover>
+    			<!-- End Buttons -->
+    			
+    			<!-- Footer -->
+    			<footer_bgcolor>2B2927</footer_bgcolor>
+    			<footer_text_color>E3E3E3</footer_text_color>
+    			<footer_link_color>666666</footer_link_color>
+    			<footer_link_color_hover>F77825</footer_link_color_hover>
+				<footer_show_language_switcher>1</footer_show_language_switcher>
+    			<!-- End Footer -->
+    			
+    			
+    			<!-- End Design -->
+    		</config>
+    		<account_share>
+    			<scope>1</scope>
+    		</account_share>
+    		<create_account>
+    			<register>1</register>
+    			<approval>1</approval>
+    			<default_group>1</default_group>
+    			<confirm>0</confirm>
+				<send_approved>1</send_approved>
+    			<email_identity>general</email_identity>
+                <email_template>vendors_create_account_email_template</email_template>
+				<email_template_approved>vendors_create_account_email_template_approved</email_template_approved>
+                <email_confirmation_template>vendors_create_account_email_confirmation_template</email_confirmation_template>
+                <email_confirmed_template>vendors_create_account_email_confirmed_template</email_confirmed_template>
+    		</create_account>
+    		<password>
+    			<forgot_email_template>vendors_password_forgot_email_template</forgot_email_template>
+    			<remind_email_template>vendors_password_remind_email_template</remind_email_template>
+    			<forgot_email_identity>general</forgot_email_identity>
+    			<reset_link_expiration_period>1</reset_link_expiration_period>
+    		</password>
+    	</vendors>
+    </default>
+</config>

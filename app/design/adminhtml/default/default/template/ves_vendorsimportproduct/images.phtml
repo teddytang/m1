@@ -1,0 +1,104 @@
+<div class="content-header">
+<table cellspacing="0">
+    <tbody>
+    	<tr><td><h3 class="icon-head head-products"><?php echo $this->getTitle();?></h3></td></tr>
+	</tbody>
+</table>
+</div>
+<div class="vendor-import-export">
+	<h3></h3>
+	<form>
+		<input id="ves_file_upload" name="file_upload" type="file" multiple="true">
+	</form>
+</div>
+<div class="product-image-container">
+	<div id="vendor-product-images-massaction" class="images-massacion">
+	<table cellspacing="0" cellpadding="0" class="massaction">
+		<tbody>
+			<tr>
+		    <td style="line-height: 36px;">
+		        <a onclick="return vendorProductImages.selectVisible()" href="javascript:void(0);"><?php echo $this->__('Select Visible')?></a>
+		        <span class="separator">|</span>
+		        <a onclick="vendorProductImages.unselectVisible()" href="javascript:void(0);"><?php echo $this->__('Unselect Visible')?></a>
+		        <div class="right"><button onclick="vendorProductImages.deleteImages()" class="button delete" type="button"><span><span><?php echo $this->__('Delete')?></span></span></button></div>
+		    </tr>
+	    </tbody>
+    </table>
+    </div>
+    <div class="grid">
+	<table class="data product-image-list" id="vendor-product-images" cellspacing="0" cellpadding="0">
+		<colgroup>
+			<col width="20px" />
+			<col width="60px" />
+			<col class="filename" />
+			<col width="86px" />
+			<col width="100px" />
+		</colgroup>
+		<thead>
+			<tr class="headings">
+				<th></th>
+				<th><?php echo $this->__('Thumbnail')?></th>
+				<th class="filename"><?php echo $this->__('Filename')?></th>
+				<th><?php echo $this->__('Filesize (Byte)')?></th>
+				<th><?php echo $this->__('Last modified')?></th>
+			</tr>
+		</thead>
+		<tbody>
+
+		</tbody>
+	</table>
+	</div>
+</div>
+<script type="text/javascript">
+	function vesUploadFiles(){
+		jQuery('#ves_file_upload').uploadify('upload','*');
+	}
+
+	function vesStopUploads(){
+		jQuery('#ves_file_upload').uploadify('stop');
+	}
+	function vesCancelUploads(){
+		jQuery('#ves_file_upload').uploadify('cancel','*');
+	}
+	<?php $timestamp = time();?>
+	jQuery(function() {
+		jQuery('#ves_file_upload').uploadify({
+			'formData'     : {
+				'timestamp' : '<?php echo $timestamp;?>',
+				'token'     : '<?php echo md5('unique_salt' . $timestamp);?>'
+			},
+			'onUploadSuccess' : function(file, data,response) {
+				if(data.isJSON){
+					var tmpData = data.evalJSON();
+					if(tmpData.success) {vendorProductImages.addImage(tmpData);}
+					else{
+						alert(tmpData.error);
+						vesStopUploads();
+					}
+				}
+	        },
+	        fileTypeDesc:'<?php echo $this->getFileTypeDesc()?>',
+	        fileTypeExts:'<?php echo $this->getFileTypeExts()?>',
+	        removeTimeout: 1,
+	        buttonText: '<?php echo $this->__('Select Files ...')?>',
+	        'onInit'   : function(instance) {
+	            $(instance.settings.queueID).insert({before:'<button type="button" class="button save" onclick="vesUploadFiles()"><span><span><?php echo $this->__('Upload')?></span></span></button><button type="button" class="button" onclick="vesStopUploads()"><span><span><?php echo $this->__('Stop')?></span></span></button><button type="button" class="button delete" onclick="vesCancelUploads()"><span><span><?php echo $this->__('Cancel')?></span></span></button>'});
+	        },
+			'auto'         : false,
+			'swf'      : '<?php echo $this->getSkinUrl('ves_vendors/importproduct/uploadify.swf')?>',
+			'uploader' : '<?php echo $this->getUploadUrl()?>'
+		});
+	});
+	
+	var imageData 		= <?php echo $this->getImageData()?>;
+	var vendorConfig 	= <?php echo $this->getVendorConfig()?>;
+	Translator.add('Page {{current_page}} of {{page_count}} | Total {{total_items}} images found','<?php echo $this->__('Page {{current_page}} of {{page_count}} | Total {{total_items}} images found')?>')
+	Translator.add('Next','<?php echo $this->__('Next')?>');
+	Translator.add('Previous','<?php echo $this->__('Previous')?>');
+	Translator.add('View','<?php echo $this->__('View')?>');
+	Translator.add('per page','<?php echo $this->__('per page')?>');
+	Translator.add('Please select items.','<?php echo $this->__('Please select items.')?>');
+	Translator.add('No records found.','<?php echo $this->__('No records found.')?>');
+	
+	var vendorProductImages = new VendorProductImages('vendor-product-images',vendorConfig,imageData);
+</script>

@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <vendors>
+            <groups>                
+                <catalog translate="label">
+                    <label>Catalog</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>						
+                        <attribute_sets translate="label tooltip">
+                        	<label>Available Attribute Sets</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>vendorsproduct/source_attributeset</source_model> 
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[Only selected attribute sets are available for vendor]]></tooltip>
+                        </attribute_sets>
+                        <product_type translate="label tooltip">
+                        	<label>Available Product Type</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>vendorsproduct/source_type</source_model> 
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[Only selected product types are available for vendor]]></tooltip>
+                        </product_type>
+                        <product_approval translate="label tooltip">
+                            <label>Product Approval</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <tooltip><![CDATA[If 'Yes' vendor products need to be reviewed and approved by admin]]></tooltip>
+                        </product_approval>
+                        <product_approved_template translate="label tooltip">
+                        	<label>Product approved notification email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model> 
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[This notification email will be sent when the product is reviewed and approved]]></tooltip>
+                        </product_approved_template>
+                         <product_rejected_template translate="label tooltip">
+                        	<label>Product rejected notification email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model> 
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                             <tooltip><![CDATA[This notification email will be sent when the product is reviewed and rejected]]></tooltip>
+                        </product_rejected_template>
+                        <email_identity translate="label">
+                        	<label>Email Sender</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_identity</source_model> 
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </email_identity>
+                    </fields>
+                </catalog>
+            </groups>
+        </vendors>
+    </sections>
+</config>

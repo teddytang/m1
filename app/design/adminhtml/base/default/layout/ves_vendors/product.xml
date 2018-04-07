@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+		<reference name="notifications">
+			<block type="vendorsproduct/adminhtml_notification" name="vendor.pending.product.notification" template="ves_vendorsproduct/notification.phtml" />
+		</reference>
+	</default>
+	
+	<adminhtml_catalog_product_index>
+		<!--<block type="vendorsproduct/adminhtml_catalog_product" name="vendor.catalog.product" />-->
+	</adminhtml_catalog_product_index>
+	<adminhtml_catalog_product_grid>
+		<!-- <block type="vendorsproduct/adminhtml_catalog_product" name="vendor.catalog.product" /> -->
+	</adminhtml_catalog_product_grid>
+	
+    <adminhtml_vendors_catalog_product_pending>
+    	<reference name="content">
+            <block type="vendorsproduct/adminhtml_catalog_product_pending" name="product.list">
+            	<block type="vendorsproduct/store_switcher" name="store_switcher" as="store_switcher">
+					<action method="setUseConfirm"><params>0</params></action>
+				</block>
+            </block>
+        </reference>
+    </adminhtml_vendors_catalog_product_pending>
+    
+    <adminhtml_vendors_catalog_product_grid>
+    	<block type="core/text_list" name="root" output="toHtml">
+            <block type="vendorsproduct/adminhtml_catalog_product_pending_grid" name="admin.product.grid"/>
+        </block>
+    </adminhtml_vendors_catalog_product_grid>
+    
+    
+    
+    <vendors_catalog_product_index>
+    	<reference name="head">
+    		<action method="addCss"><css>ves_vendors/css/product.css</css></action>
+    	</reference>
+    	<reference name="content">
+            <block type="vendorsproduct/vendor_product" name="product.list" />
+        </reference>
+    </vendors_catalog_product_index>
+    <!-- Handle for configurable product -->
+    <adminhtml_catalog_product_configurable_new>
+    	<remove name="vendor_product_tabs" />
+    </adminhtml_catalog_product_configurable_new>
+    
+    <adminhtml_catalog_product_configurable>
+        <reference name="vendor_product_tabs">
+            <action method="addTab"><name>configurable</name><block>adminhtml/catalog_product_edit_tab_super_config</block></action>
+            <action method="bindShadowTabs"><first>configurable</first><second>customer_options</second></action>
+        </reference>
+    </adminhtml_catalog_product_configurable>
+    
+	<!--
+	Layout handle for grouped products
+	-->
+    <adminhtml_catalog_product_grouped>
+        <reference name="vendor_product_tabs">
+            <action method="addTab"><name>super</name><block>adminhtml/catalog_product_edit_tab_super_group</block></action>
+        </reference>
+    </adminhtml_catalog_product_grouped>
+	<!--
+	Layout handle for Downloadable products
+	-->
+    <adminhtml_catalog_product_downloadable>
+        <reference name="vendor_product_tabs">
+            <action method="addTab"><name>downloadable_items</name><block>downloadable/adminhtml_catalog_product_edit_tab_downloadable</block></action>
+        </reference>
+    </adminhtml_catalog_product_downloadable>
+    
+    
+    <vendors_catalog_product_new>
+    	<update handle="adminhtml_catalog_product_new"/>
+    	<remove name="store_switcher" />
+    	<remove name="product_tabs" />
+    	
+    	<reference name="head">
+    		<action method="addCss"><css>ves_vendors/css/product.css</css></action>
+    	</reference>
+    	<reference name="content">
+    		<block type="vendorsproduct/vendor_product_edit" name="vendor.product.edit" />
+    	</reference>
+    	<reference name="left">
+            <block type="vendorsproduct/vendor_product_edit_tabs" name="vendor_product_tabs"></block>
+        </reference>
+    </vendors_catalog_product_new>
+    
+    <vendors_catalog_product_edit>
+    	<update handle="adminhtml_catalog_product_edit" />
+    	<remove name="store_switcher" />
+    	<remove name="product_tabs" />
+    	
+    	<reference name="head">
+    		<action method="addCss"><css>ves_vendors/css/product.css</css></action>
+    	</reference>
+    	<reference name="content">
+    		<block type="vendorsproduct/vendor_product_edit" name="vendor.product.edit" />
+    	</reference>
+    	<reference name="left">
+            <block type="vendorsproduct/vendor_product_edit_tabs" name="vendor_product_tabs"></block>
+        </reference>
+    </vendors_catalog_product_edit>
+    
+    <vendors_catalog_product_grid>
+    	<reference name="head">
+    		<action method="addCss"><css>ves_vendors/css/product.css</css></action>
+    	</reference>
+    	<block type="core/text_list" name="root" output="toHtml">
+            <block type="vendorsproduct/vendor_product_grid" name="admin.product.grid"/>
+        </block>
+    </vendors_catalog_product_grid>
+    
+    <vendors_catalog_product_categories>
+    	<block type="core/text_list" name="root" output="toHtml">
+            <block type="vendorsproduct/vendor_product_edit_tab_categories" name="catalog.product.edit.tab.categories"/>
+        </block>
+    </vendors_catalog_product_categories>
+    
+    
+    <vendors_catalog_product_options>
+    	<update handle="adminhtml_catalog_product_options" />
+    </vendors_catalog_product_options>
+    
+    
+    <vendors_catalog_product_configurable_new>
+    	<update handle="adminhtml_catalog_product_configurable_new" />
+    </vendors_catalog_product_configurable_new>
+    
+    <vendors_catalog_product_superconfig>
+    	<block type="vendorsproduct/vendor_product_edit_tab_super_config_grid" name="admin.product.edit.tab.super.config.grid" output="toHtml" />
+    </vendors_catalog_product_superconfig>
+    
+    <vendors_catalog_product_supergroup>
+    	<block type="core/text_list" name="root" output="toHtml">
+            <block type="vendorsproduct/vendor_product_edit_tab_super_group" name="vendor.catalog.product.edit.tab.super.group" />
+            <block type="adminhtml/widget_grid_serializer" name="grouped_grid_serializer">
+                <reference name="grouped_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>vendor.catalog.product.edit.tab.super.group</grid_block_name>
+                        <data_callback>getSelectedGroupedProducts</data_callback>
+                        <hidden_input_name>links[grouped]</hidden_input_name>
+                        <reload_param_name>products_grouped</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>qty</input_name>
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </vendors_catalog_product_supergroup>
+    
+    <vendors_catalog_product_supergroupgridonly>
+		<update handle="adminhtml_catalog_product_supergroupgridonly" />    
+    </vendors_catalog_product_supergroupgridonly>
+    
+	<adminhtml_catalog_product_configurable>
+    	<block type="vendorsproduct/vendor_product_edit_tab_super_grid" name="vendor.product.edit.tab.super.grid" />
+	
+    </adminhtml_catalog_product_configurable>
+    <vendors_catalog_product_related>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="vendorsproduct/vendor_product_edit_tab_related" name="catalog.product.edit.tab.related"/>
+            <block type="adminhtml/widget_grid_serializer" name="related_grid_serializer">
+                <reference name="related_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>catalog.product.edit.tab.related</grid_block_name>
+                        <data_callback>getSelectedRelatedProducts</data_callback>
+                        <hidden_input_name>links[related]</hidden_input_name>
+                        <reload_param_name>products_related</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </vendors_catalog_product_related>
+    
+    <vendors_catalog_product_relatedgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="vendorsproduct/vendor_product_edit_tab_related" name="catalog.product.edit.tab.related"/>
+        </block>
+    </vendors_catalog_product_relatedgrid>
+    
+    
+    <adminhtml_vendors_catalog_product_set_index>
+    	<reference name="content">
+    		<block type="vendorsproduct/adminhtml_catalog_product_attribute_set" name="vendor.attribute.set"/>
+    	</reference>
+    </adminhtml_vendors_catalog_product_set_index>
+    
+    <adminhtml_vendors_catalog_product_set_edit>
+    	<reference name="content">
+    		<block type="vendorsproduct/adminhtml_catalog_product_attribute_set_edit" name="vendor.attribute.set.edit"/>
+    	</reference>
+    </adminhtml_vendors_catalog_product_set_edit>
+</layout>

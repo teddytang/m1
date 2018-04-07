@@ -1,0 +1,700 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+        <ves>
+            <label>VNECOMS</label>
+            <sort_order>101</sort_order>
+        </ves>
+    </tabs>
+    <sections>
+        <vendors translate="label" module="vendors">
+            <label>Vendors</label>
+            <tab>ves</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>                
+                <config translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<active translate="label tooltip">
+                        	<label>Enable extension</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[If this option is set to No, The extension and all plugins will stop working on current website scope.]]></comment>
+                        </active>
+                        <mode translate="label tooltip">
+                        	<label>Marketplace Mode</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>vendors/source_mode</source_model> 
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[<p><strong>General</strong>:With General mode all products in shopping cart from vendors will be processed together to one order so vendor can only see some information about the order.</P><p><strong>Advanced</strong>:With Advanced mode products on shopping cart will be separated by vendors and they will be processed by each vendor. Vendor can have full access to his orders,invoices,shipments,creditmemo.</p><p><strong>Advanced X</strong>:With Advanced X mode products on shopping cart will NOT be separated by vendors. One shopping cart is used for all vendor products, one time checkout for all vendor products and orders are still splitted by each vendor. Vendor can have full access to his orders,invoices,shipments,creditmemo.THIS MODE WILL WORK WITH ONLY SOME PAYMENT METHODS(tested with Check Money Order, Cash On Delivery, Purchase Order, Saved CC, paypal pro - credit card only)</p><p style="color:#ff0000;">You should not to change this option after your website go to live</p>]]></comment>
+                        </mode>
+						<!--
+                        <calculation_algorithm translate="label tooltip">
+                        	<label>Calculate Commission Based On</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>vendors/source_calculation</source_model> 
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[<strong>Grand Total</strong>,<strong>Subtotal</strong>,<strong>Subtotal After Discount</strong> is used for <strong style="color: #FF0000;">Advanced Mode</strong> only<br /><strong>Item Row Total</strong> is used for <strong style="color: #FF0000;">General Mode</strong> only]]></comment>
+                        </calculation_algorithm>
+						-->
+                        <!-- 
+                        <logo translate="label tooltip">
+                            <label>Header Logo</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">ves_vendors</upload_dir>
+                            <base_url type="media" scope_info="1">ves_vendors</base_url>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </logo>
+                        <footer_html translate="label tooltip">
+                        	<label>Footer Html</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[This html code will be displayed at the footer of vendor cpanel.]]></comment>
+                        </footer_html>
+                         -->
+                    </fields>
+                </config>
+                
+                
+                
+                
+                <vendorcp_design translate="label comment paypal_title" module="vendors">
+                    <label>Design</label>
+                    <sort_order>13</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>0</expanded>
+                    <frontend_class>complex</frontend_class>
+                    <frontend_model>paypal/adminhtml_system_config_fieldset_group</frontend_model>
+                    <comment>You can change the colors of your vendor cpanel from this section.</comment>
+                    <fields>
+                            <vendor_cpanel_head type="group" translate="label">
+                                <label>HTML Head</label>
+                                <frontend_type>text</frontend_type>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <sort_order>10</sort_order>
+                                <frontend_model>paypal/adminhtml_system_config_fieldset_expanded</frontend_model>
+                                <fields>
+                                    <favicon>
+			                            <label>Favicon Icon</label>
+			                            <comment>Allowed file types: ICO, PNG, GIF, JPG, JPEG, APNG, SVG. Not all browsers support all these formats!</comment>
+			                            <frontend_type>image</frontend_type>
+			                            <backend_model>adminhtml/system_config_backend_image_favicon</backend_model>
+			                            <base_url type="media" scope_info="1">favicon</base_url>
+			                            <sort_order>10</sort_order>
+			                            <show_in_default>1</show_in_default>
+			                            <show_in_website>1</show_in_website>
+			                            <show_in_store>1</show_in_store>
+			                            <config_path>vendors/config/head_favicon</config_path>
+			                        </favicon>
+			                        <default_title>
+										<label>Default Title</label>
+										<frontend_type>text</frontend_type>
+										<sort_order>20</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<config_path>vendors/config/head_default_title</config_path>
+									</default_title>
+                                </fields>
+                            </vendor_cpanel_head>
+                            
+                            <vendor_cpanel_header type="group" translate="label">
+                            	<label>Header</label>
+                                <frontend_type>text</frontend_type>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <sort_order>20</sort_order>
+                                
+                                <frontend_model>paypal/adminhtml_system_config_fieldset_expanded</frontend_model>
+								<fields>
+									<logo>
+			                            <label>Logo</label>
+			                            <frontend_type>image</frontend_type>
+			                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+			                            <upload_dir config="system/filesystem/media" scope_info="1">ves_vendors</upload_dir>
+			                            <base_url type="media" scope_info="1">ves_vendors</base_url>
+			                            <sort_order>10</sort_order>
+			                            <show_in_default>1</show_in_default>
+			                            <show_in_website>1</show_in_website>
+			                            <show_in_store>1</show_in_store>
+			                            <config_path>vendors/config/logo</config_path>
+			                        </logo>
+									<header_color>
+										<label>Header Background Color</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>20</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<comment>Click textbox to choose color</comment>
+										<config_path>vendors/config/header_bgcolor</config_path>					
+									</header_color>
+									<bg_image>
+			                            <label>Background Image</label>
+			                            <frontend_type>image</frontend_type>
+			                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+			                            <upload_dir config="system/filesystem/media" scope_info="1">ves_vendors</upload_dir>
+			                            <base_url type="media" scope_info="1">ves_vendors</base_url>
+			                            <sort_order>25</sort_order>
+			                            <show_in_default>1</show_in_default>
+			                            <show_in_website>1</show_in_website>
+			                            <show_in_store>1</show_in_store>
+			                            <config_path>vendors/config/header_bgimage</config_path>
+			                        </bg_image>
+									<toplinks_link_color>
+										<label>Top Links Text Color</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>30</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<comment>Click textbox to choose color</comment>
+										<config_path>vendors/config/toplinks_linkcolor</config_path>
+									</toplinks_link_color>
+									<toplinks_border_color>
+										<label>Top Border Color</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>35</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<comment>Click textbox to choose color</comment>
+										<config_path>vendors/config/toplinks_border_color</config_path>
+									</toplinks_border_color>
+									<toplinks_linkcolor_hover>
+										<label>Top Links Hover Text Color</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>40</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<comment>Click textbox to choose color</comment>
+										<config_path>vendors/config/toplinks_linkcolor_hover</config_path>
+									</toplinks_linkcolor_hover>
+									<toplinks_hover_bgcolor>
+										<label>Top Links Hover Background Color</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>50</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<comment>Click textbox to choose color</comment>
+										<config_path>vendors/config/toplinks_hover_bgcolor</config_path>
+									</toplinks_hover_bgcolor>
+								</fields>
+							</vendor_cpanel_header>
+							
+							<vendor_cpanel_menu type="group" translate="label">
+								<label>Menu</label>
+                                <frontend_type>text</frontend_type>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <sort_order>30</sort_order>
+                                
+                                <frontend_model>paypal/adminhtml_system_config_fieldset_expanded</frontend_model>
+								<fields>
+									<bg_img>
+			                            <label>Background Image</label>
+			                            <frontend_type>image</frontend_type>
+			                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+			                            <upload_dir config="system/filesystem/media" scope_info="1">ves_vendors</upload_dir>
+			                            <base_url type="media" scope_info="1">ves_vendors</base_url>
+			                            <sort_order>10</sort_order>
+			                            <show_in_default>1</show_in_default>
+			                            <show_in_website>1</show_in_website>
+			                            <show_in_store>1</show_in_store>
+			                            <config_path>vendors/config/menu_bgimage</config_path>
+			                        </bg_img>
+			
+			                        <item_text_color>
+										<label>Item Text Color</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>15</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<config_path>vendors/config/menu_item_text_color</config_path>
+									</item_text_color>
+									<item_level_0_hover_bg>
+										<label>Item Level 0 Hover Background Color</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>20</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<config_path>vendors/config/menu_item_level0_hover_bg</config_path>
+									</item_level_0_hover_bg>
+									<submenu_bg>
+										<label>Submenu Background Color</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>30</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<config_path>vendors/config/menu_submenu_bg</config_path>
+									</submenu_bg>
+									<submenu_item_hover_bg>
+										<label>Submenu Item Hover Background Color</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>40</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<config_path>vendors/config/menu_submenu_hover_bg</config_path>
+									</submenu_item_hover_bg>
+								</fields>
+							</vendor_cpanel_menu>
+							
+							<vendor_cpanel_buttons type="group" translate="label">
+								<label>Buttons</label>
+                                <frontend_type>text</frontend_type>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <sort_order>40</sort_order>
+                                
+                                <frontend_model>paypal/adminhtml_system_config_fieldset_expanded</frontend_model>
+								<fields>
+									<general_button_bg_color>
+										<label>General Button Background Color</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>10</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<config_path>vendors/config/button_general</config_path>
+									</general_button_bg_color>
+									<general_button_bg_color_hover>
+										<label>General Button Background Color Hover</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>20</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<config_path>vendors/config/button_general_hover</config_path>
+									</general_button_bg_color_hover>
+									<save_button_bg_color>
+										<label>Save Button Background Color</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>30</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<config_path>vendors/config/button_save</config_path>
+									</save_button_bg_color>
+									<save_button_bg_color_hover>
+										<label>Save Button Background Color Hover</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>40</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<config_path>vendors/config/button_save_hover</config_path>
+									</save_button_bg_color_hover>
+									<add_button_bg_color>
+										<label>Add Button Background Color</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>50</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<config_path>vendors/config/button_add</config_path>
+									</add_button_bg_color>
+									<add_button_bg_color_hover>
+										<label>Add Button Background Color Hover</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>60</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<config_path>vendors/config/button_add_hover</config_path>
+									</add_button_bg_color_hover>
+									<del_button_bg_color>
+										<label>Delete Button Background Color</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>70</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<config_path>vendors/config/button_delete</config_path>
+									</del_button_bg_color>
+									<del_button_bg_color_hover>
+										<label>Delete Button Background Color Hover</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>80</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<config_path>vendors/config/button_delete_hover</config_path>
+									</del_button_bg_color_hover>
+									<back_button_bg_color>
+										<label>Back Button Background Color</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>90</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<config_path>vendors/config/button_back</config_path>
+									</back_button_bg_color>
+									<back_button_bg_color_hover>
+										<label>Back Button Background Color Hover</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>100</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<config_path>vendors/config/button_back_hover</config_path>
+									</back_button_bg_color_hover>
+								</fields>
+							</vendor_cpanel_buttons>
+							<vendor_cpanel_footer type="group" translate="label">
+								<label>Footer</label>
+                                <frontend_type>text</frontend_type>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <sort_order>50</sort_order>
+                                
+                                <frontend_model>paypal/adminhtml_system_config_fieldset_expanded</frontend_model>
+								<fields>
+									<footer_show_language_switcher translate="label">
+			                            <label>Display language switcher</label>
+			                            <frontend_type>select</frontend_type>
+			                            <source_model>adminhtml/system_config_source_yesno</source_model>
+			                            <sort_order>5</sort_order>
+			                            <show_in_default>1</show_in_default>
+			                            <show_in_website>1</show_in_website>
+			                            <show_in_store>1</show_in_store>
+			                            <config_path>vendors/config/footer_show_language_switcher</config_path>
+			                        </footer_show_language_switcher>
+									
+									<footer_bg_color>
+										<label>Footer Background Color</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>10</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<comment>Click textbox to choose color</comment>
+										<config_path>vendors/config/footer_bgcolor</config_path>
+									</footer_bg_color>
+									<bg_image>
+			                            <label>Background Image</label>
+			                            <frontend_type>image</frontend_type>
+			                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+			                            <upload_dir config="system/filesystem/media" scope_info="1">ves_vendors</upload_dir>
+			                            <base_url type="media" scope_info="1">ves_vendors</base_url>
+			                            <sort_order>15</sort_order>
+			                            <show_in_default>1</show_in_default>
+			                            <show_in_website>1</show_in_website>
+			                            <show_in_store>1</show_in_store>
+			                            <config_path>vendors/config/footer_bgimage</config_path>
+			                        </bg_image>
+			                        
+									<footer_text>
+										<label>Footer Text</label>
+										<frontend_type>textarea</frontend_type>
+										<sort_order>25</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<config_path>vendors/config/footer_html</config_path>
+									</footer_text>
+									
+									<footer_text_color>
+										<label>Footer Text Color</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>35</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<config_path>vendors/config/footer_text_color</config_path>
+									</footer_text_color>
+									<footer_link_color>
+										<label>Footer Link Color</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>40</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<config_path>vendors/config/footer_link_color</config_path>
+									</footer_link_color>
+									<footer_link_color_hover>
+										<label>Footer Link Color Hover</label>
+										<frontend_type>text</frontend_type>
+										<validate>color</validate>
+										<sort_order>50</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>
+										<frontend_class>required-entry</frontend_class>
+										<config_path>vendors/config/footer_link_color_hover</config_path>
+									</footer_link_color_hover>
+								</fields>
+							</vendor_cpanel_footer>
+                        </fields>
+                </vendorcp_design>
+                
+                
+                
+                <!-- 
+                <account_share translate="label">
+                    <label>Account Sharing Option</label>
+                    <frontend_type>select</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>						
+                        <scope>
+                        	<label>Share Vendor Accounts</label>
+                            <frontend_type>select</frontend_type>
+                            <backend_model>vendors/config_share</backend_model>
+                            <source_model>vendors/config_share</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </scope>
+                    </fields>
+                </account_share>
+                 -->
+                <create_account translate="label tooltip">
+                	<label>Create New Account Options</label>
+                    <frontend_type>select</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<register translate="label">
+                            <label>Enable vendor register</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </register>
+                        <approval translate="label">
+                            <label>Vendor Approval</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <tooltip><![CDATA[If yes, Vendor need to be reviewed and approved by admin.]]></tooltip>
+                        </approval>
+						
+						<send_approved translate="label">
+                            <label>Send Mail When Vendor Is Approved</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>16</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </send_approved>
+
+                        <email_template_approved translate="label">
+                            <label>Approve Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>37</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[This welcome email will be sent to vendor when he approved.]]></tooltip>
+                        </email_template_approved>
+
+						
+						
+                        <default_group translate="label tooltip">
+                        	<label>Default Group</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>vendors/source_group</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <tooltip><![CDATA[After vendor register he will be assigned to this default group.]]></tooltip>
+                        </default_group>
+                        <email_template translate="label tooltip">
+                        	<label>Default Welcome Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model> 
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[This welcome email will be sent to vendor when he register.]]></tooltip>
+                        </email_template>
+                        <email_identity translate="label tooltip">
+                        	<label>Email Sender</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_identity</source_model> 
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </email_identity>
+                        <confirm translate="label tooltip">
+                            <label>Require Emails Confirmation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <tooltip><![CDATA[If "Yes" vendor email account need to be verify.]]></tooltip>
+                        </confirm>
+                        <email_confirmation_template translate="label tooltip">
+                        	<label>Confirmation Link Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model> 
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[This email will be sent if the option "Require Emails Confirmation" is set to "Yes". It contains steps to verify vendor email account.]]></tooltip>
+                        </email_confirmation_template>
+                        <email_confirmed_template translate="label tooltip">
+                            <label>Welcome Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>This email will be sent instead of default welcome email, after account confirmation.</tooltip>
+                        </email_confirmed_template>
+                    </fields>
+                </create_account>
+            	<password translate="label">
+                    <label>Password Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <forgot_email_template translate="label tooltip">
+                            <label>Forgot Email Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[This email is sent when vendor use the forgot password function with instruction about how to reset password.]]></tooltip>
+                        </forgot_email_template>
+                        <remind_email_template translate="label tooltip">
+                            <label>Remind Email Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[This email is sent after vendor click to reset password link from "Forgot Email".]]></tooltip>
+                        </remind_email_template>
+                        <forgot_email_identity translate="label">
+                            <label>Forgot and Remind Email Sender</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_identity</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </forgot_email_identity>
+                        <reset_link_expiration_period translate="label comment">
+                            <label>Recovery Link Expiration Period (days)</label>
+                            <comment>Please enter a number 1 or greater in this field.</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-digits validate-digits-range digits-range-1-</validate>
+                            <backend_model>adminhtml/system_config_backend_customer_password_link_expirationperiod</backend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </reset_link_expiration_period>
+                    </fields>
+                </password>
+            </groups>
+            
+        </vendors>
+    </sections>
+</config>

@@ -1,0 +1,137 @@
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php $_messages = $this->getMessages(); ?>
+<div class="my-message">
+<div class="page-title customer-message-title">
+    <h1><?php echo $this->getTitle() ?></h1>
+    <?php /*
+    <div id="create-message-button" class="create-message">
+    	<button class="button center new-message-button"  type="button" onclick="showFormReply()" ><span><span><?php echo Mage::helper('vendorsmessage')->__('New Message')?></span></span></button>
+	</div>
+	*/?>
+</div>
+
+<div class="message-action">
+	<div class="action">
+		<a href="<?php echo $this->getUrl('customer/message/inbox') ?>" id ="show-box-message-unread" class="<?php if($this->getActionName() == "inbox") echo "active" ?>" ><?php echo $this->__('Inbox') ?><span><?php if($this->getActionName() == "inbox") echo '('.$_messages->getSize().')' ?></span></a>
+		<a href="<?php echo $this->getUrl('customer/message/outbox') ?>" id ="show-box-message-send" class="<?php if($this->getActionName() == "outbox") echo "active" ?>"><?php echo $this->__('Outbox') ?><span><?php if($this->getActionName() == "outbox") echo '('.$_messages->getSize().')' ?></span></a>
+		<a href="<?php echo $this->getUrl('customer/message/trash') ?>" id ="show-box-message-delete" class="<?php if($this->getActionName() == "trash") echo "active" ?>"><?php echo $this->__('Trash') ?><span><?php if($this->getActionName() == "trash") echo '('.$_messages->getSize().')' ?></span></a>
+	</div>
+	<div class="mask">
+		<form action="<?php echo $this->getUrl('customer/message/massDelete') ?>" method="post" id="massaction-form">
+			<select id="massaction">
+				<option value="delete"><?php echo $this->__('Delete')?></option>
+			</select>
+			<input type="hidden" value="" id="massactionids" name="messages" />
+			<button class="button" type="button" onclick="checkApply()" >
+				<span><span><?php echo $this->__('Submit')?></span></span>
+			</button>
+		</form>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div class="box-customer-message">
+<?php echo $this->getPagerHtml(); ?>
+<?php if($_messages->getSize()): ?>
+<table class="data-table" id="my-orders-table">
+		<col width="30" />
+	    <col width="1" />
+	    <col width="1">
+	    <col/>
+	    <col width="100" />
+	    <thead>
+	        <tr>
+	        	<th><input id="checkbox_selector" type="checkbox" value="0" /></th>
+	            <th><?php echo $this->__('Received At') ?></th>
+	            <th><?php echo $this->__('From') ?></th>
+	            <th><?php echo $this->__('Subject') ?></th>
+	            <th>&nbsp;</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <?php $_odd = ''; ?>
+	        <?php foreach ($_messages as $_message): ?>
+	        <tr class="ves_message <?php if($_message->getState() == VES_VendorsMessage_Model_Message::STATE_UNREAD):?>ves_unread_message<?php endif;?>">
+	        	<td><input type="checkbox" value="<?php echo $_message->getId() ?>" />  </td>
+	            <td><?php echo $this->formatDateTime($_message->getCreatedAt()) ?></td>
+	            <td><span class="nobr"><?php echo $_message->getFrom();?></span></td>
+	            <td><?php echo $_message->getSubject(); ?></td>
+	            <td class="a-center">
+	                <span class="nobr"><a href="<?php echo $this->getViewUrl($_message) ?>"><?php echo $this->__('View') ?></a></span> |
+	                <span class="nobr"><a href="<?php echo $this->getDeleteUrl($_message) ?>" onclick="return confirm('<?php echo $this->__('Are you sure you want to do this?') ?>')"><?php echo $this->__('Delete') ?></a></span>
+	            </td>
+	        </tr>
+	        <?php endforeach; ?>
+	    </tbody>
+</table>
+<script type="text/javascript">decorateTable('my-orders-table');</script>
+<?php //echo $this->getPagerHtml(); ?>
+<?php else: ?>
+	<p style="text-align:center;font-style:italic"><?php echo $this->__('You have no messages.'); ?></p>
+<?php endif ?>
+<?php echo $this->getChildHtml('new-message-form') ?>
+</div>
+</div>
+<script type="text/javascript">
+var checkboxes = $$(".ves_message input[type=checkbox]");
+var cbControl = $("checkbox_selector");
+var data = new Array();
+if(cbControl){
+	cbControl.observe("click", function(){
+	  	checkboxes.each(function(box){
+		    box.checked = cbControl.checked;
+		    if(cbControl.checked == true){
+		        var check = false;
+		    	for (var x in data){
+		    		if(data[x] === box.value){
+		    			check = true;
+		    		}
+		    	}
+		    	if(check == false){
+		        	data.push(box.value);
+		    	}
+		    }
+		    else{
+		        data = new Array();
+		    }
+	  	});
+	  	$('massactionids').value = data;
+	});
+}
+
+checkboxes.each(function(box){
+	box.observe("click", function(){
+	    if(this.checked == true){
+	        var check = false;
+	    	for (var x in data){
+	    		if(data[x] === this.value){
+	    			check = true;
+	    		}
+	    	}
+	    	if(check == false){
+	        	data.push(this.value);
+	        	$('massactionids').value = data;
+	    	}
+	    }
+	    else{
+	    	for(var i=0;i<data.length;i++){
+		    	if(data[i]==this.value){
+			    	data.splice(i,1);
+		    	}
+	    	}
+	    	$('massactionids').value = data;
+	    }
+	});
+	
+});
+function checkApply(){
+	if($('massactionids').value ==  null || $('massactionids').value == ""){
+			alert("<?php echo $this->__('Please select items.') ?>");
+	}
+	else{
+		if(confirm("<?php echo $this->__('Are you sure ?') ?>")){
+			$('massaction-form').submit();
+		}
+	}
+}
+</script>

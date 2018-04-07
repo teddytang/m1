@@ -1,0 +1,152 @@
+*{margin: 0;padding: 0;}
+body {	background-color:#f6f6f6;    padding: 0;    margin-top:2%;color: #5F5F5F;font-family: Arial,sans-serif;font-size: 13px;line-height: 20px;}
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    color: #555555;
+    display: inline-block;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    padding: 4px 6px;
+    vertical-align: middle;
+}
+a {
+    color: #666666;
+    text-decoration: none;
+}
+.form-actions {
+    background-color: #F5F5F5;
+    border-top: 1px solid #E5E5E5;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 19px 20px 20px;
+}
+.form-actions:before, .form-actions:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.form-actions:after {
+    clear: both;
+}
+#loginbox {    width: 32%;    margin-left: auto;    margin-right: auto;    position: relative;}
+#loginbox {	border:3px solid transparent; overflow: hidden !important; margin-top: 100px;   text-align: left;    position: relative; 		 box-shadow:8px 10px 20px #b6b6b6;  }
+#loginbox form{	width:100%; background:#fff;	position:relative;	top:0;	left:0; }
+#loginbox .form-actions {	padding: 14px 20px 15px;}
+#loginbox .form-actions .pull-left { margin-top:0px;}
+#loginbox form#loginform {	z-index: 200; display:block;}
+#loginbox form#recoverform {	z-index: 100;	    display:block;}
+#loginbox form#recoverform .form-actions {    margin-top: 27px;}
+#loginbox h3{font-size: 24.5px; color:#5F5F5F}
+#loginbox .main_input_box { margin:0 auto; text-align:center}
+#loginbox .main_input_box .add-on{  background-color: #EEEEEE;    border: 1px dashed #dadada;    display: inline-block;    font-size: 14px;    font-weight: normal;    height:30px;    line-height: 30px;    min-width: 16px;    padding: 4px 5px;     text-align: center;    text-shadow: 0 1px 0 #FFFFFF;    width:30px;}
+#loginbox .main_input_box input{ height:30px; display:inline-block; width:75%;  border: 1px dashed #dadada; margin-bottom:3px;}
+#loginbox .controls{ padding:0 20px;}
+#loginbox .control-group{ padding:20px 0; border-bottom:1px solid #dadada; margin-bottom:0px;}
+.form-vertical, .form-actions {    margin-bottom: 0;}
+#loginbox .normal_text{ padding:15px 10px; text-align:center; font-size:14px; line-height:20px; }
+@media (max-width: 480px){
+
+#loginbox{ width:90%}
+#loginbox .control-group{ padding:8px 0; border-bottom:1px solid #dadada; margin-bottom:0px;}
+}
+[class^="icon-"], [class*=" icon-"] {
+    background-image: url("../images/glyphicons-halflings.png");
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 14px;
+    line-height: 14px;
+    margin-top: 1px;
+    vertical-align: text-top;
+    width: 14px;
+}
+.icon-user {
+    background-position: -168px 0;
+}
+.icon-envelope {
+    background-position: -72px 0;
+}
+.pull-right {
+    float: right;
+}
+.icon-lock {
+    background-position: -287px -24px;
+}
+.btn {
+    background-color: #DADADA;
+    border: medium none;
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 3px;
+    padding: 6px 12px;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    vertical-align: middle;
+}
+.btn-warning {
+    background-color: #FAA732;
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.btn-warning:hover, .btn-warning:active, .btn-warning.active, .btn-warning.disabled, .btn-warning[disabled] {
+    background-color: #F89406;
+    color: #FFFFFF;
+}
+.btn-success {
+    background-color: #5BB75B;
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.btn-success:hover, .btn-success:active, .btn-success.active, .btn-success.disabled, .btn-success[disabled] {
+    background-color: #51A351;
+    color: #FFFFFF;
+}
+.btn-info {
+    background-color: #49AFCD;
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.btn-info:hover, .btn-info:active, .btn-info.active, .btn-info.disabled, .btn-info[disabled] {
+    background-color: #2F96B4;
+    color: #FFFFFF;
+}
+.validation-advice {
+    background: url("../../images/validation_advice_bg.gif") no-repeat scroll 2px 0 transparent;
+    clear: both;
+    color: #EB340A;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 13px;
+    margin: 3px 0 0 15%;
+    min-height: 13px;
+    padding-left: 17px;
+    width: 75%;
+    text-align: left;
+}
+.validation-failed {
+    background: none repeat scroll 0 0 #FAEBE7 !important;
+    border: 1px dashed #EB340A !important;
+}
+
+.messages li {
+    font-size: 0.95em !important;
+    font-weight: bold !important;
+    margin-bottom: 5px !important;
+    min-height: 23px !important;
+    padding: 6px 0 2px !important;
+    text-align: center;
+}
+.error-msg {
+    background: url("../../images/error_msg_icon.gif") no-repeat scroll 10px 10px #FAEBE7 !important;
+    border: 1px solid #F16048 !important;
+    color: #DF280A !important;
+}
+.success-msg {
+    background: url("../../images/success_msg_icon.gif") no-repeat scroll 10px 10px #EFF5EA !important;
+    border: 1px solid #95A486 !important;
+    color: #3D6611 !important;
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <catalog translate="label" module="vendorsproduct">
+            <label>Catalog</label>
+            <sort_order>30</sort_order>
+            <groups>                
+                <product translate="label" module="vendorsproduct">
+                    <label>Product</label>
+                    <sort_order>10</sort_order>
+                    <fields>
+                        <thumbnail_with module="vendorsproduct" >
+                    		<label>Product Thumbnail With</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_class>required-entry validate-number</frontend_class>
+                            <sort_order>20</sort_order>
+                            <comment>With of thumbnail image on product grid</comment>
+                    	</thumbnail_with>
+                    	<thumbnail_height module="vendorsproduct">
+                    		<label>Product Thumbnail Height</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_class>required-entry validate-number</frontend_class>
+                            <sort_order>20</sort_order>
+                            <comment>Height of thumbnail image on product grid</comment>
+                    	</thumbnail_height>
+                    </fields>
+                </product>
+            </groups>
+        </catalog>
+    </sections>
+</config>

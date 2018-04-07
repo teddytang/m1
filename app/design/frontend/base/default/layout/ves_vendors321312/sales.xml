@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <vendor_sales_email_order_items>
+    	<update handle="sales_email_order_items" />
+    	<reference name="items">
+    		<action method="setTemplate"><template>ves_vendorssales/order/items.phtml</template></action>
+    	</reference>
+    </vendor_sales_email_order_items>
+</layout> 

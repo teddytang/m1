@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+     	<vendors translate="label" module="vendorsmap">
+     		<groups>
+     			<vendors_import_export translate="label" module="vendorsimport">
+                    <label>Import/Export Products</label>
+                    <frontend_type>select</frontend_type>
+                    <sort_order>120</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <csv_import_profile>
+                            <label>CSV Import Profile</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>vendorsimport/source_import</source_model> 
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[These are profiles from <strong>Vendors -> Import/Export -> Dataflow - Profiles</strong>]]></comment>
+                            <tooltip>This profile will be used by vendor to import his products from csv file</tooltip>
+                        </csv_import_profile>
+                        <xml_import_profile>
+                            <label>XML Import Profile</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>vendorsimport/source_import</source_model> 
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[These are profiles from <strong>Vendors -> Import/Export -> Dataflow - Profiles</strong>]]></comment>
+                            <tooltip>This profile will be used by vendor to import his products from xml file.</tooltip>
+                        </xml_import_profile>
+                        <sample_import_files>
+                            <label>Sample Import Files</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>vendorsimport/source_block</source_model> 
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Select the cms block that displays all sample csv file for importing. This will be very helpful for vendor.</tooltip>
+                        </sample_import_files>
+                        <export_profile>
+                            <label>Export Profiles</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>vendorsimport/source_export</source_model> 
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[These are profiles from <strong>Vendors -> Import/Export -> Dataflow - Profiles</strong>]]></comment>
+                            <tooltip>These profiles will be used by vendor to export his products</tooltip>
+                        </export_profile>
+                        <ignored_attributes>
+                            <label>Not exported attributes</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>vendorsimport/source_attributes</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[These product attributes will not be exported.]]></comment>
+                        </ignored_attributes>
+                    </fields>
+                </vendors_import_export>
+     		</groups>
+     	</vendors>
+    </sections>
+</config>

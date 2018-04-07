@@ -1,0 +1,181 @@
+
+<?php $_images  = $this->getImages(); ?>
+<?php $_product = $this->getCurrentProduct(); ?>
+
+<tr><td class="label"><?php echo $this->__('Product Images');?></td><td colspan="2">
+
+<div id="unsupported" style="display: none;"><ul class="messages"><li class="error-msg"><ul><li><span>
+<?php echo $this->__('You are using unsupported browser version. Please update or change your browser. For the list of compatible browsers please check the extension website page.'); ?>
+</span></li></ul></li></ul></div>
+
+
+<div id="vesupload_form" class="image-upload-form-container">
+<input type="hidden" name="form_key" value="<?php echo $this->getFormKey(); ?>" />
+<input type="hidden" name="vesimgupload_hasdata" value="1" />
+<input type="hidden" name="store" value="<?php echo $this->getStoreId(); ?>" />
+
+<script type="text/javascript">
+var imDragHandler  = 'ves_item';
+var imItemTemplate = '<input type="hidden" name="vesimgupload_new[{file}]" value="{url}" />' +
+'<div class="ves_item" id="ves_images_grid_v besitem_{i}" onmouseover="javascript: itemOver(this);" onmouseout="javascript: itemOut(this);">' +
+'<div class="moveable"></div>' +
+'<div class="baseable"></div>' +
+'<div class="ves_image"><img src="{url}" alt="" border="0" onload="javascript: resizeView(this);" /></div>' +
+'<div class="ves_label"><input placeholder="<?php echo $this->__('Image Label')?>" type="text" name="vesimgupload[label][{file}]" class="input-text" value="" /></div>' +
+'<div class="ves_types">' +
+    <?php foreach ($this->getImageTypes() as $imageType): ?>
+        '<div><input type="radio" name="product[<?php echo $imageType['field'] ?>]" value="{file}" /> <?php echo $imageType['label'] ?></div>' +
+    <?php endforeach; ?>
+'</div>' +
+'<div class="actions" align="right">&nbsp;'+
+    '<span style="display: none;">' +
+        '<input type="hidden" class="img-disable-input" name="vesimgupload[disable][{file}]" value="0" />' +
+        '<input type="hidden" class="img-delete-input" name="vesimgupload[delete][{file}]" value="0" />' +
+        '<input type="hidden" class="img-position-input" name="vesimgupload[position][{file}]" value="{i}" />' +
+        '<a href="#" class="base" onclick="javascript: makeBase(this); return false;" title="<?php echo $this->__('Make Base'); ?>"></a>'+
+        '<a href="#" class="enable" onclick="javascript: enableImage(this); return false;" title="<?php echo $this->__('Show from Product Page'); ?>"></a>' +
+        '<a href="#" class="disable" onclick="javascript: disableImage(this); return false;" title="<?php echo $this->__('Hide from Product Page'); ?>"></a>'+
+        '<a href="#" class="delete" onclick="javascript: deleteImage(this); return false;" title="<?php echo $this->__('Remove Image'); ?>"></a>' +
+    '</span>' +
+'</div>' +
+'</div>';
+</script>
+    
+<div id="ves_images_grid_new_container"></div>
+
+<?php if (is_array($_images) && !empty($_images)): ?>
+
+
+
+
+
+
+
+
+
+
+
+
+     <script type="text/javascript">
+            var FORM_KEY = '<?php echo $this->getFormKey(); ?>';
+            var vesUploaderObject  = new vesUploader('<?php echo $this->getUrlPost() ?>', <?php echo $this->getProductId(); ?>, '<?php echo $this->getUrlReload() ?>');
+            $fileupload(function () {
+            	vesUploaderObject.upload();
+            });
+    </script>
+    <div class="ves_images_grid" id="ves_images_grid">
+        <?php $i = 1; foreach ($_images as $image): ?>
+            <?php 
+                $checkBase = false;
+                foreach ($this->getImageTypes() as $imageType){
+                    if ($image['file'] == $_product->getData($imageType['field'])) $checkBase = true;
+                }
+                
+            ?>
+            <div class="ves_item <?php if ($checkBase): ?>ves_item_base<?php endif; ?> <?php if (1 == $image['disabled']): ?>img-disabled<?php endif; ?>" id="ves_images_grid_vesitem_<?php echo $i; ?>" onmouseover="javascript: itemOver(this);" onmouseout="javascript: itemOut(this);">
+                <div class="moveable"></div>
+                <div class="baseable"></div>
+                <div class="ves_image"><img src="<?php echo $image['url']; ?>" alt="" border="0" onload="javascript: resizeView(this);" /></div>
+                <div class="ves_label"><input placeholder="<?php echo $this->__('Image Label')?>" type="text" name="vesimgupload[label][<?php echo $image['file'] ?>]" class="input-text" value="<?php echo $image['label']; ?>" /></div>
+                <div class="ves_types">
+                    <?php foreach ($this->getImageTypes() as $imageType): ?>
+                        <div><input type="radio" name="product[<?php echo $imageType['field'] ?>]" value="<?php echo $image['file'] ?>"
+                                <?php if ($image['file'] == $_product->getData($imageType['field'])): ?>checked="checked"<?php endif; ?> /> <?php echo $imageType['label'] ?></div>
+                    <?php endforeach; ?>
+                </div>
+                <div class="actions" align="right">&nbsp;
+                    <span style="display: none;">
+                        <input type="hidden" class="img-disable-input" name="vesimgupload[disable][<?php echo $image['file'] ?>]" value="<?php if (1 == $image['disabled']): ?>1<?php else: ?>0<?php endif; ?>" />
+                        <input type="hidden" class="img-delete-input" name="vesimgupload[delete][<?php echo $image['file'] ?>]" value="0" />
+                        <input type="hidden" class="img-position-input" name="vesimgupload[position][<?php echo $image['file'] ?>]" value="<?php echo $image['position'] ?>" />
+                    
+                        <a href="#" class="base" onclick="javascript: makeBase(this); return false;" title="<?php echo $this->__('Make Base'); ?>"></a>
+                        <a href="#" class="enable" onclick="javascript: enableImage(this); return false;" title="<?php echo $this->__('Show from Product Page'); ?>"></a>
+                        <a href="#" class="disable" onclick="javascript: disableImage(this); return false;" title="<?php echo $this->__('Hide from Product Page'); ?>"></a>
+                        <a href="#" class="delete" onclick="javascript: deleteImage(this); return false;" title="<?php echo $this->__('Remove Image'); ?>"></a>
+                    </span>
+                </div>
+            </div>
+            
+        <?php $i++; endforeach; ?>
+        
+       
+        
+    </div>
+    <div class="ves_images_grid">
+        <div class="ves_item upload-form">
+            <div class="ves_image">
+                <input type="file" id="file_select" name="file_select[]" multiple="multiple" />
+                <p class="image-placeholder-text"><?php echo $this->__('Click here to add images')?></p>
+                <div id="progress" class="progress" style="display:none">
+                    <div class="progress-bar progress-bar-success"></div>
+                </div>
+                <div id="files" class="files"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div style="clear: both;"></div>
+
+<?php else: ?>
+    <div class="ves_images_grid" id="ves_images_grid">
+    </div>
+    <div class="ves_images_grid">
+        <div class="ves_item upload-form">
+            <div class="ves_image">
+
+
+
+
+
+                <input type="file" id="file_select" name="file_select[]" multiple="multiple" />
+                <p class="image-placeholder-text"><?php echo $this->__('Click here to add images')?></p>
+
+                <div id="progress" class="progress" style="display:none">
+                    <div class="progress-bar progress-bar-success"></div>
+                </div>
+                <div id="files" class="files"></div>
+            </div>
+        </div>
+
+    </div>
+    <div style="clear: both;"></div>
+
+       
+     <script type="text/javascript">
+          var FORM_KEY = '<?php echo $this->getFormKey(); ?>';
+          var vesUploaderObject  = new vesUploader('<?php echo $this->getUrlPost() ?>', <?php echo $this->getProductId(); ?>, '<?php echo $this->getUrlReload(); ?>');
+          $fileupload(function () {
+        	  vesUploaderObject.upload();
+            });
+    </script>
+     <div class="ves_images_grid" id="ves_images_grid">
+     </div>
+<?php endif; ?>
+
+</div>
+
+
+<script type="text/javascript">
+    Event.observe(window, 'load', function(){
+        if ($('ves_images_grid'))
+        {
+	        Sortable.create('ves_images_grid', {
+	            tag: 'div',
+	            only: 'ves_item',
+	            handles: $$('#ves_images_grid div.' + imDragHandler),
+	            overlap: 'horizontal',
+	            constraint: false,
+	            onUpdate: function(){
+	                Sortable.sequence("ves_images_grid").each(function(idNum, i){
+	                    $('ves_images_grid_vesitem_' + idNum).select('.img-position-input').each(function(input){
+	                        input.value = i + 1;
+	                    });
+	                });
+	            }
+	        });
+        }
+    });
+</script>
+</td>
+</tr>

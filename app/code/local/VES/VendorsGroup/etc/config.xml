@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<config>
+	<adminhtml>
+		<layout>
+			<updates>
+				<vendorsgroup>
+					<file>ves_vendors/group.xml</file>
+				</vendorsgroup>
+			</updates>
+		</layout>
+		<translate>
+            <modules>
+                <VES_VendorsGroup>
+                    <files>
+                        <default>ves_vendors/group.csv</default>
+                    </files>
+                </VES_VendorsGroup>
+            </modules>
+        </translate>
+	</adminhtml>
+	
+    <global>
+    	<events>
+			<ves_vendors_group_prepare_tabs_after>
+				<observers>
+                    <vendorsgroup>
+                        <class>vendorsgroup/observer</class>
+                        <method>ves_vendors_group_prepare_tabs_after</method>
+                    </vendorsgroup>
+                </observers>
+			</ves_vendors_group_prepare_tabs_after>
+			<ves_vendors_admin_group_save_after>
+				<observers>
+					<vendorsgroup>
+	                    <class>vendorsgroup/observer</class>
+	                    <method>ves_vendors_admin_group_save_after</method>
+	                </vendorsgroup>
+                 </observers>
+			</ves_vendors_admin_group_save_after>
+			<vendor_group_delete_after>
+				<observers>
+					<vendorsgroup>
+	                    <class>vendorsgroup/observer</class>
+	                    <method>vendor_group_delete_after</method>
+	                </vendorsgroup>
+                 </observers>
+			</vendor_group_delete_after>
+			
+			<!-- Vendor Message -->
+			<ves_vendorsmessage_module_enable>
+				<observers>
+					<vendorsgroup>
+	                    <class>vendorsgroup/observer_message</class>
+	                    <method>ves_vendorsmessage_module_enable</method>
+	                </vendorsgroup>
+                 </observers>
+			</ves_vendorsmessage_module_enable>
+			
+			<!-- Vendor Cms -->
+			<ves_vendorscms_module_enable>
+				<observers>
+					<vendorsgroup>
+	                    <class>vendorsgroup/observer_cms</class>
+	                    <method>ves_vendorscms_module_enable</method>
+	                </vendorsgroup>
+                 </observers>
+			</ves_vendorscms_module_enable>
+			
+			<!-- Vendor Category -->
+			<ves_vendorscategory_module_enable>
+				<observers>
+					<vendorsgroup>
+	                    <class>vendorsgroup/observer_category</class>
+	                    <method>ves_vendorscategory_module_enable</method>
+	                </vendorsgroup>
+                 </observers>
+			</ves_vendorscategory_module_enable>
+			
+			<!-- Vendor Product Save Before -->
+			<controller_action_predispatch_vendors_catalog_product_new>
+				<observers>
+					<vendorsgroup>
+	                    <class>vendorsgroup/observer_product</class>
+	                    <method>controller_action_predispatch_vendors_catalog_product_new</method>
+	                </vendorsgroup>
+                 </observers>
+			</controller_action_predispatch_vendors_catalog_product_new>
+    	</events>
+
+        <models>
+             <vendorsgroup>
+                <class>VES_VendorsGroup_Model</class>
+                <resourceModel>vendorsgroup_resource</resourceModel>
+            </vendorsgroup>
+            <vendorsgroup_resource>
+                <class>VES_VendorsGroup_Model_Resource</class>
+                <entities>
+                    <rule>
+                        <table>ves_vendor_group_rule</table>
+                    </rule>
+                </entities>
+           	</vendorsgroup_resource>
+        </models>
+
+        <resources>
+	        <vendorsgroup_setup>
+	            <setup>
+	                <module>VES_VendorsGroup</module>
+	                <class>VES_VendorsGroup_Model_Resource_Setup</class>
+	            </setup>
+	        </vendorsgroup_setup>
+	    </resources>
+
+        <blocks>
+            <vendorsgroup>
+                <class>VES_VendorsGroup_Block</class>
+            </vendorsgroup>
+        </blocks>
+        <helpers>
+            <vendorsgroup>
+                <class>VES_VendorsGroup_Helper</class>
+            </vendorsgroup>
+        </helpers>
+    </global>
+</config>

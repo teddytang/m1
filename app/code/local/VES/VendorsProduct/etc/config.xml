@@ -1,0 +1,392 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <VES_VendorsProduct>
+            <version>1.1.0.1</version>
+        </VES_VendorsProduct>
+    </modules>
+    <frontend>
+    	<events>
+    		<catalog_product_prepare_save>
+                <observers>
+                    <downloadable_observer>
+                        <class>downloadable/observer</class>
+                        <method>prepareProductSave</method>
+                    </downloadable_observer>
+                </observers>
+            </catalog_product_prepare_save>
+
+
+
+            <catalog_product_collection_load_after>
+                <observers>
+                    <bundle_observer>
+                        <class>vendorsproduct/observer</class>
+                        <method>loadProductOptions</method>
+                    </bundle_observer>
+                </observers>
+            </catalog_product_collection_load_after>
+			
+						
+   		    <catalog_product_save_before>
+                <observers>
+                    <vendorsproduct>
+                        <class>vendorsproduct/rule_observer</class>
+                        <method>loadProductRules</method>
+                    </vendorsproduct>
+                </observers>
+            </catalog_product_save_before>
+
+        </events>
+        <routers>
+            <vendors>
+				<args>
+					<modules>
+						<vendorsproduct before="VES_Vendors">VES_VendorsProduct_Vendor</vendorsproduct>
+					</modules>
+				</args>
+			</vendors>
+        </routers>
+        <layout>
+            <updates>
+                <vendorsproduct>
+                    <file>ves_vendors/product.xml</file>
+                </vendorsproduct>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <VES_VendorsProduct>
+                    <files>
+                        <default>ves_vendors/product.csv</default>
+                    </files>
+                </VES_VendorsProduct>
+            </modules>
+        </translate>
+    </frontend>
+    <admin>
+       	<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<vendorsproduct before="Mage_Adminhtml">VES_VendorsProduct_Adminhtml</vendorsproduct>
+					</modules>
+				</args>
+			</adminhtml>
+       	</routers>
+   	</admin>
+	<adminhtml>
+		<menu>
+			<vendors module="vendorsproduct" translate="title">
+				<children>
+					<catalog module="catalog">
+						<title>Catalog</title>
+						<sort_order>13</sort_order>
+						<children>
+							<attributeset module="vendors">
+								<title>Manage Add Product Forms</title>
+								<sort_order>13</sort_order>
+								<action>adminhtml/vendors_catalog_product_set/</action>
+							</attributeset>
+							<pending_product module="vendors">
+								<title>Pending Products</title>
+								<sort_order>15</sort_order>
+								<action>adminhtml/vendors_catalog_product/pending</action>
+							</pending_product>
+						</children>
+					</catalog>
+				</children>
+			</vendors>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<vendors>
+							<children>
+								<catalog module="catalog">
+									<title>Catalog</title>
+									<sort_order>13</sort_order>
+									<children>
+										<attributeset module="vendors">
+											<title>Manage Add Product Forms</title>
+											<sort_order>13</sort_order>
+										</attributeset>
+										<pending_product module="vendors">
+											<title>Pending Products</title>
+											<sort_order>15</sort_order>
+										</pending_product>
+									</children>
+								</catalog>
+							</children>
+						</vendors>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<vendorsproduct>
+					<file>ves_vendors/product.xml</file>
+				</vendorsproduct>
+			</updates>
+		</layout>
+		<translate>
+            <modules>
+                <VES_VendorsProduct>
+                    <files>
+                        <default>ves_vendors/product.csv</default>
+                    </files>
+                </VES_VendorsProduct>
+            </modules>
+        </translate>
+	</adminhtml>
+	<vendors>
+    	<menu>
+    		<catalog module="vendorsproduct" translate="title">
+    			<title>Catalog</title>
+    			<frontend_class>catalog</frontend_class>
+    			<sort_order>20</sort_order>
+    			<children>
+    				<product module="vendorsproduct" translate="title">
+	    				<title>Manage Products</title>
+		    			<sort_order>10</sort_order>
+		    			<action>vendors/catalog_product/</action>
+	    			</product>
+    			</children>
+    		</catalog>
+		</menu>
+		<group_options>
+			<product module="vendorsproduct">
+				<title>Product</title>
+				<sort_order>40</sort_order>
+				<fields>
+					<product_limit>
+						<label>Max products</label>
+                        <frontend_type>text</frontend_type>
+                        <frontend_class>validate-number</frontend_class>
+                        <sort_order>10</sort_order>
+                        <comment>Maximum number of product that you allow this vendor group to add</comment>
+					</product_limit>
+				</fields>
+			</product>
+		</group_options>
+    </vendors> 
+    <global>
+    	<template>
+            <email>
+                <vendors_catalog_product_approved_template translate="label" module="vendorsproduct">
+                    <label>Vendor - Product approved notification</label>
+                    <file>ves_vendors/product_approved.html</file>
+                    <type>html</type>
+                </vendors_catalog_product_approved_template>
+                <vendors_catalog_product_rejected_template translate="label" module="vendorsproduct">
+                    <label>Vendor - Product rejected notification</label>
+                    <file>ves_vendors/product_rejected.html</file>
+                    <type>html</type>
+                </vendors_catalog_product_rejected_template>
+            </email>
+        </template>
+    	<events>
+			<catalog_model_product_duplicate>
+				 <observers>
+                    <vendorsproduct>
+                        <class>vendorsproduct/observer</class>
+                        <method>catalog_model_product_duplicate</method>
+                    </vendorsproduct>
+                </observers>
+			</catalog_model_product_duplicate>
+			<catalog_product_prepare_save>
+				 <observers>
+                    <vendorsproduct>
+                        <class>vendorsproduct/observer</class>
+                        <method>catalog_product_prepare_save</method>
+                    </vendorsproduct>
+                </observers>
+			</catalog_product_prepare_save>
+			<!-- 
+			<adminhtml_catalog_product_edit_prepare_form>
+				 <observers>
+                    <vendorsproduct>
+                        <class>vendorsproduct/observer</class>
+                        <method>adminhtml_catalog_product_edit_prepare_form</method>
+                    </vendorsproduct>
+                </observers>
+			</adminhtml_catalog_product_edit_prepare_form>
+			 -->
+			<catalog_product_validate_before>
+				<observers>
+                    <vendorsproduct>
+                        <class>vendorsproduct/observer</class>
+                        <method>catalog_product_validate_before</method>
+                    </vendorsproduct>
+                </observers>
+			</catalog_product_validate_before>
+			
+			<catalog_product_gallery_prepare_layout>
+                <observers>
+                    <vendorsproduct>
+                        <class>vendorsproduct/observer</class>
+                        <method>catalog_product_gallery_prepare</method>
+                    </vendorsproduct>
+                </observers>
+            </catalog_product_gallery_prepare_layout>
+
+            <catalog_model_product_duplicate>
+                <observers>
+                    <vendorsproduct>
+                        <class>vendorsproduct/observer</class>
+                        <method>duplicateProduct</method>
+                    </vendorsproduct>
+                </observers>
+            </catalog_model_product_duplicate>
+
+            <catalog_product_edit_action>
+                <observers>
+                    <vendorsproduct>
+                        <class>vendorsproduct/observer</class>
+                        <method>setAttributeTabBlock</method>
+                    </vendorsproduct>
+                </observers>
+            </catalog_product_edit_action>
+
+            <catalog_product_new_action>
+                <observers>
+                    <vendorsproduct>
+                        <class>vendorsproduct/observer</class>
+                        <method>setAttributeTabBlock</method>
+                    </vendorsproduct>
+                </observers>
+            </catalog_product_new_action>
+
+            <sales_convert_quote_item_to_order_item>
+                <observers>
+                    <vendorsproduct>
+                        <class>vendorsproduct/observer</class>
+                        <method>appendBundleSelectionData</method>
+                    </vendorsproduct>
+                </observers>
+            </sales_convert_quote_item_to_order_item>
+
+    	</events>
+
+        <models>
+             <vendorsproduct>
+                <class>VES_VendorsProduct_Model</class>
+                <resourceModel>vendorsproduct_resource</resourceModel>
+            </vendorsproduct>
+            <vendorsproduct_resource>
+                <class>VES_VendorsProduct_Model_Resource</class>
+                <entities>
+                    <attribute_set>
+                        <table>ves_vendor_product_attribute_set</table>
+                    </attribute_set>
+                    <attribute_group>
+                        <table>ves_vendor_product_attribute_group</table>
+                    </attribute_group>
+                    <entity_attribute>
+                        <table>ves_vendor_product_entity_attribute</table>
+                    </entity_attribute>
+				</entities>
+           	</vendorsproduct_resource>
+           	<catalog>
+	            <rewrite>
+	            	<product_url>VES_VendorsProduct_Model_Catalog_Product_Url</product_url>
+					<category>VES_VendorsProduct_Model_Category</category>
+	            </rewrite>
+            </catalog>
+            <catalog_resource>
+            	<rewrite>
+            		<product_collection>VES_VendorsProduct_Model_Resource_Catalog_Product_Collection</product_collection>
+					<layer_filter_price>VES_VendorsProduct_Model_Resource_Layer_Filter_Price</layer_filter_price>
+					<product_link_product_collection>VES_VendorsProduct_Model_Resource_Catalog_Product_Link_Product_Collection</product_link_product_collection>
+            	</rewrite>
+            </catalog_resource>
+        </models>
+
+        <resources>
+	        <vendorsproduct_setup>
+	            <setup>
+	                <module>VES_VendorsProduct</module>
+	                <class>VES_VendorsProduct_Model_Resource_Setup</class>
+	            </setup>
+	        </vendorsproduct_setup>
+	    </resources>
+
+        <blocks>
+            <vendorsproduct>
+                <class>VES_VendorsProduct_Block</class>
+            </vendorsproduct>
+            <adminhtml>
+            	<rewrite>
+            		<catalog_product_grid>VES_VendorsProduct_Block_Adminhtml_Catalog_Product_Grid</catalog_product_grid>
+            		<catalog_product_edit_tab_super_config_grid>VES_VendorsProduct_Block_Vendor_Product_Edit_Tab_Super_Config_Grid</catalog_product_edit_tab_super_config_grid>
+            	</rewrite>
+            </adminhtml>
+            <catalog>
+            	<rewrite>
+            		<product_list>VES_VendorsProduct_Block_Catalog_Product_List</product_list>
+            	</rewrite>
+            </catalog>
+        </blocks>
+        <helpers>
+            <vendorsproduct>
+                <class>VES_VendorsProduct_Helper</class>
+            </vendorsproduct>
+        </helpers>
+		
+		<sales>
+			<quote>
+				<item>
+					<product_attributes>
+						<vendor_id/>
+					</product_attributes>
+				</item>
+			</quote>
+		</sales>
+		
+    </global>
+    <default>
+    	<vendors>
+	    	<catalog>
+	    		<product_approval>1</product_approval>
+	    		<product_approved_template>vendors_catalog_product_approved_template</product_approved_template>
+	    		<product_rejected_template>vendors_catalog_product_rejected_template</product_rejected_template>
+	    		<email_identity>general</email_identity>
+	    	</catalog>
+    	</vendors>
+    </default>
+    <vendor_config>
+    	<catalog>
+    		<product>
+    			<thumbnail_with>70</thumbnail_with>
+    			<thumbnail_height>70</thumbnail_height>
+    		</product>
+    	</catalog>
+    </vendor_config>
+    <product_attribute_restriction>
+    	<vendor_id />
+    	<approval />
+    	<msrp_enabled />
+    	<msrp_display_actual_price_type />
+    	<enable_googlecheckout />
+		<sku />
+    	<!-- Put the attribute which you want to remove here -->
+    </product_attribute_restriction>
+    
+    <product_required_attributes>
+    	<vendor_sku />
+    	<name />
+    	<price />
+    	<weight />
+    	<status />
+    	<thumbnail />
+    	<small_image />
+    	<image />
+    	<gallery />
+    	<media_gallery />
+    </product_required_attributes>
+</config>

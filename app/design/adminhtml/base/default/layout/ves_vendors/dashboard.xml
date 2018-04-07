@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<vendors_dashboard_index>
+		<reference name="content">
+			<block type="vendorsdashboard/vendor_dashboard" name="vendor.dashboard" template="ves_vendorsdashboard/index.phtml">
+				<block type="core/text_list" name="before.sales" as="before_sales" />
+				<block type="core/text_list" name="after.sales" as="after_sales" />
+				<block type="core/text_list" name="after.last.5.orders" as="after_last_5_orders" />
+			</block>
+		</reference>
+	</vendors_dashboard_index>
+</layout>

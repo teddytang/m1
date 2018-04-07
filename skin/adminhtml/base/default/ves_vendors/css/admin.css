@@ -1,0 +1,5 @@
+.status_green,.status_red,.status_yellow,.status_gray,.status_black{display: block;color: #FFFFFF;font-weight: bold;padding:1px 10px;border-radius: 15px;-moz-border-radius: 15px;-webkit-border-radius: 15px;background-color: #468847; text-align: center;width: 80px;}
+.status_red{background-color: #F96151;}
+.status_yellow{background-color: #F89406;}
+.status_gray{background-color: #999999;}
+.status_black{background-color: #363636;}

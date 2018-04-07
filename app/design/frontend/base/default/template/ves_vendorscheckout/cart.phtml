@@ -1,0 +1,19 @@
+<?php
+/**
+ * Shopping cart template
+ *
+ * @see Mage_Checkout_Block_Cart
+ */
+?>
+<div class="cart">
+    <div class="page-title title-buttons">
+        <h1><?php echo $this->__('Shopping Cart') ?></h1>
+    </div>
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <?php foreach($this->getQuotes() as $quote):?>
+    <?php if(!$quote->getItemsCount()) continue;?>
+    <?php echo $this->getSubcartHtml($quote) ?>
+    <?php endforeach;?>
+
+
+</div>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <vendors>
+            <children>
+                <import module="vendorsimport" translate="title">
+               		<title>Import / Export</title>
+                    <sort_order>50</sort_order>
+                    <children>
+                        <ves_profiles translate="title">
+                            <title>Dataflow - Profiles</title>
+                            <action>adminhtml/system_convert_profile_marketplace</action>
+                            <sort_order>50</sort_order>
+                        </ves_profiles>
+                    </children>
+                </import>
+            </children>
+        </vendors>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow everything</title>
+            </all>
+            <admin>
+                <children>
+                    <vendors>
+                        <children>
+                            <import>
+                                <children>
+                                    <ves_profiles translate="title">
+                                        <title>Dataflow - Profiles</title>
+                                    </ves_profiles>
+                                </children>
+                            </import>
+                        </children>
+                    </vendors>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

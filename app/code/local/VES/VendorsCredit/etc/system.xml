@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <vendors>
+            <tab>ves</tab>
+            <groups>                
+                <credit translate="label">
+                    <label>Credit</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>80</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<enable_escrow translate="label">
+                            <label>Enable Escrow feature</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[You should not to change this option after your website go to live.]]></tooltip>
+                        </enable_escrow>
+                        <escrow_hold_time translate="label">
+                            <label>Escrow hold time</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>30 -> 30 days</comment>
+                            <tooltip><![CDATA[After this time the amount from escrow transaction will be added to vendor's credit account.]]></tooltip>
+                        </escrow_hold_time>
+                        <escrow_template translate="label tooltip">
+                        	<label>New Escrow Transaction Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model> 
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[This notification email will be sent to vendor when new escrow is created for vendor.]]></tooltip>
+                        </escrow_template>
+                        <escrow_release_template translate="label tooltip">
+                            <label>Escrow Release Transaction Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[This notification email will be sent to vendor when escrow transaction is released.]]></tooltip>
+                        </escrow_release_template>
+                        <escrow_cancel_template translate="label tooltip">
+                            <label>Escrow Cancel Transaction Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[This notification email will be sent to vendor when escrow is canceled.]]></tooltip>
+                        </escrow_cancel_template>
+                        <balance_change_template translate="label tooltip">
+                        	<label>Credit Balance Change Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model> 
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                             <tooltip><![CDATA[This notification email will be sent to vendor when his credit balance is changed.]]></tooltip>
+                        </balance_change_template>
+                        <new_withdrawal_template translate="label tooltip">
+                        	<label>New Withdrawal Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model> 
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                             <tooltip><![CDATA[This notification email will be sent to vendor when he submit a withdrawal request.]]></tooltip>
+                        </new_withdrawal_template>
+                        <withdrawal_success_template translate="label tooltip">
+                        	<label>Withdrawal Success Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model> 
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                             <tooltip><![CDATA[This notification email will be sent to vendor when he withdrawal request is approved.]]></tooltip>
+                        </withdrawal_success_template>
+                        <withdrawal_rejected_template translate="label tooltip">
+                        	<label>Withdrawal Rejected Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model> 
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                             <tooltip><![CDATA[This notification email will be sent to vendor when he withdrawal request is rejected.]]></tooltip>
+                        </withdrawal_rejected_template>
+                        <email_identity translate="label">
+                        	<label>Email Sender</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_identity</source_model> 
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </email_identity>
+                    </fields>
+                </credit>
+            </groups>
+        </vendors>
+    </sections>
+</config>

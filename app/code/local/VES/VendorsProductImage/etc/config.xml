@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<config>
+ 	<frontend>
+        <routers>
+            <vendors>
+				<args>
+					<modules>
+						<vendorsproductimage before="VES_Vendors">VES_VendorsProductImage_Vendor</vendorsproductimage>
+					</modules>
+				</args>
+			</vendors>
+        </routers>
+    </frontend>
+    
+    <admin>
+       	<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<vendorsproductimage before="Mage_Adminhtml">VES_VendorsProductImage_Adminhtml</vendorsproductimage>
+					</modules>
+				</args>
+			</adminhtml>
+       	</routers>
+   	</admin>
+    
+    <adminhtml>
+		<layout>
+			<updates>
+				<vendorsproductimage>
+					<file>ves_vendors/productimage.xml</file>
+				</vendorsproductimage>
+			</updates>
+		</layout>
+    </adminhtml>   
+    
+    <global>
+        <models>
+            <vendorsproductimage>
+                <class>VES_VendorsProductImage_Model</class>
+                <resourceModel>vendorsproductimage_mysql4</resourceModel>
+            </vendorsproductimage>
+        </models>
+        <resources>
+            <vendorsproductimage_setup>
+                <setup>
+                    <module>VES_VendorsProductImage</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </vendorsproductimage_setup>
+            <vendorsproductimage_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </vendorsproductimage_write>
+            <vendorsproductimage_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </vendorsproductimage_read>
+        </resources>
+        <blocks>
+            <vendorsproductimage>
+                <class>VES_VendorsProductImage_Block</class>
+            </vendorsproductimage>
+            <!--
+            <adminhtml>
+                <rewrite>
+                       <catalog_product_helper_form_gallery>VES_VendorsProductImage_Block_Catalog_Product_Helper_Form_Gallery</catalog_product_helper_form_gallery>
+                </rewrite>
+			</adminhtml>
+              -->
+        </blocks>
+        <helpers>
+            <vendorsproductimage>
+                <class>VES_VendorsProductImage_Helper</class>
+            </vendorsproductimage>
+        </helpers>
+        
+         <events>
+            <catalog_product_prepare_save>
+                <observers>
+                    <vendorsproductimage>
+                        <type>singleton</type>
+                        <class>vendorsproductimage/observer</class>
+                        <method>onCatalogProductPrepareSave</method>
+                    </vendorsproductimage>
+                </observers>
+            </catalog_product_prepare_save>
+            <adminhtml_catalog_product_edit_element_types>
+            	<observers>
+                    <vendorsproductimage>
+                        <type>singleton</type>
+                        <class>vendorsproductimage/observer</class>
+                        <method>adminhtml_catalog_product_edit_element_types</method>
+                    </vendorsproductimage>
+                </observers>
+            </adminhtml_catalog_product_edit_element_types>
+        </events>
+        
+    </global>
+    
+    <default>
+    	<vendors>
+	    	<catalog>
+	    		<use_ajax_image>1</use_ajax_image>
+	    	</catalog>
+    	</vendors>
+    </default>
+    
+</config>

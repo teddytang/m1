@@ -1,6 +1,7 @@
 <?php
 /**
-abcdddd
+aibcdddd
+wang
  * Magento
  *
  * NOTICE OF LICENSE

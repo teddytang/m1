@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+		<reference name="head">
+			<action method="addCss"><css>ves_vendors/css/admin.css</css></action>
+		</reference>
+	</default>
+	<!-- admin cpanel -->
+    <adminhtml_vendors_index>
+        <reference name="content">
+            <block type="vendors/adminhtml_vendors" name="vendors" />
+        </reference>
+    </adminhtml_vendors_index>
+    <adminhtml_vendors_attribute_index>
+        <reference name="content">
+            <block type="vendors/adminhtml_vendors_attribute" name="vendors.attribute" />
+        </reference>
+    </adminhtml_vendors_attribute_index>
+    <adminhtml_vendors_attribute_edit>
+        <reference name="left">
+            <block type="vendors/adminhtml_vendors_attribute_edit_tabs" name="attribute_edit_tabs"></block>
+        </reference>
+        <reference name="content">
+            <block type="vendors/adminhtml_vendors_attribute_edit" name="attribute_edit_content"></block>
+        </reference>
+        <reference name="js">
+            <block type="adminhtml/template" name="attribute_edit_js" template="ves_vendors/attribute/js.phtml"></block>
+        </reference>
+    </adminhtml_vendors_attribute_edit>
+    <adminhtml_vendors_group_index>
+        <reference name="content">
+            <block type="vendors/adminhtml_vendors_group" name="vendors.group" />
+        </reference>
+    </adminhtml_vendors_group_index>
+    <adminhtml_system_config_edit>
+    	<reference name="head">
+    		<action method="addJs"><js>jscolor/jscolor.js</js></action>
+    	</reference>
+    </adminhtml_system_config_edit>
+    
+    
+    
+    <!-- Vendors Cpanel -->
+    <vendors_default>
+    	<remove name="header" />
+    	<remove name="menu" />
+    	<remove name="footer" />
+    	<remove name="breadcrumbs" />
+		<reference name="head">
+			<action method="setTemplate"><template>ves_vendors/page/html/head.phtml</template></action>
+			<!-- <action method="setTitle" translate="title"><title>Vendor Cpanel</title></action> -->
+	     	<action method="addCss"><stylesheet>ves_vendors/css/styles.css</stylesheet></action>
+	     	<block type="vendors/page_head" name="vadmin.head" />
+	    </reference>
+	</vendors_default>
+	
+	<vendors_logged_out>
+        
+    </vendors_logged_out>
+    
+    <vendors_css_index>
+    	<block type="core/template" name="root" output="toHtml" template="ves_vendors/css.phtml" />
+    </vendors_css_index>
+    
+    <vendors_logged_in>
+    	<reference name="head">
+    		<!-- <action method="addJs"><js>ves_vendors/dragdivscroll.min.js</js></action> -->
+    	</reference>
+    	<reference name="root">
+       		<action method="setTemplate"><template>ves_vendors/page.phtml</template></action>
+       		<block type="vendors/page_header" name="vendor.header" as="header" />
+			<block type="vendors/page_menu" name="vendor.menu" as="menu" />
+			<block type="vendors/widget_breadcrumbs" name="vendor.breadcrumbs" as="breadcrumbs"></block>
+			<block type="vendors/page_footer" name="vendor.footer" as="footer" />
+			<block type="core/text_list" name="vendor_notifications" as="vendor_notifications">
+                
+            </block>
+       	</reference>
+       	<reference name="vendor.header">
+       		<block type="vendors/page_template_links" name="toplinks" as="toplinks">
+       			<action method="addLink" translate="label title" module="vendors"><label>My Account</label><url helper="vendors/getAccountUrl"/><title>My Account</title><prepare/><urlParams/><position>10</position><liParams>class="profile"</liParams></action>
+       			<action method="addLink" translate="label title" module="vendors"><label>Logout</label><url helper="vendors/getLogoutUrl"/><title>Logout</title><prepare/><urlParams/><position>30</position><liParams>class="logout"</liParams></action>
+       		</block>
+       	</reference>
+    </vendors_logged_in>
+    
+    <vendors_index_login translate="label">
+        <label>Vendor Account Login Form</label>
+        <!-- Mage_Customer -->
+		<reference name="head">
+			<action method="removeItem"><type>skin_css</type><name>css/styles.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>menu.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>print.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>reset.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>boxes.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>custom.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>xmlconnect/boxes.css</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/product.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/uploader.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/accordion.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/form.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/tabs.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/grid.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/loader.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/events.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/hash.js</name></action>
+			<action method="removeItem"><type>js</type><name>lib/ccard.js</name></action>
+			
+	     	<action method="addCss"><stylesheet>ves_vendors/css/login.css</stylesheet></action>
+			<action method="addJs"><js>varien/form.js</js></action>
+	     </reference>
+        <reference name="root">
+            <action method="setTemplate"><template>empty.phtml</template></action>
+        </reference>
+        <!-- Mage_Customer -->
+        <reference name="content">
+            <block type="vendors/form_login" name="vendors_form_login" template="ves_vendors/form/login.phtml"></block>
+        </reference>
+    </vendors_index_login>
+    <vendors_index_create translate="label">
+        <label>Vendor Account Login Form</label>
+        <!-- Mage_Customer -->
+		<reference name="head">
+			<action method="removeItem"><type>skin_css</type><name>css/styles.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>menu.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>print.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>reset.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>boxes.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>custom.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>xmlconnect/boxes.css</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/product.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/uploader.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/accordion.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/form.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/tabs.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/grid.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/loader.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/events.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/hash.js</name></action>
+			<action method="removeItem"><type>js</type><name>lib/ccard.js</name></action>
+			
+	     	<action method="addCss"><stylesheet>ves_vendors/css/login.css</stylesheet></action>
+			<action method="addJs"><js>varien/form.js</js></action>
+	     </reference>
+        <reference name="root">
+            <action method="setTemplate"><template>empty.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="vendors/form_register" name="register_form" as="register_form" template="ves_vendors/form/register.phtml" />
+        </reference>
+    </vendors_index_create>
+    
+    <vendors_index_resetpassword translate="label">
+        <reference name="head">
+			<action method="removeItem"><type>skin_css</type><name>css/styles.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>menu.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>print.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>reset.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>boxes.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>custom.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>xmlconnect/boxes.css</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/product.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/uploader.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/accordion.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/form.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/tabs.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/grid.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/loader.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/events.js</name></action>
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/hash.js</name></action>
+			<action method="removeItem"><type>js</type><name>lib/ccard.js</name></action>
+			
+	     	<action method="addCss"><stylesheet>ves_vendors/css/login.css</stylesheet></action>
+			<action method="addJs"><js>varien/form.js</js></action>
+			<action method="setTitle" translate="title" module="vendors">
+                <title>Reset a Password</title>
+            </action>
+	     </reference>
+        <reference name="root">
+            <action method="setTemplate"><template>empty.phtml</template></action>
+            <action method="setHeaderTitle" translate="title" module="vendors">
+                <title>Reset a Password</title>
+            </action>
+        </reference>
+        
+        <reference name="content">
+            <block type="vendors/account_resetpassword" name="resetPassword" template="ves_vendors/form/resetforgottenpassword.phtml"/>
+        </reference>
+    </vendors_index_resetpassword>
+</layout>

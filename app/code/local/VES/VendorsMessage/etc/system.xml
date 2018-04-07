@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <vendors>
+            <tab>ves</tab>
+            <groups>                
+                <message translate="label">
+                    <label>Message</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>90</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable_editor translate="label tooltip">
+                        	<label>Enable WYSIWYG editor for message composer box</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_editor>
+                        
+                        <notification_email_template translate="label tooltip">
+                        	<label>Message notification template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model> 
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[This notification email will be sent every time new message arrives.]]></tooltip>
+                        </notification_email_template>
+                        
+                        <email_identity translate="label">
+                        	<label>Email Sender</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_identity</source_model> 
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </email_identity>
+                    </fields>
+                </message>
+            </groups>
+        </vendors>
+    </sections>
+</config>

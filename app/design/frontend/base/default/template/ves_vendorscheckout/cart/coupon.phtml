@@ -1,0 +1,33 @@
+<form id="discount-coupon-form-<?php echo $this->getQuote()->getId()?>" action="<?php echo $this->getCouponPostUrl()?>" method="post">
+    <div class="discount">
+        <h2><?php echo $this->__('Discount Codes') ?></h2>
+        <div class="discount-form">
+            <label for="coupon_code_<?php echo $this->getQuote()->getId()?>"><?php echo $this->__('Enter your coupon code if you have one.') ?></label>
+            <input type="hidden" name="remove" id="remove-coupone-<?php echo $this->getQuote()->getId()?>" value="0" />
+            <div class="input-box">
+                <input class="input-text" id="coupon_code_<?php echo $this->getQuote()->getId()?>" name="coupon_code" value="<?php echo $this->escapeHtml($this->getCouponCode()) ?>" />
+            </div>
+            <div class="buttons-set">
+                <button type="button" title="<?php echo $this->__('Apply Coupon') ?>" class="button" onclick="discountForm<?php echo $this->getQuote()->getId()?>.submit(false)" value="<?php echo $this->__('Apply Coupon') ?>"><span><span><?php echo $this->__('Apply Coupon') ?></span></span></button>
+                <?php if(strlen($this->getCouponCode())): ?>
+                    &nbsp; <button type="button" title="<?php echo $this->__('Cancel Coupon') ?>" class="button" onclick="discountForm<?php echo $this->getQuote()->getId()?>.submit(true)" value="<?php echo $this->__('Cancel Coupon') ?>"><span><span><?php echo $this->__('Cancel Coupon') ?></span></span></button>
+                <?php endif;?>
+            </div>
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+var discountForm<?php echo $this->getQuote()->getId()?> = new VarienForm('discount-coupon-form-<?php echo $this->getQuote()->getId()?>');
+discountForm<?php echo $this->getQuote()->getId()?>.submit = function (isRemove) {
+    if (isRemove) {
+        $('coupon_code_<?php echo $this->getQuote()->getId()?>').removeClassName('required-entry');
+        $('remove-coupone-<?php echo $this->getQuote()->getId()?>').value = "1";
+    } else {
+        $('coupon_code_<?php echo $this->getQuote()->getId()?>').addClassName('required-entry');
+        $('remove-coupone-<?php echo $this->getQuote()->getId()?>').value = "0";
+    }
+    return VarienForm.prototype.submit.bind(discountForm<?php echo $this->getQuote()->getId()?>)();
+}
+//]]>
+</script>

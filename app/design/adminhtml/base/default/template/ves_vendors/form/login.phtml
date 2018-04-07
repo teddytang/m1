@@ -1,0 +1,73 @@
+<?php
+/**
+ * Vendor login form template
+ *
+ * @see VES_Vendoes_Block_Form_Login
+ */
+?>
+<div class="account-login">
+    <?php /* Extensions placeholder */ ?>
+    <?php echo $this->getChildHtml('vendor.form.login.extra')?>
+    <div id="loginbox">            
+		<form action="<?php echo $this->getPostActionUrl() ?>" class="form-vertical" id="login-form" method="post"<?php if($this->isForgotPassword()):?> style="display: none;"<?php endif;?>>
+			 <div class="control-group normal_text">
+			 	<h3><?php echo $this->__('Vendor Admin Login') ?></h3>
+			 	<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+			 </div>
+			<div class="control-group">
+				<div class="controls">
+					<div class="main_input_box">
+						<span class="add-on"><i class="icon-user"></i></span><input type="text" name="login[username]" class="input-text required-entry" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" placeholder="<?php echo $this->__('Vendor Id or Email') ?>">
+					</div>
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<div class="main_input_box">
+						<span class="add-on"><i class="icon-lock"></i></span><input type="password" name="login[password]" class="required-entry validate-password" placeholder="<?php echo $this->__('Password') ?>">
+					</div>
+				</div>
+			</div>
+			<?php echo $this->getChildHtml('form.additional.info'); ?>
+			<div class="form-actions">
+				<span class="pull-right"><input type="submit" value="<?php echo $this->__('Login')?>" class="btn btn-success"></span>
+				<?php if($this->canRegister()):?>
+					<span class="pull-left"><a id="register" class="flip-link btn btn-warning" href="<?php echo $this->getCreateAccountUrl()?>"><?php echo $this->__('Create an Account')?></a></span>
+					<div style="clear: both;"><a id="to-recover" href="javascript: void(0);"><?php echo $this->__('Forgot Your Password?')?></a></div>
+				<?php else:?>
+					<span class="pull-left"><a id="to-recover" class="flip-link btn btn-warning" href="javascript: void(0);"><?php echo $this->__('Lost password?')?></a></span>
+				<?php endif;?>
+			</div>
+		</form>
+		
+		<form class="form-vertical" action="<?php echo $this->getUrl('*/*/forgotpasswordpost') ?>" method="post" id="recover-form"<?php if(!$this->isForgotPassword()):?> style="display: none;"<?php endif;?>>
+			<p class="normal_text"><?php echo $this->__('Enter your e-mail address below and we will send you instructions')?><br><font color="#FF6633"><?php echo $this->__('how to recover a password.')?></font></p>
+			
+				<div class="controls">
+					<div class="main_input_box">
+						<span class="add-on"><i class="icon-envelope"></i></span><input type="text" class="input-text required-entry" name="email" placeholder="E-mail address or Vendor Id">
+					</div>
+				</div>
+		   
+			<div class="form-actions">
+				<span class="pull-left"><a id="to-login" class="flip-link btn btn-inverse" href="javascript: void(0);"><?php echo $this->__('&laquo; Back to login')?></a></span>
+				<span class="pull-right"><input type="submit" value="Recover" class="btn btn-info"></span>
+			</div>
+		</form>
+	</div>
+	<script type="text/javascript">
+    //<![CDATA[
+        var loginForm = new VarienForm('login-form', true);
+        var recoverform = new VarienForm('recover-form', true);
+        
+        if($('to-recover')) $('to-recover').observe('click',function(){
+        	Effect.SlideUp('login-form',{duration: 0.4});
+        	Effect.Appear('recover-form',{duration: 0.4});
+        });
+        $('to-login').observe('click',function(){
+        	$('recover-form').hide();
+        	Effect.Appear('login-form',{duration: 0.4});
+        });
+    //]]>
+    </script>
+</div>

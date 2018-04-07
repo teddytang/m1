@@ -1,0 +1,111 @@
+2018-03-11T07:05:46+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:05:55+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:06:15+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:06:41+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:07:40+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:08:00+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:08:34+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:08:51+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:09:39+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:09:51+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:10:43+00:00 ERR (3): Notice: Undefined index: version  in D:\xampp\htdocs\ultimo1\app\code\local\VES\Vendors\Model\Feed.php on line 19
+2018-03-11T07:18:47+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:20:58+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:21:19+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:23:57+00:00 ERR (3): Notice: Undefined index: logo  in D:\xampp\htdocs\ultimo1\app\code\local\VES\Vendors\controllers\Adminhtml\VendorsController.php on line 80
+2018-03-11T07:24:14+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:24:28+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:25:04+00:00 ERR (3): Warning: Invalid argument supplied for foreach()  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsCheckout\Model\Observer.php on line 160
+2018-03-11T07:25:08+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:25:23+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:26:38+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:30:06+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:30:20+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:30:39+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:31:03+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:31:17+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:31:37+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T07:31:59+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:13:34+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:13:51+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:14:16+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:14:40+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:15:28+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:16:31+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:16:35+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:16:51+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:17:12+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:17:29+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:18:38+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:19:42+00:00 ERR (3): Warning: Invalid argument supplied for foreach()  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsCheckout\Model\Observer.php on line 160
+2018-03-11T08:19:44+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:19:49+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:20:08+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:20:29+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:20:40+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:20:56+00:00 ERR (3): Warning: Invalid argument supplied for foreach()  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsCheckout\Model\Observer.php on line 160
+2018-03-11T08:20:57+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:20:59+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:21:20+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:21:47+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:22:17+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:22:36+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:22:58+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:24:24+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:24:44+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:25:00+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:25:22+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:27:51+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:28:26+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:28:37+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:28:53+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:29:09+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:29:28+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:29:43+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:29:59+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:30:36+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:30:55+00:00 ERR (3): Warning: Invalid argument supplied for foreach()  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsCheckout\Model\Observer.php on line 160
+2018-03-11T08:30:58+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:31:10+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:31:26+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:31:44+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:32:04+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:33:01+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:33:23+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:33:36+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:33:50+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:34:10+00:00 CRIT (2): Not valid template file:frontend\base\default\template\checkout/cart/mini.phtml
+2018-03-11T08:50:36+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\page/2columns-right.phtml
+2018-03-11T09:01:25+00:00 ERR (3): Notice: Array to string conversion  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsCredit\Model\Type\Itempayment.php on line 21
+2018-03-11T09:19:03+00:00 ERR (3): Notice: Array to string conversion  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsCredit\Model\Type\Itempayment.php on line 21
+2018-03-11T09:30:49+00:00 ERR (3): Notice: unserialize(): Error at offset 0 of 311 bytes  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsDashboard\controllers\DashboardController.php on line 22
+2018-03-11T09:30:50+00:00 ERR (3): Notice: unserialize(): Error at offset 0 of 315 bytes  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsDashboard\controllers\DashboardController.php on line 22
+2018-03-11T09:38:45+00:00 ERR (3): Notice: unserialize(): Error at offset 0 of 326 bytes  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsDashboard\controllers\DashboardController.php on line 22
+2018-03-11T09:38:46+00:00 ERR (3): Notice: unserialize(): Error at offset 0 of 344 bytes  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsDashboard\controllers\DashboardController.php on line 22
+2018-03-12T05:50:56+00:00 ERR (3): Notice: unserialize(): Error at offset 0 of 325 bytes  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsDashboard\controllers\DashboardController.php on line 22
+2018-03-12T05:50:57+00:00 ERR (3): Notice: unserialize(): Error at offset 0 of 343 bytes  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsDashboard\controllers\DashboardController.php on line 22
+2018-03-12T06:00:14+00:00 DEBUG (7): sendEscrowNotificationEmail
+2018-03-12T06:04:01+00:00 ERR (3): Notice: unserialize(): Error at offset 0 of 343 bytes  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsDashboard\controllers\DashboardController.php on line 22
+2018-03-12T06:04:02+00:00 ERR (3): Notice: unserialize(): Error at offset 0 of 325 bytes  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsDashboard\controllers\DashboardController.php on line 22
+2018-03-12T06:12:14+00:00 ERR (3): Warning: opendir(D:\xampp\htdocs\ultimo1\media\ves_vendorsimportproduct\teddy\media\,D:\xampp\htdocs\ultimo1\media\ves_vendorsimportproduct\teddy\media\): ϵͳ�Ҳ���ָ����·���� (code: 3)  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsImportProduct\Block\Vendor\Images.php on line 36
+2018-03-12T06:12:14+00:00 ERR (3): Warning: opendir(D:\xampp\htdocs\ultimo1\media\ves_vendorsimportproduct\teddy\media\): failed to open dir: No such file or directory  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsImportProduct\Block\Vendor\Images.php on line 36
+2018-03-12T06:12:24+00:00 ERR (3): Warning: opendir(D:\xampp\htdocs\ultimo1\media\ves_vendorsimportproduct\teddy\media\,D:\xampp\htdocs\ultimo1\media\ves_vendorsimportproduct\teddy\media\): ϵͳ�Ҳ���ָ����·���� (code: 3)  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsImportProduct\Block\Vendor\Images.php on line 36
+2018-03-12T06:12:24+00:00 ERR (3): Warning: opendir(D:\xampp\htdocs\ultimo1\media\ves_vendorsimportproduct\teddy\media\): failed to open dir: No such file or directory  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsImportProduct\Block\Vendor\Images.php on line 36
+2018-03-12T06:12:50+00:00 ERR (3): Warning: opendir(D:\xampp\htdocs\ultimo1\media\ves_vendorsimportproduct\teddy\import\,D:\xampp\htdocs\ultimo1\media\ves_vendorsimportproduct\teddy\import\): ϵͳ�Ҳ���ָ�����ļ��� (code: 2)  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsImportProduct\Block\Vendor\Import.php on line 33
+2018-03-12T06:12:50+00:00 ERR (3): Warning: opendir(D:\xampp\htdocs\ultimo1\media\ves_vendorsimportproduct\teddy\import\): failed to open dir: No such file or directory  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsImportProduct\Block\Vendor\Import.php on line 33
+2018-03-12T06:12:57+00:00 ERR (3): Warning: opendir(D:\xampp\htdocs\ultimo1\media\ves_vendorsimportproduct\teddy\import\,D:\xampp\htdocs\ultimo1\media\ves_vendorsimportproduct\teddy\import\): ϵͳ�Ҳ���ָ�����ļ��� (code: 2)  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsImportProduct\Block\Vendor\Import.php on line 33
+2018-03-12T06:12:57+00:00 ERR (3): Warning: opendir(D:\xampp\htdocs\ultimo1\media\ves_vendorsimportproduct\teddy\import\): failed to open dir: No such file or directory  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsImportProduct\Block\Vendor\Import.php on line 33
+2018-03-12T06:13:07+00:00 ERR (3): Notice: Use of undefined constant precision - assumed 'precision'  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsImportProduct\Block\Vendor\Images.php on line 44
+2018-03-12T06:13:07+00:00 ERR (3): Notice: Use of undefined constant precision - assumed 'precision'  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsImportProduct\Block\Vendor\Images.php on line 44
+2018-03-12T06:13:07+00:00 ERR (3): Notice: Use of undefined constant precision - assumed 'precision'  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsImportProduct\Block\Vendor\Images.php on line 44
+2018-03-12T06:13:07+00:00 ERR (3): Notice: Use of undefined constant precision - assumed 'precision'  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsImportProduct\Block\Vendor\Images.php on line 44
+2018-03-12T06:13:14+00:00 ERR (3): Notice: Use of undefined constant precision - assumed 'precision'  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsImportProduct\Block\Vendor\Images.php on line 44
+2018-03-12T06:13:14+00:00 ERR (3): Notice: Use of undefined constant precision - assumed 'precision'  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsImportProduct\Block\Vendor\Images.php on line 44
+2018-03-12T06:13:14+00:00 ERR (3): Notice: Use of undefined constant precision - assumed 'precision'  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsImportProduct\Block\Vendor\Images.php on line 44
+2018-03-12T06:13:14+00:00 ERR (3): Notice: Use of undefined constant precision - assumed 'precision'  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsImportProduct\Block\Vendor\Images.php on line 44
+2018-03-12T06:15:51+00:00 ERR (3): Warning: opendir(D:\xampp\htdocs\ultimo1\media\ves_vendorsimportproduct\teddy\export\,D:\xampp\htdocs\ultimo1\media\ves_vendorsimportproduct\teddy\export\): ϵͳ�Ҳ���ָ�����ļ��� (code: 2)  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsImportProduct\Block\Vendor\Export\Grid.php on line 28
+2018-03-12T06:15:51+00:00 ERR (3): Warning: opendir(D:\xampp\htdocs\ultimo1\media\ves_vendorsimportproduct\teddy\export\): failed to open dir: No such file or directory  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsImportProduct\Block\Vendor\Export\Grid.php on line 28
+2018-03-12T07:51:29+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\page/2columns-right.phtml
+2018-03-12T07:52:44+00:00 ERR (3): Notice: unserialize(): Error at offset 0 of 311 bytes  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsDashboard\controllers\DashboardController.php on line 22
+2018-03-12T07:52:45+00:00 ERR (3): Notice: unserialize(): Error at offset 0 of 315 bytes  in D:\xampp\htdocs\ultimo1\app\code\local\VES\VendorsDashboard\controllers\DashboardController.php on line 22
+2018-03-12T07:53:33+00:00 DEBUG (7): sendEscrowNotificationEmail

@@ -1,0 +1,25 @@
+<p class="bug-report">
+	<?php if($this->canShowLanguageSwitcher()):?>
+    <?php echo $this->__('Interface Locale: %s', $this->getLanguageSelect()) ?>
+    <?php endif;?>
+</p>
+<?php if($footerHtml = Mage::getStoreConfig('vendors/config/footer_html')):?>
+	<?php echo $footerHtml;?>
+<?php else:?>
+	<?php echo $this->__('Marketplace ver. %s by <a href="http://www.vnecoms.com" target="_blank">wWw.VnEcoms.com</a>', Mage::helper('vendors')->getVersion()) ?>
+<?php endif;?>
+<p class="legality">
+    <?php echo $this->getChildHtml('legality')?>;
+</p>
+
+<?php echo $this->getChildHtml();?>
+
+<script type="text/javascript">
+    function setInterfaceLanguage(evt){
+        var elem = Event.element(evt);
+        if(elem){
+            setLocation('<?php echo $this->getChangeLocaleUrl() ?>locale/'+elem.value+'/<?php echo $this->getRefererParamName() ?>/<?php echo $this->getUrlForReferer() ?>');
+        }
+    }
+    Event.observe('interface_locale', 'change', setInterfaceLanguage)
+</script>

@@ -1,0 +1,33 @@
+/**************
+************content
+*****************/
+.box-collateral {margin: 0 0 25px;}
+.box-collateral h2 {border-bottom: 1px solid #E5DCC3;color: #E26703;font-size: 15px;font-weight: bold;margin: 0 0 15px;padding: 0 0 1px;}
+.box-reviews dl {margin: 15px 0;}
+.box-reviews dt a, .box-reviews dt span {font-weight: bold;}
+.box-reviews dd {margin: 0 0 15px;border-bottom: 1px dashed #D3D3D3;padding-bottom: 10px;}
+.box-reviews dd:last-child{border-bottom: 0;}
+.box-reviews dd small {font-style: italic;}
+.box-reviews .form-add {margin: 15px 0 0;}
+.box-reviews .form-add h3 {font-size: 13px;font-weight: normal;}
+.box-reviews .form-add h4 {font-size: 12px;}
+.box-reviews .form-add h3 span {font-weight: bold;}
+.box-reviews .form-add .form-list {margin: 15px 0 0;}
+.box-reviews .form-add .form-list .input-box {width: 360px;}
+.box-reviews .form-add .form-list input.input-text, .product-view .box-reviews .form-add .form-list textarea {width: 354px;}
+.box-reviews .form-add .form-list textarea {width: 354px;}
+.box-reviews .form-add .data-table td {text-align: center;}
+.ratings-table{margin-bottom: 15px;}
+.ratings-table td,.ratings-table th{padding-right: 20px;}
+
+/******************
+**********
+************side bar
+*********************/
+
+.box-account .box-head h2 {float:none;padding:0;text-align:center;background-position: 0 0;background-repeat: no-repeat;color: #E65505;font-size: 13px;font-weight: bold;margin: 0;text-transform: uppercase;}
+.box-title {background: url("../../images/bkg_divider1.gif") repeat-x scroll 0 100% transparent;margin: 0 0 8px;padding: 0 0 2px;text-align: left;}
+.box-title h3, .dashboard .box .box-title h4 {font-size: 13px;font-weight: bold;margin: 0;}
+.vendor-logo {margin-bottom:5px;}
+.vendor-logo a img {width: 158px; height: 49px;}
+.box-set .rating-box {margin:5px 0 6px 42px;}

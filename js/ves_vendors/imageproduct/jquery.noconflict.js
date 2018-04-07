@@ -1,0 +1,1 @@
+$fileupload = jQuery.noConflict();

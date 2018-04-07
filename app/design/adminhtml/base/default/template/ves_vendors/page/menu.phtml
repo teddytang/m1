@@ -1,0 +1,28 @@
+<div class="nav-bar">
+<a id="home-nav-handle" class="home-nav-handle" href="javascript: void(0);">
+	<i class="home-nav-icon"></i>
+	<?php echo $this->__('Dashboard')?>
+</a>
+<!-- menu start -->
+<?php echo $this->getMenuLevel($this->getMenuArray()); ?>
+<!-- menu end -->
+</div>
+<script type="text/javascript">
+
+$('home-nav-handle').observe('click',function(){
+	if($('nav').getStyle('display') == 'none'){
+		Effect.SlideDown('nav',{duration:0.2});
+	}else{
+		Effect.SlideUp('nav',{duration:0.2});
+	}
+});
+Event.observe(window, "resize", function() {
+    var width = document.viewport.getWidth();
+    var height = document.viewport.getHeight();
+    if(width < 450){
+    	$('nav').setStyle({display:'none'});
+    }else{
+    	$('nav').setStyle({display:'block'});
+    }
+});
+</script>

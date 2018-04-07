@@ -1,0 +1,16 @@
+<script type="text/javascript">
+//<![CDATA[
+function hideShowCommissionAction()
+{
+    if ($('rule_commission_by').value == 'by_percent') {
+        $('rule_commission_action').up('tr').show();
+    } else {
+        $('rule_commission_action').up('tr').hide();
+    }
+
+    return true;
+}
+
+document.observe("dom:loaded", hideShowCommissionAction);
+//]]>
+</script>
